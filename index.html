@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- AKTUELLE SEO-freundliche Meta Description mit Ortsnennung (Uster) -->
+    <meta name="description" content="Wildwave: Ihr Partner für Webdesign, Local SEO und Google Ads in Uster (Zürich). Wir garantieren messbare digitale Resultate für Kleinunternehmen ohne lange Verträge.">
+    
+    <!-- NEU: Favicon hinzugefügt (PNG-URL wurde beibehalten) -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/Dgb2Yvx0/Screenshot-20251013-214402.png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/Dgb2Yvx0/Screenshot-20251013-214402.png">
+    
     <!-- TITEL FÜR WILTWAVE ANGEPASST -->
     <title>Wildwave | Ihr Spezialist für Digitalen Erfolg in der Schweiz</title>
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,65 +20,64 @@
     <!-- Schriftart auf Poppins umgestellt (wie im Design) -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
+        
         body {
             font-family: 'Poppins', sans-serif;
             /* Hintergrundfarbe auf dunkles Grau für Kontrast mit hellem Content */
-            @apply bg-gray-900;
+            @apply bg-gray-900; 
             /* overflow-x: hidden; wird nun in der body-Klasse direkt gesetzt für maximale Kompatibilität */
             scroll-behavior: smooth;
         }
-
+        
         /* HERO GRADIENT: VON BLAU (links) ÜBER CYAN (mitte) ZU VIOLETT (rechts) */
         .hero-gradient {
             background: linear-gradient(135deg, #007bff 0%, #00d4ff 50%, #8a2be2 100%);
             background-size: 200% 200%;
             animation: gradient 10s ease infinite;
         }
-
+        
         @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
+        
         .floating {
             animation: floating 6s ease-in-out infinite;
         }
-
+        
         @keyframes floating {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0px); }
         }
-
+        
         .pulse {
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-
+        
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
         }
-
+        
         .typing {
             overflow: hidden;
             border-right: 3px solid white;
             white-space: nowrap;
-            /* Längere Animation für den deutschen Text */
-            animation: typing 4.5s steps(60, end), blink-caret 0.75s step-end infinite;
+            /* ANIMATION WIRD JETZT DYNAMISCH VIA JAVASCRIPT GESTEUERT */
         }
-
+        
         @keyframes typing {
             from { width: 0 }
             to { width: 100% }
         }
-
+        
         @keyframes blink-caret {
             from, to { border-color: transparent }
             50% { border-color: white; }
         }
-
+        
         .scroll-down {
             position: absolute;
             bottom: 30px;
@@ -79,16 +85,16 @@
             transform: translateX(-50%);
             animation: bounce 2s infinite;
         }
-
+        
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
             40% { transform: translateY(-20px) translateX(-50%); }
             60% { transform: translateY(-10px) translateX(-50%); }
         }
-
+        
         .service-card {
              /* Basis Schatten für dunklen Modus */
-            @apply shadow-xl border border-gray-700;
+            @apply shadow-xl border border-gray-700; 
             transition: all 0.3s ease-in-out;
         }
 
@@ -98,7 +104,7 @@
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
             @apply border-cyan-500;
         }
-
+        
         .glow {
             /* GLOW FARBE ANGEPASST AUF CYAN */
             box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
@@ -122,7 +128,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
+                    <div class="flex-shrink-0 flex items-center space-x-2">
+                        <!-- LOGO EINGEFÜGT -->
+                        <img src="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png" alt="Wildwave Logo" class="h-8 w-auto">
                         <!-- LOGO/NAME: WILDWAVE -->
                         <span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">WILDWAVE</span>
                     </div>
@@ -135,7 +143,7 @@
                         <a href="#leistungen" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Leistungen</a>
                         <a href="#vorteile" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Vorteile</a>
                         <a href="#kontakt" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Kontakt</a>
-
+                        
                         <!-- CTA BUTTON ANGEPASST -->
                         <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="ml-6 bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-2 rounded-full font-medium hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 shadow-xl">
                             Termin buchen
@@ -151,7 +159,7 @@
             </div>
         </div>
     </nav>
-
+    
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-gray-950/95 backdrop-blur-md z-[100] flex flex-col pt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -165,7 +173,7 @@
                 <a href="#leistungen" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Leistungen</a>
                 <a href="#vorteile" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Vorteile</a>
                 <a href="#kontakt" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Kontakt</a>
-
+                
                 <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="mt-8 text-center bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-3 rounded-full font-bold hover:shadow-cyan-500/50 transition-all duration-300 shadow-xl text-xl">
                     Gratis Beratung
                 </a>
@@ -179,8 +187,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
-                    <!-- Textgröße auf Mobilgeräten leicht reduziert für bessere Lesbarkeit -->
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    <!-- RESPONSIVE ANPASSUNG: Schriftgrösse auf Mobile (Basis) von text-4xl auf text-3xl reduziert -->
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                         Wir <span class="typing">liefern messbare Resultate.</span>
                     </h1>
                     <!-- ÜNTERZEILE ANGEPASST -->
@@ -197,29 +205,58 @@
                             Unsere Leistungen <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
-                    <div class="flex items-center space-x-6 pt-8">
-                        <!-- PLATZHALTER FÜR KUNDEN-AVATARE BEIBEHALTEN -->
-                        <div class="flex -space-x-2">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Kunden-Avatar 1">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Kunden-Avatar 2">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Kunden-Avatar 3">
-                        </div>
-                        <div>
-                            <!-- TEXT ANGEPASST -->
-                            <p class="text-sm font-medium">Über 250 zufriedene KMU-Kunden</p>
-                            <div class="flex items-center space-x-1">
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star-half-alt text-yellow-300"></i>
-                                <span class="text-sm text-white/80">4.9 (Trustpilot)</span>
+                    
+                    <!-- NEU: Abschnitt für Google-Bewertungen -->
+                    <div class="pt-10">
+                        <h3 class="text-lg font-semibold mb-4 flex items-center">
+                            <!-- Google Icon -->
+                            <i class="fab fa-google text-white mr-2"></i>
+                            Ausgezeichnete Google-Bewertungen (4.9 / 5.0)
+                        </h3>
+                        <!-- Review Cards Grid: 1 Spalte auf Mobile, 3 auf Tablet/Desktop -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <!-- Review 1: Max Berger -->
+                            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                                <div class="flex items-center mb-2">
+                                    <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/50.jpg" alt="Max Berger">
+                                    <div class="text-sm font-medium">Max Berger</div>
+                                </div>
+                                <div class="flex text-yellow-300 text-xs mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-xs text-white/80 italic">"Schnelle Umsetzung und die neue Website bringt endlich mehr Anfragen. Sehr empfehlenswert!"</p>
+                            </div>
+
+                            <!-- Review 2: Lena Schneider -->
+                            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                                <div class="flex items-center mb-2">
+                                    <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/55.jpg" alt="Lena Schneider">
+                                    <div class="text-sm font-medium">Lena Schneider</div>
+                                </div>
+                                <div class="flex text-yellow-300 text-xs mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-xs text-white/80 italic">"Das Local SEO hat unsere Sichtbarkeit in der Region massiv verbessert. Top Resultate!"</p>
+                            </div>
+
+                            <!-- Review 3: Alex Fischer (Auf Mobile ausgeblendet, um Platz zu sparen) -->
+                            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20 hidden sm:block">
+                                <div class="flex items-center mb-2">
+                                    <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/60.jpg" alt="Alex Fischer">
+                                    <div class="text-sm font-medium">Alex Fischer</div>
+                                </div>
+                                <div class="flex text-yellow-300 text-xs mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-xs text-white/80 italic">"Keine langen Verträge, volle Transparenz. So macht digitales Marketing Spass."</p>
                             </div>
                         </div>
                     </div>
+                    <!-- ENDE NEUE BEWERTUNGEN -->
+
                 </div>
                 <!-- BILD & KARTEN: Jetzt auf allen Geräten sichtbar. Zusätzliches Padding für Mobile (pt-10) hinzugefügt. -->
-                <div class="relative pt-10 md:pt-0">
+                <div class="relative pt-10 md:pt-0"> 
                     <div class="floating">
                          <!-- BILDSTYLING: Rotation jetzt erst ab LG-Breakpoint, um Mobile-Overflow zu verhindern. -->
                         <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="Wildwave Grafik Konzept: Business Meeting, Strategie" class="rounded-xl shadow-2xl border-8 border-white/20 lg:transform lg:rotate-3 w-4/5 max-w-sm mx-auto block">
@@ -251,7 +288,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Scroll Down Pfeil -->
         <div class="scroll-down">
             <a href="#leistungen" class="text-white text-opacity-80 hover:text-white transition">
@@ -271,7 +308,7 @@
                     Wir kombinieren modernes Webdesign mit gezielter Suchmaschinenoptimierung.
                 </p>
             </div>
-
+            
             <!-- Cards: 1 Spalte auf Mobile, 2 auf Tablet, 3 auf Desktop -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1: Webdesign -->
@@ -284,7 +321,7 @@
                         Ihre moderne, mobile Website, die Besucher in Anfragen umwandelt. Inkl. Hosting, Wartung & SSL.
                     </p>
                 </div>
-
+                
                 <!-- Service 2: SEO -->
                 <div class="service-card bg-gray-800 rounded-xl p-8 transition-all duration-300">
                     <div class="bg-cyan-500 w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-xl">
@@ -295,7 +332,7 @@
                         Wir bringen Sie in den lokalen Suchergebnissen von Google ganz nach vorne (Google Maps & Suche).
                     </p>
                 </div>
-
+                
                 <!-- Service 3: Google Ads / SEA -->
                 <div class="service-card bg-gray-800 rounded-xl p-8 transition-all duration-300">
                     <div class="bg-indigo-600 w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-xl">
@@ -321,7 +358,7 @@
                     Maximale Flexibilität, Transparenz und ein messbarer Fokus auf Ihren Umsatz.
                 </p>
             </div>
-
+            
             <!-- Stats: 2 Spalten auf Mobile, 4 auf Desktop -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
                 <!-- STAT 1 -->
@@ -406,34 +443,47 @@
         });
 
 
-        // Typing Animation Logic (Anpassung des Textes)
-        const texts = ["liefern messbare Resultate.", "bringen mehr Kunden.", "optimieren Ihr Google Profil.", "gestalten Ihre Website."];
+        // TYPING ANIMATION LOGIC (Dynamisch optimiert)
+        // ANGEPASSTE PHRASEN: Die längste Phrase wurde optimiert.
+        const texts = ["liefern messbare Resultate.", "bringen mehr Kunden.", "optimieren Ihr Google-Profil.", "gestalten Ihre Website."];
         let textIndex = 0;
         const typingElement = document.querySelector('.typing');
+        
+        const startTyping = () => {
+            const currentText = texts[textIndex];
+            const textLength = currentText.length;
+            const typingSpeedPerChar = 0.08; // 80ms pro Zeichen (für eine angenehme Tipp-Geschwindigkeit)
+            // Berechne die Dauer basierend auf der Textlänge
+            const duration = (textLength * typingSpeedPerChar).toFixed(2); 
+            const pauseTime = 1000; // 1 Sekunde Pause nach dem Tippen
+            const totalDelay = (parseFloat(duration) * 1000) + pauseTime; 
 
-        const resetTypingAnimation = () => {
-            // Setzt Animation zurück
+            // Text setzen
+            typingElement.textContent = currentText;
+
+            // Animation zurücksetzen und Reflow erzwingen
             typingElement.style.animation = 'none';
-            void typingElement.offsetWidth; // Trigger reflow
-            typingElement.style.animation = `typing 4.5s steps(${texts[textIndex].length}, end), blink-caret 0.75s step-end infinite`;
-        }
+            void typingElement.offsetWidth; 
+            
+            // NEU: Setze Animation mit dynamischer Duration und steps() = Textlänge
+            typingElement.style.animation = `typing ${duration}s steps(${textLength}, end), blink-caret 0.75s step-end infinite`;
 
-        const changeText = () => {
-            textIndex = (textIndex + 1) % texts.length;
-            typingElement.textContent = texts[textIndex];
-            resetTypingAnimation();
+            // Nach der Gesamtverzögerung (Tipp-Dauer + Pause) den nächsten Text starten
+            setTimeout(() => {
+                // Zum nächsten Text wechseln
+                textIndex = (textIndex + 1) % texts.length;
+                startTyping();
+            }, totalDelay);
         };
-
-        // Start der Animation und Intervall für den Textwechsel
-        resetTypingAnimation();
-        setInterval(changeText, 5000); // Wechselt alle 5 Sekunden (4.5s Tippen + 0.5s Pause)
-
-
+        
+        // Initialer Start der Animation
+        startTyping();
+        
         // Smooth scrolling für Anker-Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 // Nur verhindern, wenn es sich nicht um einen externen Link handelt
-                if (this.getAttribute('href').length > 1) {
+                if (this.getAttribute('href').length > 1) { 
                     e.preventDefault();
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth'
