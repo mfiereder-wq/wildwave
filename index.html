@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
@@ -25,11 +25,12 @@
 
             // FAQ Toggle Functionality
       document.addEventListener('DOMContentLoaded', function() {
+        // Updated to use the correct selector for the whole FAQ item wrapper
         const faqItems = document.querySelectorAll('.faq-item');
 
                 faqItems.forEach(item => {
           item.addEventListener('click', function() {
-            // Find the parent container that has the answer
+            // Find the parent container that has the answer (the div with the border)
             const faqContainer = this.parentElement;
             const answer = faqContainer.querySelector('.faq-answer');
             const chevron = this.querySelector('.faq-chevron');
@@ -395,6 +396,117 @@
                       </div>
                   </div>
       </section>
+
+      <!-- FAQ Section (NEU HINZUGEFÜGT) -->
+      <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
+        <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-center gap-10">
+          <!-- FAQ Header -->
+          <div class="w-full lg:w-[768px] mx-auto flex flex-col justify-center items-center gap-4">
+            <div class="w-full lg:w-[768px] text-center justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium">
+              FAQ
+            </div>
+            <div class="self-stretch text-center justify-start text-black [.lumen_&]:text-white text-2xl lg:text-4xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal lg:leading-[44px] tracking-[-2%]">
+              Die häufigsten Fragen von Schweizer Unternehmern zu Webdesign, SEO und Online-Marketing – ehrlich beantwortet.
+            </div>
+          </div>
+
+          <!-- FAQ Items Container -->
+          <div class="self-stretch flex flex-col justify-start items-start gap-0">
+            
+            <!-- FAQ Item 1 -->
+            <div class="self-stretch border-b border-neutral-200 [.lumen_&]:border-neutral-700">
+              <div class="faq-item cursor-pointer flex justify-between items-center py-4">
+                <div class="flex-1 text-black [.lumen_&]:text-white text-lg font-medium">
+                  Warum ist Webdesign bei WildWave günstiger als bei grossen Agenturen?
+                </div>
+                <svg class="faq-chevron size-6 transition-transform duration-300 stroke-black [.lumen_&]:stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </div>
+              <div class="faq-answer hidden pb-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+                Weil wir als spezialisierte Webdesign-Agentur für KMU effizient arbeiten und auf unnötigen Luxus verzichten. Keine teuren Büros in Zürich, kein Overhead. Als Webdesigner aus Uster gebe ich diese Ersparnisse direkt an Schweizer Unternehmen weiter. Faire Preise für professionelles Webdesign, SEO und Marketing – keine versteckten Kosten.
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="self-stretch border-b border-neutral-200 [.lumen_&]:border-neutral-700">
+              <div class="faq-item cursor-pointer flex justify-between items-center py-4">
+                <div class="flex-1 text-black [.lumen_&]:text-white text-lg font-medium">
+                  Was passiert mit meiner Website, wenn ich kündige?
+                </div>
+                <svg class="faq-chevron size-6 transition-transform duration-300 stroke-black [.lumen_&]:stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </div>
+              <div class="faq-answer hidden pb-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+                Sie können monatlich kündigen – ohne Kündigungsfrist. Nach der Kündigung haben Sie zwei Optionen: Entweder Sie kaufen die Website für eine faire Offerte aus dem Vertrag – ähnlich wie beim Leasing – und die Website gehört dann vollständig Ihnen. Oder die Website wird auf den Werkszustand zurückgesetzt bzw. offline genommen. Sie entscheiden flexibel, was für Ihr Unternehmen am besten passt.
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="self-stretch border-b border-neutral-200 [.lumen_&]:border-neutral-700">
+              <div class="faq-item cursor-pointer flex justify-between items-center py-4">
+                <div class="flex-1 text-black [.lumen_&]:text-white text-lg font-medium">
+                  Wie schnell ist meine neue Website online?
+                </div>
+                <svg class="faq-chevron size-6 transition-transform duration-300 stroke-black [.lumen_&]:stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </div>
+              <div class="faq-answer hidden pb-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+                Nach dem Onboarding-Gespräch und Ihrer Zahlungsbestätigung starte ich sofort mit dem Webdesign. Je nach Umfang und Anforderungen ist Ihre professionelle Website in 1-2 Wochen live und auf Google indexiert. Schnell, professionell, zuverlässig – so arbeitet WildWave Marketing.
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="self-stretch border-b border-neutral-200 [.lumen_&]:border-neutral-700">
+              <div class="faq-item cursor-pointer flex justify-between items-center py-4">
+                <div class="flex-1 text-black [.lumen_&]:text-white text-lg font-medium">
+                  Was brauchen Sie von mir für die Website-Erstellung?
+                </div>
+                <svg class="faq-chevron size-6 transition-transform duration-300 stroke-black [.lumen_&]:stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </div>
+              <div class="faq-answer hidden pb-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+                Für professionelles Webdesign brauche ich von Ihnen: Ihre Ideen und Wünsche, bevorzugte Farben für Ihre Marke, Öffnungszeiten, Informationen über Ihre Dienstleistungen – und vor allem hochwertige Fotos von Ihrem Betrieb, Team und Produkten. Je mehr Material Sie mir geben, desto besser wird das Ergebnis. Ich führe Sie Schritt für Schritt durch den Prozess.
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="self-stretch border-b border-neutral-200 [.lumen_&]:border-neutral-700">
+              <div class="faq-item cursor-pointer flex justify-between items-center py-4">
+                <div class="flex-1 text-black [.lumen_&]:text-white text-lg font-medium">
+                  Bieten Sie auch SEO und Social Media Marketing an?
+                </div>
+                <svg class="faq-chevron size-6 transition-transform duration-300 stroke-black [.lumen_&]:stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </div>
+              <div class="faq-answer hidden pb-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+                Ja! Neben Webdesign bietet WildWave Marketing auch professionelle Suchmaschinenoptimierung (SEO) für Google, Social Media Management für Facebook und Instagram, sowie die Integration von Online-Shops und Buchungssystemen. Alles aus einer Hand – spezialisiert auf Schweizer KMU.
+              </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="self-stretch border-b border-neutral-200 [.lumen_&]:border-neutral-700">
+              <div class="faq-item cursor-pointer flex justify-between items-center py-4">
+                <div class="flex-1 text-black [.lumen_&]:text-white text-lg font-medium">
+                  Ist meine Website auch für Handys optimiert?
+                </div>
+                <svg class="faq-chevron size-6 transition-transform duration-300 stroke-black [.lumen_&]:stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </div>
+              <div class="faq-answer hidden pb-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+                Absolut. Alle WildWave-Websites sind responsive und für Mobilgeräte optimiert. Da über 70% der Schweizer Nutzer Websites auf dem Smartphone besuchen, ist mobiles Webdesign bei uns Standard – nicht optional.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      
       <!-- About Us Section -->
       <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] flex flex-col md:flex-row justify-center md:justify-start items-start gap-8 lg:gap-16 overflow-hidden">
         <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-start items-start md:items-center gap-8 lg:gap-16">
