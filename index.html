@@ -1,497 +1,527 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- AKTUELLE SEO-freundliche Meta Description mit Ortsnennung (Uster) -->
-    <meta name="description" content="Wildwave: Ihr Partner für Webdesign, Local SEO und Google Ads in Uster (Zürich). Wir garantieren messbare digitale Resultate für Kleinunternehmen ohne lange Verträge.">
-    
-    <!-- NEU: Favicon hinzugefügt (PNG-URL wurde beibehalten) -->
-    <link rel="icon" type="image/png" href="https://i.ibb.co/Dgb2Yvx0/Screenshot-20251013-214402.png">
-    <link rel="apple-touch-icon" href="https://i.ibb.co/Dgb2Yvx0/Screenshot-20251013-214402.png">
-    
-    <!-- TITEL FÜR WILTWAVE ANGEPASST -->
-    <title>Wildwave | Ihr Spezialist für Digitalen Erfolg in der Schweiz</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Schriftart auf Poppins umgestellt (wie im Design) -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            /* Hintergrundfarbe auf dunkles Grau für Kontrast mit hellem Content */
-            @apply bg-gray-900; 
-            /* overflow-x: hidden; wird nun in der body-Klasse direkt gesetzt für maximale Kompatibilität */
-            scroll-behavior: smooth;
-        }
-        
-        /* HERO GRADIENT: VON BLAU (links) ÜBER CYAN (mitte) ZU VIOLETT (rechts) */
-        .hero-gradient {
-            background: linear-gradient(135deg, #007bff 0%, #00d4ff 50%, #8a2be2 100%);
-            background-size: 200% 200%;
-            animation: gradient 10s ease infinite;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .floating {
-            animation: floating 6s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .typing {
-            overflow: hidden;
-            border-right: 3px solid white;
-            white-space: nowrap;
-            /* ANIMATION WIRD JETZT DYNAMISCH VIA JAVASCRIPT GESTEUERT */
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: white; }
-        }
-        
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
-        }
-        
-        .service-card {
-             /* Basis Schatten für dunklen Modus */
-            @apply shadow-xl border border-gray-700; 
-            transition: all 0.3s ease-in-out;
-        }
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://sintra-web-builder-components.s3.eu-central-1.amazonaws.com/versions/20250918/components-20250918.js"></script>
+        <title>Webdesign Schweiz für KMU | Professionelle Websites ab 150 CHF/Monat | WildWave Marketing Uster</title>
+        <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Conditional font loading based on design style -->
+              <!-- Lumen: Archivo + Inter -->
+      <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            /* Stärkerer Schatten und Glow mit Cyan-Akzent */
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-            @apply border-cyan-500;
-        }
-        
-        .glow {
-            /* GLOW FARBE ANGEPASST AUF CYAN */
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
-        }
+        <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
+    <script type="application/javascript">
+      const KNOWLEDGE_PROFILE_ID = "36920698-f605-42ac-b1c8-7b257c82ea9d";
 
-        /* Responsive Anpassungen für die Mobile Navigation */
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%);
-        }
+            // Initialize Sintra Framework
+      const sintra = new SintraFramework({
+        baseUrl: "https://alluring-encouragement-production.up.railway.app",
+        knowledgeProfileId: KNOWLEDGE_PROFILE_ID
+      });
 
-        #mobile-menu.open {
-            transform: translateX(0);
-        }
-    </style>
-</head>
-<!-- EXPLIZITE FESTLEGUNG VON overflow-x-hidden, um horizontalen Bildlauf zu verhindern -->
-<body class="min-h-screen overflow-x-hidden">
-    <!-- Navigation (Sticky) -->
-    <nav class="fixed w-full z-50 bg-gray-950/90 backdrop-blur-md shadow-lg border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center space-x-2">
-                        <!-- LOGO EINGEFÜGT -->
-                        <img src="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png" alt="Wildwave Logo" class="h-8 w-auto">
-                        <!-- LOGO/NAME: WILDWAVE -->
-                        <span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">WILDWAVE</span>
-                    </div>
-                </div>
-                <!-- Desktop Navigation -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <!-- ANKER-LINKS FÜR DEUTSCH UND ID'S ANGEPASST -->
-                        <a href="#hero" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Home</a>
-                        <a href="#leistungen" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Leistungen</a>
-                        <a href="#vorteile" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Vorteile</a>
-                        <a href="#kontakt" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Kontakt</a>
-                        
-                        <!-- CTA BUTTON ANGEPASST -->
-                        <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="ml-6 bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-2 rounded-full font-medium hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 shadow-xl">
-                            Termin buchen
-                        </a>
-                    </div>
-                </div>
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button class="text-gray-300 mobile-menu-button">
-                        <i class="fas fa-bars text-2xl hover:text-cyan-400 transition"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-gray-950/95 backdrop-blur-md z-[100] flex flex-col pt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="flex justify-end">
-                 <button class="text-gray-300 close-menu-button absolute top-6 right-6">
-                    <i class="fas fa-times text-3xl hover:text-cyan-400 transition"></i>
-                </button>
-            </div>
-            <div class="flex flex-col space-y-6 mt-10">
-                <a href="#hero" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Home</a>
-                <a href="#leistungen" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Leistungen</a>
-                <a href="#vorteile" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Vorteile</a>
-                <a href="#kontakt" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Kontakt</a>
-                
-                <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="mt-8 text-center bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-3 rounded-full font-bold hover:shadow-cyan-500/50 transition-all duration-300 shadow-xl text-xl">
-                    Gratis Beratung
-                </a>
-            </div>
-        </div>
-    </div>
+            // FAQ Toggle Functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
 
-    <!-- Hero Section -->
-    <!-- NEU: overflow-x-hidden zur Aggressiven Vermeidung von Horizontal-Scrollen in diesem komplexen Bereich -->
-    <section id="hero" class="hero-gradient text-white min-h-screen flex items-center pt-20 relative overflow-x-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <!-- RESPONSIVE ANPASSUNG: Schriftgrösse auf Mobile (Basis) von text-4xl auf text-3xl reduziert -->
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                        Wir <span class="typing">liefern messbare Resultate.</span>
-                    </h1>
-                    <!-- ÜNTERZEILE ANGEPASST -->
-                    <p class="text-lg md:text-xl text-white/90 max-w-lg">
-                        Datengetriebene digitale Lösungen für **Kleinunternehmen und Selbstständige**. Volle Flexibilität, keine langen Verträge.
-                    </p>
-                    <div class="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
-                        <!-- CTA Button 1: Auf mobilen Geräten volle Breite für einfache Bedienung -->
-                        <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="w-full sm:w-auto text-center bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
-                            <i class="fas fa-calendar-alt mr-2"></i> Jetzt Termin buchen
-                        </a>
-                        <!-- CTA Button 2: Auf mobilen Geräten volle Breite für einfache Bedienung -->
-                        <a href="#leistungen" class="w-full sm:w-auto text-center border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white/10 transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
-                            Unsere Leistungen <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                    
-                    <!-- NEU: Abschnitt für Google-Bewertungen -->
-                    <div class="pt-10">
-                        <h3 class="text-lg font-semibold mb-4 flex items-center">
-                            <!-- Google Icon -->
-                            <i class="fab fa-google text-white mr-2"></i>
-                            Ausgezeichnete Google-Bewertungen (4.9 / 5.0)
-                        </h3>
-                        <!-- Review Cards Grid: 1 Spalte auf Mobile, 3 auf Tablet/Desktop -->
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            <!-- Review 1: Max Berger -->
-                            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                                <div class="flex items-center mb-2">
-                                    <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/50.jpg" alt="Max Berger">
-                                    <div class="text-sm font-medium">Max Berger</div>
-                                </div>
-                                <div class="flex text-yellow-300 text-xs mb-2">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                                <p class="text-xs text-white/80 italic">"Schnelle Umsetzung und die neue Website bringt endlich mehr Anfragen. Sehr empfehlenswert!"</p>
-                            </div>
+                faqItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Find the parent container that has the answer
+            const faqContainer = this.parentElement;
+            const answer = faqContainer.querySelector('.faq-answer');
+            const chevron = this.querySelector('.faq-chevron');
 
-                            <!-- Review 2: Lena Schneider -->
-                            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                                <div class="flex items-center mb-2">
-                                    <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/55.jpg" alt="Lena Schneider">
-                                    <div class="text-sm font-medium">Lena Schneider</div>
-                                </div>
-                                <div class="flex text-yellow-300 text-xs mb-2">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                                <p class="text-xs text-white/80 italic">"Das Local SEO hat unsere Sichtbarkeit in der Region massiv verbessert. Top Resultate!"</p>
-                            </div>
+                        // Toggle answer visibility
+            if (answer) {
+              answer.classList.toggle('hidden');
+            }
 
-                            <!-- Review 3: Alex Fischer (Auf Mobile ausgeblendet, um Platz zu sparen) -->
-                            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20 hidden sm:block">
-                                <div class="flex items-center mb-2">
-                                    <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/60.jpg" alt="Alex Fischer">
-                                    <div class="text-sm font-medium">Alex Fischer</div>
-                                </div>
-                                <div class="flex text-yellow-300 text-xs mb-2">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </div>
-                                <p class="text-xs text-white/80 italic">"Keine langen Verträge, volle Transparenz. So macht digitales Marketing Spass."</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ENDE NEUE BEWERTUNGEN -->
-
-                </div>
-                <!-- BILD & KARTEN: Jetzt auf allen Geräten sichtbar. Zusätzliches Padding für Mobile (pt-10) hinzugefügt. -->
-                <div class="relative pt-10 md:pt-0"> 
-                    <div class="floating">
-                         <!-- BILDSTYLING: Rotation jetzt erst ab LG-Breakpoint, um Mobile-Overflow zu verhindern. -->
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="Wildwave Grafik Konzept: Business Meeting, Strategie" class="rounded-xl shadow-2xl border-8 border-white/20 lg:transform lg:rotate-3 w-4/5 max-w-sm mx-auto block">
-                    </div>
-                    <!-- STATS KARTE 1: Bleibt auf Mobile/Tablet versteckt (hidden lg:block), um Überlappungen zu vermeiden. -->
-                    <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl w-64 glow border-t-4 border-cyan-500 hidden lg:block">
-                        <div class="flex items-center space-x-3">
-                            <div class="bg-cyan-100 p-3 rounded-full">
-                                <i class="fas fa-chart-line text-cyan-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-bold text-gray-800">Top 3</p>
-                                <p class="text-sm text-gray-500">Google Platzierungen</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- STATS KARTE 2: Bleibt auf Mobile/Tablet versteckt (hidden lg:block). -->
-                    <div class="absolute -top-8 -right-8 bg-white p-6 rounded-xl shadow-xl w-64 glow border-t-4 border-blue-500 hidden lg:block">
-                        <div class="flex items-center space-x-3">
-                            <div class="bg-blue-100 p-3 rounded-full">
-                                <i class="fas fa-handshake text-blue-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-bold text-gray-800">100% Flexibel</p>
-                                <p class="text-sm text-gray-500">Monatlich kündbar</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Scroll Down Pfeil -->
-        <div class="scroll-down">
-            <a href="#leistungen" class="text-white text-opacity-80 hover:text-white transition">
-                <i class="fas fa-chevron-down text-3xl"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Services Section (Leistungen) -->
-    <section id="leistungen" class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <!-- TEXTE ANGEPASST -->
-                <span class="text-cyan-400 font-bold uppercase tracking-widest">Unsere Kern-Leistungen</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Digitale Lösungen, die Kunden bringen</h2>
-                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-                    Wir kombinieren modernes Webdesign mit gezielter Suchmaschinenoptimierung.
-                </p>
-            </div>
-            
-            <!-- Cards: 1 Spalte auf Mobile, 2 auf Tablet, 3 auf Desktop -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1: Webdesign -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition-all duration-300">
-                    <div class="bg-blue-600 w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-xl">
-                        <i class="fas fa-desktop text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Responsives Webdesign</h3>
-                    <p class="text-gray-400">
-                        Ihre moderne, mobile Website, die Besucher in Anfragen umwandelt. Inkl. Hosting, Wartung & SSL.
-                    </p>
-                </div>
-                
-                <!-- Service 2: SEO -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition-all duration-300">
-                    <div class="bg-cyan-500 w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-xl">
-                        <i class="fas fa-search-dollar text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Local SEO Optimierung</h3>
-                    <p class="text-gray-400">
-                        Wir bringen Sie in den lokalen Suchergebnissen von Google ganz nach vorne (Google Maps & Suche).
-                    </p>
-                </div>
-                
-                <!-- Service 3: Google Ads / SEA -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition-all duration-300">
-                    <div class="bg-indigo-600 w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-xl">
-                        <i class="fas fa-funnel-dollar text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Google Ads (SEA) Management</h3>
-                    <p class="text-gray-400">
-                        Gezielte und kosteneffiziente Werbung, um sofort qualifizierte Anfragen zu generieren.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section (Vorteile) -->
-    <section id="vorteile" class="py-20 bg-gray-950 text-white border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <!-- TEXTE ANGEPASST -->
-                <span class="text-blue-400 font-bold uppercase tracking-widest">Ihre Vorteile mit Wildwave</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Warum uns Kleinunternehmen wählen</h2>
-                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-                    Maximale Flexibilität, Transparenz und ein messbarer Fokus auf Ihren Umsatz.
-                </p>
-            </div>
-            
-            <!-- Stats: 2 Spalten auf Mobile, 4 auf Desktop -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
-                <!-- STAT 1 -->
-                <div class="p-4 md:p-6">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 pulse text-cyan-400">100%</div>
-                    <p class="text-sm md:text-base text-gray-400">Monatlich kündbar</p>
-                </div>
-                <!-- STAT 2 -->
-                <div class="p-4 md:p-6">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 pulse text-blue-400">250+</div>
-                    <p class="text-sm md:text-base text-gray-400">Zufriedene KMU Kunden</p>
-                </div>
-                <!-- STAT 3 -->
-                <div class="p-4 md:p-6">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 pulse text-indigo-400">14 Tage</div>
-                    <p class="text-sm md:text-base text-gray-400">Design-Entwurf-Garantie</p>
-                </div>
-                <!-- STAT 4 -->
-                <div class="p-4 md:p-6">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 pulse text-cyan-400">0</div>
-                    <p class="text-sm md:text-base text-gray-400">Versteckte Kosten</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section (Kontakt) -->
-    <section id="kontakt" class="py-20 bg-gradient-to-r from-blue-600 to-cyan-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Sind Sie bereit für mehr Kunden?</h2>
-            <p class="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Vereinbaren Sie jetzt ein kostenloses Strategiegespräch. Wir zeigen Ihnen, wo Ihr grösstes Wachstumspotenzial liegt.
-            </p>
-            <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
-                <!-- CTA BUTTON 1: Volle Breite auf Mobile -->
-                <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="w-full sm:w-auto text-center bg-white text-blue-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg flex items-center justify-center">
-                    <i class="fas fa-phone-alt mr-3"></i> Jetzt anrufen oder Termin buchen
-                </a>
-                <!-- KONTAKTINFOS: Volle Breite auf Mobile -->
-                <a href="mailto:wildwave@mail.ch" class="w-full sm:w-auto text-center border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all duration-300 transform hover:scale-105 text-lg flex items-center justify-center">
-                    <i class="fas fa-envelope mr-3"></i> Oder E-Mail senden
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 text-center text-gray-400 text-sm bg-gray-950 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <!-- Mobile friendly link layout for footer: Links wrappen, falls der Platz nicht reicht -->
-             <div class="mb-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
-                <!-- LINKS AUF DEINE GOOGLE DOCS ANGEPASST -->
-                <a href="https://docs.google.com/document/d/1ZmQFW7WUWsg6qc0pG_FmP47N71jSQp6kZ3LSJ7g5nV0/edit?usp=sharing" target="_blank" class="hover:text-cyan-400">Impressum</a>
-                <span class="text-gray-600 hidden sm:inline">|</span> <!-- Hidden on extra small screens -->
-                <a href="https://docs.google.com/document/d/1KK7-YsIks3-b9otznUcUv1Rd069j0WLgWUYvZSeKaQc/edit?usp=sharing" target="_blank" class="hover:text-cyan-400">Datenschutz</a>
-                <span class="text-gray-600 hidden sm:inline">|</span> <!-- Hidden on extra small screens -->
-                <a href="tel:+41782630406" class="hover:text-cyan-400">+41 78 263 04 06</a>
-            </div>
-            <p>&copy; 2024 Wildwave. Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
-
-
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuButton = document.querySelector('.mobile-menu-button');
-        const closeMenuButton = document.querySelector('.close-menu-button');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-        const toggleMenu = () => {
-            mobileMenu.classList.toggle('open');
-            // Verhindert Scrollen im Hintergrund
-            document.body.classList.toggle('overflow-hidden', mobileMenu.classList.contains('open'));
-        };
-
-        mobileMenuButton.addEventListener('click', toggleMenu);
-        closeMenuButton.addEventListener('click', toggleMenu);
-
-        // Schließt das Menü beim Klicken auf einen Link
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
+                        // Toggle chevron rotation
+            if (chevron) {
+              chevron.classList.toggle('rotate-180');
+            }
+          });
         });
-
-
-        // TYPING ANIMATION LOGIC (Dynamisch optimiert)
-        // ANGEPASSTE PHRASEN: Die längste Phrase wurde optimiert.
-        const texts = ["liefern messbare Resultate.", "bringen mehr Kunden.", "optimieren Ihr Google-Profil.", "gestalten Ihre Website."];
-        let textIndex = 0;
-        const typingElement = document.querySelector('.typing');
-        
-        const startTyping = () => {
-            const currentText = texts[textIndex];
-            const textLength = currentText.length;
-            const typingSpeedPerChar = 0.08; // 80ms pro Zeichen (für eine angenehme Tipp-Geschwindigkeit)
-            // Berechne die Dauer basierend auf der Textlänge
-            const duration = (textLength * typingSpeedPerChar).toFixed(2); 
-            const pauseTime = 1000; // 1 Sekunde Pause nach dem Tippen
-            const totalDelay = (parseFloat(duration) * 1000) + pauseTime; 
-
-            // Text setzen
-            typingElement.textContent = currentText;
-
-            // Animation zurücksetzen und Reflow erzwingen
-            typingElement.style.animation = 'none';
-            void typingElement.offsetWidth; 
-            
-            // NEU: Setze Animation mit dynamischer Duration und steps() = Textlänge
-            typingElement.style.animation = `typing ${duration}s steps(${textLength}, end), blink-caret 0.75s step-end infinite`;
-
-            // Nach der Gesamtverzögerung (Tipp-Dauer + Pause) den nächsten Text starten
-            setTimeout(() => {
-                // Zum nächsten Text wechseln
-                textIndex = (textIndex + 1) % texts.length;
-                startTyping();
-            }, totalDelay);
-        };
-        
-        // Initialer Start der Animation
-        startTyping();
-        
-        // Smooth scrolling für Anker-Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                // Nur verhindern, wenn es sich nicht um einen externen Link handelt
-                if (this.getAttribute('href').length > 1) { 
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
+        // Contact form handling
+        const contactForm = document.getElementById('contact-form');
+        const contactSuccessOverlay = document.getElementById('contact-success-overlay');
+        if (contactForm && contactSuccessOverlay) {
+          contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const data = {
+              name: formData.get('name'),
+              email: formData.get('email'),
+              details: formData.get('message')
+            };
+            try {
+              const response = await sintra.submitContactForm(data);
+              if (response.ok) {
+                // Show success overlay
+                contactSuccessOverlay.classList.remove('hidden');
+                contactForm.reset();
+                // Hide overlay after 3 seconds
+                setTimeout(() => {
+                  contactSuccessOverlay.classList.add('hidden');
+                }, 5000);
+              } else {
+                alert('Sorry, there was an error sending your message. Please try again.');
+              }
+            } catch (error) {
+              alert('Sorry, there was an error sending your message. Please try again.');
+            }
+          });
+        }
+        // Hero email form handling
+        const heroEmailForm = document.getElementById('hero-email-form');
+        const heroSuccessOverlay = document.getElementById('hero-success-overlay');
+        if (heroEmailForm && heroSuccessOverlay) {
+          heroEmailForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(heroEmailForm);
+            const data = {
+              email: formData.get('email'),
+              details: 'This email was submitted through the hero section email form. The visitor did not provide their name or additional details.'
+            };
+            try {
+              const response = await sintra.submitContactForm(data);
+              if (response.ok) {
+                // Show success overlay
+                heroSuccessOverlay.classList.remove('hidden');
+                heroEmailForm.reset();
+                // Hide overlay after 3 seconds
+                setTimeout(() => {
+                  heroSuccessOverlay.classList.add('hidden');
+                }, 5000);
+              } else {
+                alert('Sorry, there was an error. Please try again.');
+              }
+            } catch (error) {
+              alert('Sorry, there was an error. Please try again.');
+            }
+          });
+        }
+      });
     </script>
-</body>
+  </head>
+  <body>
+    <div class="w-full font-['Inter'] [.lumen_&]:font-['Inter'] [.terra_&]:font-['Inter'] lumen">
+      <!-- Header -->
+      <header class="px-4 md:px-8 py-2.5 lg:px-26 lg:py-4 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] flex flex-row items-start justify-between overflow-hidden">
+                <div class="w-36 h-12 md:w-48 md:h-16 max-w-48 max-h-16 min-w-16 min-h-4 relative overflow-hidden flex items-center justify-start">
+          <img class="max-h-full object-contain" src="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png" />
+        </div>
+                <a
+          href="#contact"
+          class="px-5 py-2.5 bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-white [.lumen_&]:text-black text-base font-semibold"
+        >Contact Us</a>
+      </header>
+      <!-- Hero Section -->
+      <section class="px-4 md:px-8 lg:py-16 py-12 lg:px-26 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
+        <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-between items-start md:items-center gap-4 md:gap-8 lg:gap-16">
+          <div class="w-full md:w-1/2 md:flex-shrink-0 flex flex-col justify-start md:justify-center items-stretch gap-6 flex-1">
+            <div class="justify-start text-black [.lumen_&]:text-white text-4 text-[40px] lg:text-6xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[48px] lg:leading-[72px] tracking-[-2%]">
+                Verlieren Sie täglich Kunden, weil Ihr Unternehmen auf Google nicht gefunden wird?
+            </div>
+            <div class="justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
+              Ihre Konkurrenz ist auf Google sichtbar. Ihre Konkurrenz hat eine professionelle Website mit SEO. Ihre Konkurrenz gewinnt die Kunden in der Schweiz, die eigentlich zu Ihnen gehören. Stoppen Sie das jetzt – mit professionellem Webdesign und Marketing von WildWave.
+            </div>
+            <form id="hero-email-form" class="flex flex-col justify-start items-start gap-2.5 group relative">
+              <!-- Success Overlay ANPASSUNG FÜR DATENÄNDERUNG -->
+              <div id="hero-success-overlay" class="hidden absolute inset-0 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white rounded-full flex justify-center items-center gap-3 px-6 py-2.5 z-10">
+                <div class="size-6 relative flex-shrink-0">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 12L10.5 15L16.5 9M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#12B76A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="text-black [.lumen_&]:text-white text-base font-medium">
+                  Anfrage erhalten! Ihre Daten wurden für das Erstgespräch gespeichert. Bei einer Buchung werden die Projektdaten erfasst und geändert.
+                </div>
+              </div>
+              <div class="self-stretch bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white rounded-full flex flex-col justify-start items-start focus-within:outline outline-black [.lumen_&]:outline-neutral-600 [.terra_&]:outline-neutral-200 outline-offset-[-1px]">
+                <div class="self-stretch pl-6 pr-2.5 py-2.5 inline-flex justify-start items-center gap-2">
+                  <input
+                    class="flex-1 bg-transparent border-none outline-none justify-start text-black [.lumen_&]:text-white text-base font-normal leading-normal placeholder:text-neutral-400 [.lumen_&]:placeholder:text-neutral-500"
+                    type="email"
+                    name="email"
+                    placeholder="Your email"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    class="size-11 px-5 py-2.5 bg-black/50 [.lumen_&]:bg-lime-400/50 [.terra_&]:bg-[#623f35]/50 hover:bg-black/55 [.lumen_&]:hover:bg-lime-500/55 [.terra_&]:hover:bg-[#623f35]/55 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 cursor-pointer rounded-full flex justify-center items-center gap-2 group-valid:bg-black [.lumen_&]:group-valid:bg-lime-400 [.terra_&]:group-valid:bg-[#623f35] group-invalid:bg-gray-400 [.lumen_&]:group-invalid:bg-lime-400/50 [.terra_&]:group-invalid:bg-[#623f35]/50 group-invalid:cursor-not-allowed transition-colors duration-200"
+                  >
+                    <span class="text-white [.lumen_&]:text-black text-lg font-bold">→</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <img
+            class="w-full md:w-1/2 rounded-xl flex-1 object-cover min-w-1 aspect-square"
+            src="https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/c4d1f7bf-034d-480c-a440-861860240134/image.png?w=1024&amp;h=1024"
+          />
+        </div>
+      </section>
+      <!-- Mission Section -->
+      <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white overflow-hidden">
+        <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-center gap-10">
+          <div class="w-full lg:w-[768px] mx-auto flex flex-col justify-center items-center gap-4">
+            <div class="w-full lg:w-[768px] text-center justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium">
+              Our mission
+            </div>
+            <div class="self-stretch text-center justify-start text-black [.lumen_&]:text-white text-2xl lg:text-4xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal lg:leading-[44px] tracking-[-2%]">
+              Professionelle Websites und digitales Marketing für Schweizer KMU – ohne Risiko, ohne Agentur-Preise, monatlich kündbar
+            </div>
+          </div>
+        </div>
+      </section>
+            <!-- Services Section -->
+      <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
+        <div class="max-w-7xl mx-auto space-y-10">
+          <div class="flex flex-col-reverse md:flex-row justify-center items-stretch md:items-center gap-8 lg:gap-16">
+            <img class="rounded-xl flex-1 object-cover min-w-1 aspect-square" src="https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/03e2b36e-b868-4af8-9d8b-a974f91dcc9c/image.png?w=1024&amp;h=1024" />
+            <div class="inline-flex flex-col justify-start md:justify-center items-stretch gap-6 flex-1">
+              <div class="self-stretch flex flex-col justify-start items-start gap-6">
+                <div class="self-stretch flex flex-col justify-start items-start gap-4">
+                  <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium">Services</div>
+                  <div
+                    class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal lg:leading-[60px] tracking-[-2%]">
+                    Webdesign und Marketing-Lösungen für Schweizer KMU
+                  </div>
+                </div>
+                <div class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
+                  Problem: Keine Zeit für Website-Pflege und Online-Marketing. Lösung: WildWave übernimmt alles. Problem: Webdesign-Agenturen sind zu teuer. Lösung: Faire Monatspreise ohne Bindung. Problem: Angst vor langen Verträgen. Lösung: Monatlich kündbar. Problem: Niemand findet Sie auf Google. Lösung: Professionelles SEO und Social Media Marketing für die Schweiz.
+                </div>
+              </div>
+                                    <div class="hidden md:block">
+                  <a href="#contact"
+                    class="px-5 py-2.5 rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-white [.lumen_&]:text-black text-base font-semibold block md:inline-block">
+                    Contact Us
+                  </a>
+                </div>
+            </div>
+          </div>
+                          <div>
+            <div class="flex flex-col md:flex-row items-stretch gap-8">
+                              <div class="flex-1 space-y-4">
+                  <div class="space-y-3">
+                    <div class="flex flex-row md:flex-col items-center md:items-start gap-2">
+                      <div class="flex-0">
+                        <svg class="size-6 lg:size-8 [.lumen_&]:stroke-white" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_756_1929)">
+                            <path d="M16 5V27" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                            <path d="M6 10L26 22" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                            <path d="M6 22L26 10" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_756_1929">
+                              <rect width="32" height="32" fill="white" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </div>
+                      <div class="text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[28px]">
+                        Professionelle Website mit CMS
+                      </div>
+                    </div>
+                    <div class="text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-[21px]">
+                      Moderne, funktionale Website mit Content-Management-System für Schweizer KMU. Inklusive Hosting in der Schweiz, regelmässige Updates und persönlicher Support. Monatlich kündbar, keine Vertragsbindung.
+                    </div>
+                  </div>
+                </div>
+                                <div class="flex-1 space-y-4">
+                  <div class="space-y-3">
+                    <div class="flex flex-row md:flex-col items-center md:items-start gap-2">
+                      <div class="flex-0">
+                        <svg class="size-6 lg:size-8 [.lumen_&]:stroke-white" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_756_1929)">
+                            <path d="M16 5V27" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                            <path d="M6 10L26 22" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                            <path d="M6 22L26 10" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_756_1929">
+                              <rect width="32" height="32" fill="white" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </div>
+                      <div class="text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[28px]">
+                        SEO &amp; Google Marketing
+                      </div>
+                    </div>
+                    <div class="text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-[21px]">
+                      Gezielte Suchmaschinenoptimierung für Google Schweiz und lokales Online-Marketing. Mehr Sichtbarkeit in Ihrer Region, mehr Kundenanfragen, messbare Ergebnisse für Ihr Unternehmen.
+                    </div>
+                  </div>
+                </div>
+                                <div class="flex-1 space-y-4">
+                  <div class="space-y-3">
+                    <div class="flex flex-row md:flex-col items-center md:items-start gap-2">
+                      <div class="flex-0">
+                        <svg class="size-6 lg:size-8 [.lumen_&]:stroke-white" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_756_1929)">
+                            <path d="M16 5V27" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                            <path d="M6 10L26 22" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                            <path d="M6 22L26 10" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_756_1929">
+                              <rect width="32" height="32" fill="white" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </div>
+                      <div class="text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[28px]">
+                        Online-Shop &amp; Buchungssystem
+                      </div>
+                    </div>
+                    <div class="text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-[21px]">
+                      E-Commerce-Lösung oder Online-Buchungssystem nahtlos in Ihre Website integriert. Premium-Design, vollständige technische Umsetzung und Schulung – alles aus einer Hand.
+                    </div>
+                  </div>
+                </div>
+                            </div>
+          </div>
+          <div class="md:hidden">
+            <a href="#contact"
+              class="px-5 py-2.5 rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-white [.lumen_&]:text-black text-base font-semibold block md:inline-block">
+              Contact Us
+            </a>
+          </div>
+                  </div>
+      </section>
+      <!-- Benefits Section -->
+      <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white flex flex-col justify-center items-start gap-8 lg:gap-10 overflow-hidden">
+        <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-start gap-8 lg:gap-10">
+          <div class="self-stretch w-full lg:w-[768px] flex flex-col justify-start items-start gap-4">
+            <div class="self-stretch flex flex-col justify-start items-start gap-6">
+              <div class="self-stretch flex flex-col justify-start items-start gap-4">
+                <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium leading-tight">
+                  Benefits
+                </div>
+                <div class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-9 lg:leading-[60px] tracking-[-2%]">
+                  Warum Schweizer KMU wie Coiffeure und Restaurants WildWave Marketing vertrauen
+                </div>
+              </div>
+              <div class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
+                Wir kennen die Sorgen von kleinen Unternehmen in der Schweiz: Webdesign ist zu teuer. Marketing-Agenturen sind zu kompliziert. Lange Verträge sind zu riskant. Deshalb haben wir WildWave Marketing anders aufgebaut – fair, transparent, flexibel und spezialisiert auf KMU.
+              </div>
+            </div>
+          </div>
+                    <div class="self-stretch flex flex-col md:flex-row justify-start items-stretch md:items-start gap-3 lg:gap-8">
+                        <div class="flex-1 p-4 lg:p-6 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-xl flex flex-col justify-start items-start gap-4">
+              <div class="w-6 h-6 lg:w-8 lg:h-8 relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
+                  <g clip-path="url(#a)">
+                    <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.666 17 3 3 7-7"/>
+                    <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.666 28c6.628 0 12-5.373 12-12s-5.372-12-12-12c-6.627 0-12 5.373-12 12s5.373 12 12 12Z"/>
+                  </g>
+                  <defs>
+                    <clipPath id="a">
+                      <path fill="#fff" d="M.667 0h32v32h-32z"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="self-stretch flex flex-col justify-start items-start gap-3">
+                <div class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-7 lg:leading-loose tracking-[-2%]">
+                    Kein finanzielles Risiko für Ihr KMU
+                </div>
+                <div class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-tight">
+                    Keine Startgebühr. Keine Vorauszahlung. Monatlich kündbar. Sie zahlen nur, wenn Sie mit Ihrer Website und dem Marketing zufrieden sind. Faire Preise für Schweizer Unternehmen.
+                </div>
+              </div>
+            </div>
+                        <div class="flex-1 p-4 lg:p-6 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-xl flex flex-col justify-start items-start gap-4">
+              <div class="w-6 h-6 lg:w-8 lg:h-8 relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
+                  <g clip-path="url(#a)">
+                    <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.666 17 3 3 7-7"/>
+                    <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.666 28c6.628 0 12-5.373 12-12s-5.372-12-12-12c-6.627 0-12 5.373-12 12s5.373 12 12 12Z"/>
+                  </g>
+                  <defs>
+                    <clipPath id="a">
+                      <path fill="#fff" d="M.667 0h32v32h-32z"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="self-stretch flex flex-col justify-start items-start gap-3">
+                <div class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-7 lg:leading-loose tracking-[-2%]">
+                    Persönlicher Ansprechpartner aus Uster
+                </div>
+                <div class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-tight">
+                    Sie arbeiten direkt mit Marco zusammen. Schnelle Antworten auf Deutsch, persönlicher Support aus der Schweiz. Laufende Website-Optimierungen und SEO-Updates inklusive – ohne Aufpreis.
+                </div>
+              </div>
+            </div>
+                        <div class="flex-1 p-4 lg:p-6 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-xl flex flex-col justify-start items-start gap-4">
+              <div class="w-6 h-6 lg:w-8 lg:h-8 relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
+                  <g clip-path="url(#a)">
+                    <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.666 17 3 3 7-7"/>
+                    <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.666 28c6.628 0 12-5.373 12-12s-5.372-12-12-12c-6.627 0-12 5.373-12 12s5.373 12 12 12Z"/>
+                  </g>
+                  <defs>
+                    <clipPath id="a">
+                      <path fill="#fff" d="M.667 0h32v32h-32z"/>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <div class="self-stretch flex flex-col justify-start items-start gap-3">
+                <div class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-7 lg:leading-loose tracking-[-2%]">
+                    Spezialisiert auf Schweizer KMU
+                </div>
+                <div class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-tight">
+                    Wir sprechen Ihre Sprache und kennen den Schweizer Markt. Coiffeure, Restaurants, Handwerker – wir wissen genau, was Ihre Kunden online suchen und erwarten.
+                </div>
+              </div>
+            </div>
+                      </div>
+                  </div>
+      </section>
+      <!-- About Us Section -->
+      <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] flex flex-col md:flex-row justify-center md:justify-start items-start gap-8 lg:gap-16 overflow-hidden">
+        <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-start items-start md:items-center gap-8 lg:gap-16">
+          <div class="self-stretch w-full md:w-1/2 inline-flex flex-col justify-start md:justify-center items-stretch gap-6 flex-1">
+            <div class="flex flex-col justify-start items-start gap-6">
+              <div class="self-stretch flex flex-col justify-start items-start gap-4">
+                <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium leading-tight">
+                  About Us
+                </div>
+                <div class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-9 lg:leading-[60px] tracking-[-2%]">
+                  Warum ich WildWave Marketing gegründet habe
+                </div>
+              </div>
+              <div class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
+                Als Webdesigner aus Uster habe ich gesehen, wie viele Schweizer KMU – Coiffeure, Restaurants, Handwerksbetriebe – von teuren Agenturen abgezockt werden oder sich professionelles Webdesign gar nicht leisten können. Das wollte ich ändern. WildWave Marketing bietet professionelles Webdesign, SEO und Social Media Marketing zu fairen Preisen – monatlich kündbar, ohne Risiko, ohne lange Vertragsbindung. Mein Ziel: Jedem kleinen und mittleren Unternehmen in der Schweiz eine starke digitale Präsenz ermöglichen.
+              </div>
+            </div>
+            <div>
+              <a
+                href="#contact"
+                class="px-5 py-2.5 bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] text-white [.lumen_&]:text-black rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] flex justify-center items-center gap-2 hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-base font-semibold block md:inline-block"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+          <img
+            class="w-full lg:w-1/2 rounded-xl flex-1 object-cover min-w-1 aspect-square"
+            src="https://sintra-brainai-media.s3.us-east-1.amazonaws.com/36920698-f605-42ac-b1c8-7b257c82ea9d/e468953f-eb50-4a17-8495-9f9ed9f861ae-Marco_-_Portr_t_B_ro"
+          />
+        </div>
+      </section>
+      <!-- Contact Section (Habe diesen Abschnitt vervollständigt) -->
+      <section
+        id="contact"
+        class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-10 overflow-hidden"
+      >
+        <div class="w-full max-w-7xl mx-auto flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-10">
+          <div class="self-stretch w-full lg:w-1/2 inline-flex flex-col justify-start items-start gap-6 lg:gap-8">
+            <div class="self-stretch flex flex-col justify-start items-start gap-4">
+              <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium leading-tight">
+                Kontakt
+              </div>
+              <div class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-9 lg:leading-[60px] tracking-[-2%]">
+                Starten Sie jetzt Ihr kostenloses Erstgespräch.
+              </div>
+            </div>
+            <div class="self-stretch flex flex-col justify-start items-start gap-4">
+              <div class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
+                Nutzen Sie das Formular für eine unverbindliche Anfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+              </div>
+              <div class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
+                Telefon: +41 78 263 04 06 | E-Mail: wildwave@mail.ch | Standort: Uster, Zürich
+              </div>
+            </div>
+          </div>
+          <form id="contact-form" class="w-full lg:w-1/2 p-6 lg:p-8 bg-white [.lumen_&]:bg-neutral-900 [.terra_&]:bg-[#e9e4df] rounded-xl shadow-lg relative">
+            
+            <!-- Contact Success Overlay ANPASSUNG FÜR DATENÄNDERUNG -->
+            <div id="contact-success-overlay" class="hidden absolute inset-0 bg-white [.lumen_&]:bg-neutral-900 [.terra_&]:bg-white rounded-xl flex flex-col justify-center items-center gap-4 px-6 py-8 z-10 text-center">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 12L10.5 15L16.5 9M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#12B76A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="text-black [.lumen_&]:text-white text-xl font-bold">
+                    Ihre Anfrage ist eingegangen!
+                </div>
+                <div class="text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+                    Wir melden uns in Kürze für Ihr kostenloses Erstgespräch.
+                    <br>
+                    Wichtig: Ihre Daten werden für die Buchung des Projekts bei Auftragsbestätigung angepasst und finalisiert.
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-neutral-700 [.lumen_&]:text-neutral-300 mb-1">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full p-2.5 border border-neutral-300 [.lumen_&]:border-neutral-600 rounded-lg bg-white [.lumen_&]:bg-neutral-800 text-black [.lumen_&]:text-white focus:ring-lime-400 focus:border-lime-400"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-neutral-700 [.lumen_&]:text-neutral-300 mb-1">E-Mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full p-2.5 border border-neutral-300 [.lumen_&]:border-neutral-600 rounded-lg bg-white [.lumen_&]:bg-neutral-800 text-black [.lumen_&]:text-white focus:ring-lime-400 focus:border-lime-400"
+                />
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium text-neutral-700 [.lumen_&]:text-neutral-300 mb-1">Ihre Nachricht / Details</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="w-full p-2.5 border border-neutral-300 [.lumen_&]:border-neutral-600 rounded-lg bg-white [.lumen_&]:bg-neutral-800 text-black [.lumen_&]:text-white focus:ring-lime-400 focus:border-lime-400"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full px-5 py-2.5 bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] rounded-lg outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 text-white [.lumen_&]:text-black text-base font-semibold"
+              >
+                Kostenloses Erstgespräch buchen
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Footer (Habe diesen Abschnitt vervollständigt) -->
+      <footer class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-900 [.lumen_&]:bg-black [.terra_&]:bg-[#623f35] flex flex-col justify-center items-center gap-8 overflow-hidden">
+          <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+              <div class="text-white [.lumen_&]:text-white text-base font-medium">
+                  &copy; 2024 WildWave Marketing. Alle Rechte vorbehalten.
+              </div>
+              <div class="flex flex-row justify-center items-center gap-6 text-white [.lumen_&]:text-white text-base font-medium">
+                  <a href="#" class="hover:text-lime-400">Impressum</a>
+                  <a href="#" class="hover:text-lime-400">Datenschutz</a>
+              </div>
+          </div>
+      </footer>
+    </div>
+  </body>
 </html>
