@@ -1,6 +1,29 @@
 
 <html lang="en" class="scroll-smooth">
   <head>
+    <style>
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        #cookie-banner p { margin: 0; flex-grow: 1; ... }
+        #cookie-banner a { color: #3498db; ... }
+        #cookie-accept-btn { background-color: #2ecc71; ... }
+        #cookie-accept-btn:hover { ... }
+    </style>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -635,5 +658,38 @@
           </div>
       </footer>
     </div>
+    
+    <body>
+    
+    <!-- HIER DAS HTML DES BANNERS EINFÜGEN -->
+    <div id="cookie-banner">
+        <p>
+            Wir verwenden Cookies, um Ihr Erlebnis zu verbessern.
+            <a href="/datenschutz.html">Datenschutzrichtlinie</a>.
+        </p>
+        <button id="cookie-accept-btn">Akzeptieren</button>
+    </div>
+    <!-- ENDE DES HTML-BLOCKS -->
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('cookie-accept-btn');
+
+            if (!getCookie('cookie_consent')) {
+                banner.style.display = 'flex';
+            }
+
+            acceptBtn.addEventListener('click', function() {
+                setCookie('cookie_consent', 'true', 365);
+                banner.style.display = 'none';
+            });
+
+            function setCookie(name, value, days) { ... }
+            function getCookie(name) { ... }
+        });
+    </script>
+    <!-- ENDE DES JAVASCRIPT-BLOCKS -->
+      
   </body>
 </html>
