@@ -1,6 +1,19 @@
-
-<html lang="en" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://sintra-web-builder-components.s3.eu-central-1.amazonaws.com/versions/20250918/components-20250918.js"></script>
+    <title>Webdesign Schweiz für KMU | Professionelle Websites ab 150 CHF/Monat | WildWave Marketing Uster</title>
+    
+    <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Conditional font loading based on design style -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
+    
     <style>
         #cookie-banner {
             position: fixed;
@@ -11,64 +24,119 @@
             color: #ecf0f1;
             padding: 20px;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
+            z-index: 10000;
             display: none;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
         }
-        #cookie-banner p { margin: 0; flex-grow: 1; ... }
-        #cookie-banner a { color: #3498db; ... }
-        #cookie-accept-btn { background-color: #2ecc71; ... }
-        #cookie-accept-btn:hover { ... }
+        #cookie-banner p { 
+            margin: 0; 
+            flex-grow: 1; 
+            line-height: 1.5;
+        }
+        #cookie-banner a { 
+            color: #3498db; 
+            text-decoration: underline;
+        }
+        #cookie-banner a:hover {
+            color: #2980b9;
+        }
+        #cookie-accept-btn { 
+            background-color: #2ecc71; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #cookie-accept-btn:hover { 
+            background-color: #27ae60;
+        }
+        
+        @media (max-width: 768px) {
+            #cookie-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            #cookie-banner p {
+                margin-bottom: 10px;
+            }
+        }
     </style>
     
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://sintra-web-builder-components.s3.eu-central-1.amazonaws.com/versions/20250918/components-20250918.js"></script>
-        <title>Webdesign Schweiz für KMU | Professionelle Websites ab 150 CHF/Monat | WildWave Marketing Uster</title>
-        <!-- Preconnect to Google Fonts for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Conditional font loading based on design style -->
-              <!-- Lumen: Archivo + Inter -->
-      <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-        <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet" />
     <script type="application/javascript">
       const KNOWLEDGE_PROFILE_ID = "36920698-f605-42ac-b1c8-7b257c82ea9d";
 
-            // Initialize Sintra Framework
+      // Initialize Sintra Framework
       const sintra = new SintraFramework({
         baseUrl: "https://alluring-encouragement-production.up.railway.app",
         knowledgeProfileId: KNOWLEDGE_PROFILE_ID
       });
 
-            // FAQ Toggle Functionality
+      // Cookie Management Functions
+      function setCookie(name, value, days) {
+        const expires = new Date();
+        expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = name + '=' + value + ';expires=' + expires.toUTCString() + ';path=/;SameSite=Lax';
+      }
+
+      function getCookie(name) {
+        const nameEQ = name + '=';
+        const ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+
+      // Initialize Cookie Banner
+      function initCookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        const acceptBtn = document.getElementById('cookie-accept-btn');
+
+        if (!getCookie('cookie_consent')) {
+          banner.style.display = 'flex';
+        }
+
+        acceptBtn.addEventListener('click', function() {
+          setCookie('cookie_consent', 'true', 365);
+          banner.style.display = 'none';
+        });
+      }
+
+      // FAQ Toggle Functionality
       document.addEventListener('DOMContentLoaded', function() {
+        // Initialize cookie banner
+        initCookieBanner();
+        
         // Updated to use the correct selector for the whole FAQ item wrapper
         const faqItems = document.querySelectorAll('.faq-item');
 
-                faqItems.forEach(item => {
+        faqItems.forEach(item => {
           item.addEventListener('click', function() {
             // Find the parent container that has the answer (the div with the border)
             const faqContainer = this.parentElement;
             const answer = faqContainer.querySelector('.faq-answer');
             const chevron = this.querySelector('.faq-chevron');
 
-                        // Toggle answer visibility
+            // Toggle answer visibility
             if (answer) {
               answer.classList.toggle('hidden');
             }
 
-                        // Toggle chevron rotation
+            // Toggle chevron rotation
             if (chevron) {
               chevron.classList.toggle('rotate-180');
             }
           });
         });
+        
         // Contact form handling
         const contactForm = document.getElementById('contact-form');
         const contactSuccessOverlay = document.getElementById('contact-success-overlay');
@@ -99,6 +167,7 @@
             }
           });
         }
+        
         // Hero email form handling
         const heroEmailForm = document.getElementById('hero-email-form');
         const heroSuccessOverlay = document.getElementById('hero-success-overlay');
@@ -135,14 +204,15 @@
     <div class="w-full font-['Inter'] [.lumen_&]:font-['Inter'] [.terra_&]:font-['Inter'] lumen">
       <!-- Header -->
       <header class="px-4 md:px-8 py-2.5 lg:px-26 lg:py-4 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] flex flex-row items-start justify-between overflow-hidden">
-                <div class="w-36 h-12 md:w-48 md:h-16 max-w-48 max-h-16 min-w-16 min-h-4 relative overflow-hidden flex items-center justify-start">
+        <div class="w-36 h-12 md:w-48 md:h-16 max-w-48 max-h-16 min-w-16 min-h-4 relative overflow-hidden flex items-center justify-start">
           <img class="max-h-full object-contain" src="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png" />
         </div>
-                <a
+        <a
           href="#contact"
           class="px-5 py-2.5 bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-white [.lumen_&]:text-black text-base font-semibold"
         >Contact Us</a>
       </header>
+
       <!-- Hero Section -->
       <section class="px-4 md:px-8 lg:py-16 py-12 lg:px-26 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
         <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-between items-start md:items-center gap-4 md:gap-8 lg:gap-16">
@@ -420,7 +490,7 @@
                   </div>
       </section>
 
-      <!-- FAQ Section (NEU HINZUGEFÜGT) -->
+      <!-- FAQ Section -->
       <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
         <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-center gap-10">
           <!-- FAQ Header -->
@@ -562,7 +632,7 @@
           />
         </div>
       </section>
-      <!-- Contact Section (Habe diesen Abschnitt vervollständigt) -->
+      <!-- Contact Section -->
       <section
         id="contact"
         class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-10 overflow-hidden"
@@ -645,7 +715,7 @@
         </div>
       </section>
 
-      <!-- Footer (Habe diesen Abschnitt vervollständigt) -->
+      <!-- Footer -->
       <footer class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-900 [.lumen_&]:bg-black [.terra_&]:bg-[#623f35] flex flex-col justify-center items-center gap-8 overflow-hidden">
           <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
               <div class="text-white [.lumen_&]:text-white text-base font-medium">
@@ -659,37 +729,13 @@
       </footer>
     </div>
     
-    <body>
-    
-    <!-- HIER DAS HTML DES BANNERS EINFÜGEN -->
+    <!-- Cookie Banner -->
     <div id="cookie-banner">
         <p>
-            Wir verwenden Cookies, um Ihr Erlebnis zu verbessern.
-            <a href="/datenschutz.html">Datenschutzrichtlinie</a>.
+            Wir verwenden Cookies, um Ihr Erlebnis zu verbessern und die Leistung unserer Webseite zu analysieren.
+            <a href="https://docs.google.com/document/d/1KK7-YsIks3-b9otznUcUv1Rd069j0WLgWUYvZSeKaQc/edit?usp=sharing" target="_blank">Datenschutzrichtlinie</a>.
         </p>
         <button id="cookie-accept-btn">Akzeptieren</button>
     </div>
-    <!-- ENDE DES HTML-BLOCKS -->
-
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const banner = document.getElementById('cookie-banner');
-            const acceptBtn = document.getElementById('cookie-accept-btn');
-
-            if (!getCookie('cookie_consent')) {
-                banner.style.display = 'flex';
-            }
-
-            acceptBtn.addEventListener('click', function() {
-                setCookie('cookie_consent', 'true', 365);
-                banner.style.display = 'none';
-            });
-
-            function setCookie(name, value, days) { ... }
-            function getCookie(name) { ... }
-        });
-    </script>
-    <!-- ENDE DES JAVASCRIPT-BLOCKS -->
-      
   </body>
 </html>
