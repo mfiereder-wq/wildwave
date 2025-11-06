@@ -170,10 +170,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Domine:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind via CDN (defer für Performance) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
   <!-- Sintra Framework (defer) -->
-  <script defer src="https://sintra-web-builder-components.s3.eu-central-1.amazonaws.com/versions/20250918/components-20250918.js"></script>
+  <script src="https://sintra-web-builder-components.s3.eu-central-1.amazonaws.com/versions/20250918/components-20250918.js"></script>
 
   <!-- Inline CSS Optimierungen -->
   <style>
@@ -222,6 +222,7 @@
     function initCookieBanner() {
       const b = document.getElementById('cookie-banner');
       const btn = document.getElementById('cookie-accept-btn');
+      if (!b || !btn) return; // Added guard clause
       if (!getCookie('cookie_consent')) b.style.display = 'flex';
       btn.addEventListener('click', () => {
         setCookie('cookie_consent', 'true', 365);
@@ -229,19 +230,40 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      initCookieBanner();
-
-      // FAQ Toggle
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.addEventListener('click', () => {
-          const container = item.closest('.border-b');
+    // Optimierte FAQ-Funktionalität
+    function initFAQ() {
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          
+          const container = item.parentElement; // KORREKTUR: War item.closest('.border-b')
+          if (!container) return;
+          
           const answer = container.querySelector('.faq-answer');
           const chevron = item.querySelector('.faq-chevron');
+          
+          if (!answer || !chevron) return;
+          
+          // Schließe alle anderen geöffneten FAQs
+          document.querySelectorAll('.faq-answer').forEach(ans => {
+            if (ans !== answer && !ans.classList.contains('hidden')) {
+              ans.classList.add('hidden');
+              ans.previousElementSibling?.querySelector('.faq-chevron')?.classList.remove('rotate-180');
+            }
+          });
+          
+          // Toggle aktuelle FAQ
           answer.classList.toggle('hidden');
           chevron.classList.toggle('rotate-180');
         });
       });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initCookieBanner();
+      initFAQ();
 
       // Form Handling (Hero + Contact)
       ['hero-email-form', 'contact-form'].forEach(id => {
@@ -261,10 +283,10 @@
               form.reset();
               setTimeout(() => overlay.classList.add('hidden'), 5000);
             } else {
-              alert('Fehler beim Senden. Bitte erneut versuchen.');
+              console.error('Fehler beim Senden. Bitte erneut versuchen.'); // Besser für Debugging
             }
           } catch {
-            alert('Fehler beim Senden. Bitte erneut versuchen.');
+            console.error('Netzwerkfehler. Bitte erneut versuchen.'); // Besser für Debugging
           }
         });
       });
@@ -381,12 +403,12 @@
               <div class="flex flex-row md:flex-col items-center md:items-start gap-2">
                 <div class="flex-0">
                   <svg class="size-6 lg:size-8 [.lumen_&]:stroke-white" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_756_1929)">
+                    <g clip-path="url(#clip0_756_1929_services)">
                       <path d="M16 5V27" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M6 10L26 22" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M6 22L26 10" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </g>
-                    <defs><clipPath id="clip0_756_1929"><rect width="32" height="32" fill="white" /></clipPath></defs>
+                    <defs><clipPath id="clip0_756_1929_services"><rect width="32" height="32" fill="white" /></clipPath></defs>
                   </svg>
                 </div>
                 <h3 class="text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[28px]">
@@ -403,12 +425,12 @@
               <div class="flex flex-row md:flex-col items-center md:items-start gap-2">
                 <div class="flex-0">
                   <svg class="size-6 lg:size-8 [.lumen_&]:stroke-white" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_756_1929)">
+                    <g clip-path="url(#clip0_756_1929_seo)">
                       <path d="M16 5V27" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M6 10L26 22" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M6 22L26 10" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </g>
-                    <defs><clipPath id="clip0_756_1929"><rect width="32" height="32" fill="white" /></clipPath></defs>
+                    <defs><clipPath id="clip0_756_1929_seo"><rect width="32" height="32" fill="white" /></clipPath></defs>
                   </svg>
                 </div>
                 <h3 class="text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[28px]">
@@ -425,12 +447,12 @@
               <div class="flex flex-row md:flex-col items-center md:items-start gap-2">
                 <div class="flex-0">
                   <svg class="size-6 lg:size-8 [.lumen_&]:stroke-white" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_756_1929)">
+                    <g clip-path="url(#clip0_756_1929_shop)">
                       <path d="M16 5V27" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M6 10L26 22" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       <path d="M6 22L26 10" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </g>
-                    <defs><clipPath id="clip0_756_1929"><rect width="32" height="32" fill="white" /></clipPath></defs>
+                    <defs><clipPath id="clip0_756_1929_shop"><rect width="32" height="32" fill="white" /></clipPath></defs>
                   </svg>
                 </div>
                 <h3 class="text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[28px]">
@@ -475,204 +497,318 @@
         <div class="flex-1 p-4 lg:p-6 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-xl flex flex-col justify-start items-start gap-4 hover-lift">
           <div class="w-6 h-6 lg:w-8 lg:h-8 relative">
             <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
-              <g clip-path="url(#a)">
+              <g clip-path="url(#a-benefits)">
                 <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.666 17 3 3 7-7"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.666 28c6.628 0 12-5.373 12-12s-5.372-12-12-12c-6.627 0-12 5.373-12 12s5.373 12 12 12Z"/>
+                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16.166 26.667 12-10-12-10-12 10 12 10Z"/>
+                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.166 16.667 4 11.667l12.166-10 12.167 10 .167 5m-24.5 0 12.166 10 12.167-10"/>
               </g>
-              <defs><clipPath id="a"><path fill="#fff" d="M.667 0h32v32h-32z"/></clipPath></defs>
+              <defs>
+                <clipPath id="a-benefits">
+                  <path fill="#fff" d="M.5 0h32v32H.5z"/>
+                </clipPath>
+              </defs>
             </svg>
           </div>
-          <div class="self-stretch flex flex-col justify-start items-start gap-3">
-            <h3 class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-7 lg:leading-loose tracking-[-2%]">
-              Kein finanzielles Risiko für Ihr KMU
+          <div class="self-stretch flex flex-col justify-start items-start gap-2">
+            <h3 class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal">
+              Faire KMU-Preise (ab 150 CHF/Mt.)
             </h3>
-            <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-tight">
-              Keine Startgebühr. Keine Vorauszahlung. Monatlich kündbar. Sie zahlen nur, wenn Sie mit Ihrer Website und dem Marketing zufrieden sind. Faire Preise für Schweizer Unternehmen.
+            <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal">
+              Keine riesigen Startkosten. Ein fairer Monatspreis für Webdesign, SEO, Hosting und Support. Transparent, planbar, ohne Überraschungen.
             </p>
           </div>
         </div>
         <div class="flex-1 p-4 lg:p-6 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-xl flex flex-col justify-start items-start gap-4 hover-lift">
           <div class="w-6 h-6 lg:w-8 lg:h-8 relative">
             <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
-              <g clip-path="url(#a)">
+              <g clip-path="url(#b-benefits)">
                 <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.666 17 3 3 7-7"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.666 28c6.628 0 12-5.373 12-12s-5.372-12-12-12c-6.627 0-12 5.373-12 12s5.373 12 12 12Z"/>
+                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16.166 26.667 12-10-12-10-12 10 12 10Z"/>
+                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.166 16.667 4 11.667l12.166-10 12.167 10 .167 5m-24.5 0 12.166 10 12.167-10"/>
               </g>
-              <defs><clipPath id="a"><path fill="#fff" d="M.667 0h32v32h-32z"/></clipPath></defs>
+              <defs>
+                <clipPath id="b-benefits">
+                  <path fill="#fff" d="M.5 0h32v32H.5z"/>
+                </clipPath>
+              </defs>
             </svg>
           </div>
-          <div class="self-stretch flex flex-col justify-start items-start gap-3">
-            <h3 class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-7 lg:leading-loose tracking-[-2%]">
-              Persönlicher Ansprechpartner aus Uster
+          <div class="self-stretch flex flex-col justify-start items-start gap-2">
+            <h3 class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal">
+              Monatlich kündbar, kein Risiko
             </h3>
-            <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-tight">
-              Sie arbeiten direkt mit Marco zusammen. Schnelle Antworten auf Deutsch, persönlicher Support aus der Schweiz. Laufende Website-Optimierungen und SEO-Updates inklusive – ohne Aufpreis.
+            <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal">
+              Wir binden Sie mit Qualität, nicht mit Verträgen. Sie können jederzeit monatlich kündigen – ohne Wenn und Aber. Das ist unser Versprechen.
             </p>
           </div>
         </div>
         <div class="flex-1 p-4 lg:p-6 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-xl flex flex-col justify-start items-start gap-4 hover-lift">
           <div class="w-6 h-6 lg:w-8 lg:h-8 relative">
             <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
-              <g clip-path="url(#a)">
+              <g clip-path="url(#c-benefits)">
                 <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.666 17 3 3 7-7"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.666 28c6.628 0 12-5.373 12-12s-5.372-12-12-12c-6.627 0-12 5.373-12 12s5.373 12 12 12Z"/>
+                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16.166 26.667 12-10-12-10-12 10 12 10Z"/>
+                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.166 16.667 4 11.667l12.166-10 12.167 10 .167 5m-24.5 0 12.166 10 12.167-10"/>
               </g>
-              <defs><clipPath id="a"><path fill="#fff" d="M.667 0h32v32h-32z"/></clipPath></defs>
+              <defs>
+                <clipPath id="c-benefits">
+                  <path fill="#fff" d="M.5 0h32v32H.5z"/>
+                </clipPath>
+              </defs>
             </svg>
           </div>
-          <div class="self-stretch flex flex-col justify-start items-start gap-3">
-            <h3 class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-7 lg:leading-loose tracking-[-2%]">
-              Spezialisiert auf Schweizer KMU
+          <div class="self-stretch flex flex-col justify-start items-start gap-2">
+            <h3 class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal">
+              Hosting &amp; Support in der Schweiz
             </h3>
-            <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-tight">
-              Wir sprechen Ihre Sprache und kennen den Schweizer Markt. Coiffeure, Restaurants, Handwerker – wir wissen genau, was Ihre Kunden online suchen und erwarten.
+            <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal">
+              Ihre Daten sind sicher auf Schweizer Servern (Hostpoint). Als Webdesigner aus Uster bin ich persönlich für Sie da – kein Callcenter, kein Warten.
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
+    <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-stretch md:items-center gap-8 lg:gap-16">
+      <div class="w-full md:w-1/2 rounded-xl flex-1 object-cover min-w-1 aspect-square overflow-hidden hover-lift">
+        <img class="w-full h-full object-cover"
+             src="https://sintra-brainai-media.s3.us-east-1.amazonaws.com/36920698-f605-42ac-b1c8-7b257c82ea9d/e468953f-eb50-4a17-8495-9f9ed9f861ae-Marco_-_Portr_t_B_ro"
+             alt="Marco - Ihr Webdesigner aus Uster, Schweiz"
+             loading="lazy" />
+      </div>
+      <div class="inline-flex flex-col justify-start md:justify-center items-stretch gap-6 flex-1">
+        <div class="self-stretch flex flex-col justify-start items-start gap-6">
+          <div class="self-stretch flex flex-col justify-start items-start gap-4">
+            <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium">Über Mich</div>
+            <h2 class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal lg:leading-[60px] tracking-[-2%]">
+              Ihr persönlicher Webdesigner aus Uster – nicht nur eine Agentur
+            </h2>
+          </div>
+          <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
+            Mein Name ist Marco, und ich bin das Gesicht hinter WildWave Marketing. Ich bin kein anonymer Konzern, sondern ein Webdesigner und Marketing-Experte aus Uster, der die Bedürfnisse von Schweizer KMU versteht. Ich habe WildWave gegründet, weil ich gesehen habe, wie Coiffeure, Restaurants und Handwerker von grossen Agenturen überteuerte und komplizierte Lösungen erhalten. Mein Ziel ist es, Ihnen professionelles Webdesign und effektives SEO zu bieten – fair, transparent und auf Augenhöhe.
+          </p>
+        </div>
+        <div class="hidden md:block">
+          <a href="#contact"
+             class="px-5 py-2.5 rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-white [.lumen_&]:text-black text-base font-semibold block md:inline-block">
+            Kostenloses Erstgespräch
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-center gap-10">
-      <div class="w-full lg:w-[768px] mx-auto flex flex-col justify-center items-center gap-4">
-        <div class="w-full lg:w-[768px] text-center justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium">
-          FAQ
-        </div>
-        <h2 class="self-stretch text-center justify-start text-black [.lumen_&]:text-white text-2xl lg:text-4xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal lg:leading-[44px] tracking-[-2%]">
-          Die häufigsten Fragen von Schweizer Unternehmern zu Webdesign, SEO und Online-Marketing – ehrlich beantwortet.
+  <section id="faq" class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
+    <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-start gap-8 lg:gap-10">
+      <div class="w-full lg:w-[768px] mx-auto flex flex-col justify-start items-start gap-4">
+        <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium">FAQ</div>
+        <h2 class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal lg:leading-[60px] tracking-[-2%]">
+          Häufig gestellte Fragen (FAQ)
         </h2>
       </div>
-      <div class="self-stretch flex flex-col justify-start items-start gap-0">
-        <!-- FAQ Items (alle 6) -->
-        <div class="self-stretch border-b border-neutral-200 [.lumen_&]:border-neutral-700">
-          <div class="faq-item cursor-pointer flex justify-between items-center py-4">
-            <h3 class="flex-1 text-black [.lumen_&]:text-white text-lg font-medium">
+      <div class="w-full lg:w-[768px] mx-auto flex flex-col justify-start items-start">
+        <!-- FAQ Item 1 -->
+        <div class="self-stretch py-6 border-b border-neutral-200 [.lumen_&]:border-neutral-700 [.terra_&]:border-neutral-200">
+          <div class="faq-item flex justify-between items-center gap-4 cursor-pointer">
+            <h3 class="flex-1 justify-start text-black [.lumen_&]:text-white text-lg font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal">
               Warum ist Webdesign bei WildWave günstiger als bei grossen Agenturen?
             </h3>
-            <svg class="faq-chevron size-6 transition-transform duration-300 stroke-black [.lumen_&]:stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
+            <div class="faq-chevron size-6 relative transition-transform duration-300">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="#667085" class="[.lumen_&]:stroke-neutral-400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
           </div>
-          <div class="faq-answer hidden pb-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+          <div class="faq-answer hidden mt-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
             Weil wir als spezialisierte Webdesign-Agentur für KMU effizient arbeiten und auf unnötigen Luxus verzichten. Keine teuren Büros in Zürich, kein Overhead. Als Webdesigner aus Uster gebe ich diese Ersparnisse direkt an Schweizer Unternehmen weiter. Faire Preise für professionelles Webdesign, SEO und Marketing – keine versteckten Kosten.
           </div>
         </div>
-        <!-- Weitere FAQ-Items analog (Platzhalter für Kürze) -->
-        <!-- ... (alle 6 Items wie im Original, aber mit Schema-Unterstützung) ... -->
-      </div>
-    </div>
-  </section>
-
-  <!-- About Us Section -->
-  <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] flex flex-col md:flex-row justify-center md:justify-start items-start gap-8 lg:gap-16 overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-start items-start md:items-center gap-8 lg:gap-16">
-      <div class="self-stretch w-full md:w-1/2 inline-flex flex-col justify-start md:justify-center items-stretch gap-6 flex-1">
-        <div class="flex flex-col justify-start items-start gap-6">
-          <div class="self-stretch flex flex-col justify-start items-start gap-4">
-            <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium leading-tight">
-              Über Uns
+        <!-- FAQ Item 2 -->
+        <div class="self-stretch py-6 border-b border-neutral-200 [.lumen_&]:border-neutral-700 [.terra_&]:border-neutral-200">
+          <div class="faq-item flex justify-between items-center gap-4 cursor-pointer">
+            <h3 class="flex-1 justify-start text-black [.lumen_&]:text-white text-lg font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal">
+              Was passiert mit meiner Website, wenn ich kündige?
+            </h3>
+            <div class="faq-chevron size-6 relative transition-transform duration-300">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="#667085" class="[.lumen_&]:stroke-neutral-400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
-            <h2 class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-9 lg:leading-[60px] tracking-[-2%]">
-              Warum ich WildWave Marketing gegründet habe
-            </h2>
           </div>
-          <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
-            Als Webdesigner aus Uster habe ich gesehen, wie viele Schweizer KMU – Coiffeure, Restaurants, Handwerksbetriebe – von teuren Agenturen abgezockt werden oder sich professionelles Webdesign gar nicht leisten können. Das wollte ich ändern. WildWave Marketing bietet professionelles Webdesign, SEO und Social Media Marketing zu fairen Preisen – monatlich kündbar, ohne Risiko, ohne lange Vertragsbindung. Mein Ziel: Jedem kleinen und mittleren Unternehmen in der Schweiz eine starke digitale Präsenz ermöglichen.
-          </p>
+          <div class="faq-answer hidden mt-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+            Sie können monatlich kündigen – ohne Kündigungsfrist. Nach der Kündigung haben Sie zwei Optionen: Entweder Sie kaufen die Website für eine faire Offerte aus dem Vertrag – ähnlich wie beim Leasing – und die Website gehört dann vollständig Ihnen. Oder die Website wird auf den Werkszustand zurückgesetzt bzw. offline genommen. Sie entscheiden flexibel, was für Ihr Unternehmen am besten passt.
+          </div>
         </div>
-        <div>
-          <a href="#contact"
-             class="px-5 py-2.5 bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] text-white [.lumen_&]:text-black rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] flex justify-center items-center gap-2 hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-base font-semibold block md:inline-block">
-            Kontakt aufnehmen
-          </a>
+        <!-- FAQ Item 3 -->
+        <div class="self-stretch py-6 border-b border-neutral-200 [.lumen_&]:border-neutral-700 [.terra_&]:border-neutral-200">
+          <div class="faq-item flex justify-between items-center gap-4 cursor-pointer">
+            <h3 class="flex-1 justify-start text-black [.lumen_&]:text-white text-lg font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal">
+              Wie schnell ist meine neue Website online?
+            </h3>
+            <div class="faq-chevron size-6 relative transition-transform duration-300">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="#667085" class="[.lumen_&]:stroke-neutral-400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer hidden mt-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+            Nach dem Onboarding-Gespräch und Ihrer Zahlungsbestätigung starte ich sofort mit dem Webdesign. Je nach Umfang und Anforderungen ist Ihre professionelle Website in 1-2 Wochen live und auf Google indexiert. Schnell, professionell, zuverlässig – so arbeitet WildWave Marketing.
+          </div>
+        </div>
+        <!-- FAQ Item 4 -->
+        <div class="self-stretch py-6 border-b border-neutral-200 [.lumen_&]:border-neutral-700 [.terra_&]:border-neutral-200">
+          <div class="faq-item flex justify-between items-center gap-4 cursor-pointer">
+            <h3 class="flex-1 justify-start text-black [.lumen_&]:text-white text-lg font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal">
+              Was brauchen Sie von mir für die Website-Erstellung?
+            </h3>
+            <div class="faq-chevron size-6 relative transition-transform duration-300">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="#667085" class="[.lumen_&]:stroke-neutral-400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer hidden mt-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+            Für professionelles Webdesign brauche ich von Ihnen: Ihre Ideen und Wünsche, bevorzugte Farben für Ihre Marke, Öffnungszeiten, Informationen über Ihre Dienstleistungen – und vor allem hochwertige Fotos von Ihrem Betrieb, Team und Produkten. Je mehr Material Sie mir geben, desto besser wird das Ergebnis. Ich führe Sie Schritt für Schritt durch den Prozess.
+          </div>
+        </div>
+        <!-- FAQ Item 5 -->
+        <div class="self-stretch py-6 border-b border-neutral-200 [.lumen_&]:border-neutral-700 [.terra_&]:border-neutral-200">
+          <div class="faq-item flex justify-between items-center gap-4 cursor-pointer">
+            <h3 class="flex-1 justify-start text-black [.lumen_&]:text-white text-lg font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal">
+              Bieten Sie auch SEO und Social Media Marketing an?
+            </h3>
+            <div class="faq-chevron size-6 relative transition-transform duration-300">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="#667085" class="[.lumen_&]:stroke-neutral-400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer hidden mt-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+            Ja! Neben Webdesign bietet WildWave Marketing auch professionelle Suchmaschinenoptimierung (SEO) für Google, Social Media Management für Facebook und Instagram, sowie die Integration von Online-Shops und Buchungssystemen. Alles aus einer Hand – spezialisiert auf Schweizer KMU.
+          </div>
+        </div>
+        <!-- FAQ Item 6 -->
+        <div class="self-stretch py-6 border-b border-neutral-200 [.lumen_&]:border-neutral-700 [.terra_&]:border-neutral-200">
+          <div class="faq-item flex justify-between items-center gap-4 cursor-pointer">
+            <h3 class="flex-1 justify-start text-black [.lumen_&]:text-white text-lg font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal">
+              Ist meine Website auch für Handys optimiert?
+            </h3>
+            <div class="faq-chevron size-6 relative transition-transform duration-300">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="#667085" class="[.lumen_&]:stroke-neutral-400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer hidden mt-4 text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
+            Absolut. Alle WildWave-Websites sind responsive und für Mobilgeräte optimiert. Da über 70% der Schweizer Nutzer Websites auf dem Smartphone besuchen, ist mobiles Webdesign bei uns Standard – nicht optional.
+          </div>
         </div>
       </div>
-      <img class="w-full lg:w-1/2 rounded-xl flex-1 object-cover min-w-1 aspect-square hover-lift"
-           src="https://sintra-brainai-media.s3.us-east-1.amazonaws.com/36920698-f605-42ac-b1c8-7b257c82ea9d/e468953f-eb50-4a17-8495-9f9ed9f861ae-Marco_-_Portr_t_B_ro"
-           alt="Marco - Webdesigner und Inhaber von WildWave Marketing in Uster, Schweiz"
-           loading="lazy" />
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-10 overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-10">
-      <div class="self-stretch w-full lg:w-1/2 inline-flex flex-col justify-start items-start gap-6 lg:gap-8">
-        <div class="self-stretch flex flex-col justify-start items-start gap-4">
-          <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium leading-tight">
-            Kontakt
-          </div>
-          <h2 class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-9 lg:leading-[60px] tracking-[-2%]">
-            Starten Sie jetzt Ihr kostenloses Erstgespräch.
-          </h2>
-        </div>
-        <div class="self-stretch flex flex-col justify-start items-start gap-4">
-          <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
-            Nutzen Sie das Formular für eine unverbindliche Anfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
-          </p>
-          <address class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal not-italic">
-            Telefon: <a href="tel:+41782630406" class="underline">+41 78 263 04 06</a> | E-Mail: <a href="mailto:wildwave@mail.ch" class="underline">wildwave@mail.ch</a> | Standort: Uster, Zürich
-          </address>
-        </div>
+  <section id="contact" class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white overflow-hidden">
+    <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-start gap-10">
+      <div class="w-full lg:w-[768px] mx-auto flex flex-col justify-start items-start gap-4">
+        <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium">Kontakt</div>
+        <h2 class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal lg:leading-[60px] tracking-[-2%]">
+          Bereit für mehr Kunden? Starten wir mit einem kostenlosen Erstgespräch.
+        </h2>
+        <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
+          Füllen Sie das Formular aus oder rufen Sie mich an. Ich melde mich innert 24 Stunden bei Ihnen für ein unverbindliches Gespräch über Ihr KMU, Ihre Ziele und wie professionelles Webdesign und SEO Sie dorthin bringen.
+        </p>
       </div>
-      <form id="contact-form" class="w-full lg:w-1/2 p-6 lg:p-8 bg-white [.lumen_&]:bg-neutral-900 [.terra_&]:bg-[#e9e4df] rounded-xl shadow-lg relative">
-        <div id="contact-success-overlay" class="hidden absolute inset-0 bg-white [.lumen_&]:bg-neutral-900 [.terra_&]:bg-white rounded-xl flex flex-col justify-center items-center gap-4 px-6 py-8 z-10 text-center">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.5 12L10.5 15L16.5 9M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#12B76A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <div class="text-black [.lumen_&]:text-white text-xl font-bold">
-            Ihre Anfrage ist eingegangen!
+      <div class="w-full lg:w-[768px] mx-auto flex flex-col justify-start items-start gap-8">
+        <div class="self-stretch flex flex-col justify-start items-start gap-4">
+          <div class="self-stretch flex flex-col justify-start items-start gap-2">
+            <div class="justify-start text-black [.lumen_&]:text-white text-lg font-medium">Telefon</div>
+            <div class="justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">+41 78 263 04 06</div>
           </div>
-          <div class="text-neutral-700 [.lumen_&]:text-neutral-300 text-base">
-            Wir melden uns in Kürze für Ihr kostenloses Erstgespräch.<br>
-            Wichtig: Ihre Daten werden für die Buchung des Projekts bei Auftragsbestätigung angepasst und finalisiert.
+          <div class="self-stretch flex flex-col justify-start items-start gap-2">
+            <div class="justify-start text-black [.lumen_&]:text-white text-lg font-medium">Email</div>
+            <div class="justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">wildwave@mail.ch</div>
+          </div>
+          <div class="self-stretch flex flex-col justify-start items-start gap-2">
+            <div class="justify-start text-black [.lumen_&]:text-white text-lg font-medium">Standort</div>
+            <div class="justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">Nossikerstrasse 13, 8610 Uster, Schweiz</div>
           </div>
         </div>
-        <div class="space-y-4">
-          <div>
-            <label for="name" class="block text-sm font-medium text-neutral-700 [.lumen_&]:text-neutral-300 mb-1">Name</label>
-            <input type="text" id="name" name="name" required class="w-full p-2.5 border border-neutral-300 [.lumen_&]:border-neutral-600 rounded-lg bg-white [.lumen_&]:bg-neutral-800 text-black [.lumen_&]:text-white focus:ring-lime-400 focus:border-lime-400" />
+        <form id="contact-form" class="w-full flex flex-col justify-start items-start gap-6 group relative">
+          <div id="contact-success-overlay" class="hidden absolute inset-0 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white rounded-xl flex justify-center items-center gap-3 px-6 py-2.5 z-10">
+            <div class="size-6 relative flex-shrink-0">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 12L10.5 15L16.5 9M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#12B76A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="text-black [.lumen_&]:text-white text-base font-medium">
+              Anfrage erhalten! Wir melden uns in Kürze bei Ihnen.
+            </div>
           </div>
-          <div>
-            <label for="email" class="block text-sm font-medium text-neutral-700 [.lumen_&]:text-neutral-300 mb-1">E-Mail</label>
-            <input type="email" id="email" name="email" required class="w-full p-2.5 border border-neutral-300 [.lumen_&]:border-neutral-600 rounded-lg bg-white [.lumen_&]:bg-neutral-800 text-black [.lumen_&]:text-white focus:ring-lime-400 focus:border-lime-400" />
+          <div class="self-stretch flex flex-col justify-start items-start gap-2">
+            <label for="name" class="self-stretch justify-start text-black [.lumen_&]:text-white text-sm font-medium">Name</label>
+            <input id="name" name="name" type="text" placeholder="Ihr Name" required
+                   class="self-stretch px-4 py-2.5 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-lg border border-neutral-200 [.lumen_&]:border-neutral-600 [.terra_&]:border-neutral-200 focus:border-black [.lumen_&]:focus:border-lime-400 [.terra_&]:focus:border-[#623f35] focus:outline-none text-black [.lumen_&]:text-white placeholder:text-neutral-400 [.lumen_&]:placeholder:text-neutral-500" />
           </div>
-          <div>
-            <label for="message" class="block text-sm font-medium text-neutral-700 [.lumen_&]:text-neutral-300 mb-1">Ihre Nachricht / Details</label>
-            <textarea id="message" name="message" rows="4" required class="w-full p-2.5 border border-neutral-300 [.lumen_&]:border-neutral-600 rounded-lg bg-white [.lumen_&]:bg-neutral-800 text-black [.lumen_&]:text-white focus:ring-lime-400 focus:border-lime-400"></textarea>
+          <div class="self-stretch flex flex-col justify-start items-start gap-2">
+            <label for="email-contact" class="self-stretch justify-start text-black [.lumen_&]:text-white text-sm font-medium">Email</label>
+            <input id="email-contact" name="email" type="email" placeholder="Ihre E-Mail-Adresse" required
+                   class="self-stretch px-4 py-2.5 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-lg border border-neutral-200 [.lumen_&]:border-neutral-600 [.terra_&]:border-neutral-200 focus:border-black [.lumen_&]:focus:border-lime-400 [.terra_&]:focus:border-[#623f35] focus:outline-none text-black [.lumen_&]:text-white placeholder:text-neutral-400 [.lumen_&]:placeholder:text-neutral-500" />
+          </div>
+          <div class="self-stretch flex flex-col justify-start items-start gap-2">
+            <label for="message" class="self-stretch justify-start text-black [.lumen_&]:text-white text-sm font-medium">Nachricht</label>
+            <textarea id="message" name="message" placeholder="Erzählen Sie mir von Ihrem Projekt..." rows="4" required
+                      class="self-stretch px-4 py-2.5 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-lg border border-neutral-200 [.lumen_&]:border-neutral-600 [.terra_&]:border-neutral-200 focus:border-black [.lumen_&]:focus:border-lime-400 [.terra_&]:focus:border-[#623f35] focus:outline-none text-black [.lumen_&]:text-white placeholder:text-neutral-400 [.lumen_&]:placeholder:text-neutral-500"></textarea>
           </div>
           <button type="submit"
-                  class="w-full px-5 py-2.5 bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] rounded-lg outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 text-white [.lumen_&]:text-black text-base font-semibold">
-            Kostenloses Erstgespräch buchen
+                  class="px-5 py-2.5 bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 text-white [.lumen_&]:text-black text-base font-semibold group-invalid:bg-gray-400 [.lumen_&]:group-invalid:bg-lime-400/50 [.terra_&]:group-invalid:bg-[#623f35]/50 group-invalid:cursor-not-allowed">
+            Anfrage senden
           </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-900 [.lumen_&]:bg-black [.terra_&]:bg-[#623f35] flex flex-col justify-center items-center gap-8 overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="text-white [.lumen_&]:text-white text-base font-medium">
-        &copy; 2025 WildWave Marketing. Alle Rechte vorbehalten.
+  <footer class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] border-t border-neutral-200 [.lumen_&]:border-neutral-800 [.terra_&]:border-neutral-200 overflow-hidden">
+    <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
+      <div class="flex flex-col justify-start items-start gap-4">
+        <div class="w-36 h-12 md:w-48 md:h-16 max-w-48 max-h-16 min-w-16 min-h-4 relative overflow-hidden flex items-center justify-start">
+          <img class="max-h-full object-contain" src="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png" alt="WildWave Marketing Logo Footer" loading="lazy" />
+        </div>
+        <p class="w-full md:w-80 justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm">
+          Professionelles Webdesign & SEO für KMU in der Schweiz. Fair, flexibel, monatlich kündbar.
+        </p>
       </div>
-      <div class="flex flex-row justify-center items-center gap-6 text-white [.lumen_&]:text-white text-base font-medium">
-        <a href="impressum.html" class="hover:text-lime-400">Impressum</a>
-        <a href="datenschutz.html" class="hover:text-lime-400">Datenschutz</a>
-        <a href="agb.html" class="hover:text-lime-400">AGB</a>
+      <div class="flex flex-col md:flex-row justify-start items-start gap-8">
+        <div class="flex flex-col justify-start items-start gap-3">
+          <div class="justify-start text-black [.lumen_&]:text-white text-sm font-semibold">Rechtliches</div>
+          <a href="#" class="justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm hover:underline">Impressum</a>
+          <a href="#" class="justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm hover:underline">Datenschutz</a>
+        </div>
+        <div class="flex flex-col justify-start items-start gap-3">
+          <div class="justify-start text-black [.lumen_&]:text-white text-sm font-semibold">Kontakt</div>
+          <div class="justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm">8610 Uster, Schweiz</div>
+          <div class="justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm">wildwave@mail.ch</div>
+        </div>
       </div>
+    </div>
+    <div class="w-full max-w-7xl mx-auto mt-8 pt-8 border-t border-neutral-200 [.lumen_&]:border-neutral-800 [.terra_&]:border-neutral-200">
+      <p class="text-center text-neutral-500 [.lumen_&]:text-neutral-400 text-sm">
+        © 2024 WildWave Marketing. Alle Rechte vorbehalten. Webdesign aus Uster.
+      </p>
     </div>
   </footer>
 
   <!-- Cookie Banner -->
   <div id="cookie-banner">
-    <p>
-      Wir verwenden Cookies, um Ihr Erlebnis zu verbessern und die Leistung unserer Webseite zu analysieren.
-      <a href="datenschutz.html" target="_blank">Datenschutzrichtlinie</a>.
-    </p>
+    <p>Diese Website verwendet Cookies, um die Benutzerfreundlichkeit zu verbessern. <a href="#">Mehr erfahren</a>.</p>
     <button id="cookie-accept-btn">Akzeptieren</button>
   </div>
+
 </body>
 </html>
