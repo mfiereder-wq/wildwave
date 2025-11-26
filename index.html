@@ -15,10 +15,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* *** KORREKTUR FÜR MOBILES OVERFLOW *** */
-        /* Verhindert horizontales Scrollen (Überlaufen) auf kleinen Bildschirmen */
-        html {
+        /* *** VERSTÄRKTE KORREKTUR FÜR MOBILES OVERFLOW (RECHTER RAND) *** */
+        /* Stellt sicher, dass die Seite maximal so breit wie der Viewport ist und verhindert horizontales Scrollen */
+        html, body {
             overflow-x: hidden;
+            max-width: 100vw; 
         }
         
         /* Konfiguration für die Inter-Schriftart */
@@ -528,6 +529,9 @@
             const banner = document.getElementById('cookie-banner');
 
             if (cookieButton && banner) {
+                // Initial Banner Position setzen (wichtig für die Animation)
+                // banner.classList.remove('translate-y-0'); // Nicht nötig, da es Standard ist.
+
                 cookieButton.addEventListener('click', () => {
                     // Klasse für die sanfte Ausblendungsanimation hinzufügen
                     banner.classList.add('translate-y-full'); 
