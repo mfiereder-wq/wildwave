@@ -1,720 +1,538 @@
-<!DOCTYPE html><html lang="de-CH" class="scroll-smooth"><head>
-  <!-- Charset & Viewport -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Favicon & App Icons -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <!-- SEO: Title & Meta -->
-  <title>Webdesign Schweiz für KMU | Ab 150 CHF/Monat | WildWave Marketing</title>
-  <meta name="description" content="Webdesign Schweiz für KMU: SEO-optimierte Websites ab 150 CHF/Monat. Monatlich kündbar, Hosting in CH. Für Coiffeure, Restaurants & Handwerker. Jetzt Erstgespräch!">
-  <meta name="keywords" content="Webdesign Schweiz, KMU Website, SEO Schweiz, Webdesign Uster, Online Marketing KMU, Website ab 150 CHF">
-  <meta name="author" content="WildWave Marketing, Marco – Webdesigner aus Uster">
-  <meta name="robots" content="index, follow">
-  <meta name="geo.region" content="CH-ZH">
-  <meta name="geo.placename" content="Uster">
-  <meta name="geo.position" content="47.3475;8.7206">
-  <!-- Canonical & Hreflang -->
-  <link rel="canonical" href="https://wildwave.ch/">
-  <link rel="alternate" hreflang="de-CH" href="https://wildwave.ch/">
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Webdesign Schweiz für KMU – Ab 150 CHF/Monat | WildWave">
-  <meta property="og:description" content="Ihre KMU-Website: modern, SEO-stark, monatlich kündbar. Speziell für Coiffeure, Restaurants & Handwerker in der Schweiz.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://wildwave.ch/">
-  <meta property="og:image" content="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png">
-  <meta property="og:image:alt" content="WildWave Marketing – Professionelles Webdesign für KMU in der Schweiz">
-  <meta property="og:site_name" content="WildWave Marketing">
-  <meta property="og:locale" content="de_CH">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Webdesign Schweiz für KMU – Ab 150 CHF/Monat">
-  <meta name="twitter:description" content="SEO-optimierte Websites für Schweizer KMU – monatlich kündbar, ohne Risiko.">
-  <meta name="twitter:image" content="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png">
-  <meta name="twitter:site" content="@wildwave_ch">
-  <!-- Structured Data: Organization + LocalBusiness + WebSite + FAQPage -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "WildWave Marketing",
-  "description": "Webdesign und Online-Marketing für KMU in der Schweiz",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Uster",
-    "addressRegion": "ZH",
-    "addressCountry": "CH"
-  },
-  "telephone": "+41 78 263 04 06",
-  "email": "wildwave@mail.ch",
-  "url": "https://wildwave.ch",
-  "priceRange": "Ab 150 CHF/Monat"
-}
-</script>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WildWave Marketing – Webdesign & SEO für Schweizer KMU</title>
+    
+    <!-- NEU HINZUGEFÜGT: SEO Meta-Beschreibung -->
+    <meta name="description" content="Sichtbar werden in der Schweiz: Professionelles Webdesign & SEO-Marketing für KMU. Monatlich kündbar, faire Preise. Holen Sie sich jetzt Ihre neue, kundenstarke Website.">
+    
+    <!-- URL AKTUALISIERT: Favicon verwendet nun das neue Logo (Löwenkopf) -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png">
+    
+    <!-- Lade Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Konfiguration für die Inter-Schriftart */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Basis-Textfarbe für Dark Mode */
+            color: #e5e7eb; /* Grauton 200 */
+        }
+        .wildwave-gradient {
+            background-image: linear-gradient(to right, #4f46e5, #3b82f6); /* Indigo zu Blau (Hellmodus-Akzent beibehalten) */
+        }
+        .wildwave-ring {
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.5); /* Indigo-Ring für Fokus */
+        }
+        .icon-bg {
+            /* Hellere Farbe für Icons, um Kontrast im Dark Mode zu bieten */
+            background-color: #374151; /* Grauton 700 */
+            color: #6366f1; /* Indigo 500 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
 
-  <!-- Preconnect & Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Domine:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Tailwind via CDN (defer für Performance) -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <!-- Sintra Framework (defer) -->
-  <script src="https://sintra-web-builder-components.s3.eu-central-1.amazonaws.com/versions/20250918/components-20250918.js"></script>
-  <!-- Inline CSS Optimierungen -->
-  <style>
-    img { max-width: 100%; height: auto; }
-    .hover-lift { transition: transform 0.3s ease; }
-    .hover-lift:hover { transform: translateY(-5px); }
-
-    /* Spezielle Styles für Logos und Karten (Referenzen) */
-    .logo-img { 
-        max-height: 100px; 
-        object-fit: contain; 
-        transition: transform 0.3s ease;
-        margin: 0 auto;
-    }
-    .logo-img:hover {
-        transform: scale(1.05);
-    }
-    .card {
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 0 10px -5px rgba(0, 0, 0, 0.03);
-        transition: all 0.3s ease;
-        height: 100%; /* Wichtig für konsistente Höhe im Grid */
-    }
-    .card:hover {
-        box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1), 0 0 15px -5px rgba(0, 0, 0, 0.05);
-        transform: translateY(-2px);
-    }
-
-    #cookie-banner {
-      position: fixed; bottom: 0; left: 0; width: 100%; background: #2c3e50; color: #ecf0f1;
-      padding: 20px; display: none; justify-content: space-between; align-items: center;
-      z-index: 10000; flex-wrap: wrap; gap: 15px; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-    }
-    #cookie-banner p { margin: 0; flex-grow: 1; line-height: 1.5; }
-    #cookie-banner a { color: #3498db; text-decoration: underline; }
-    #cookie-accept-btn {
-      background: #2ecc71; color: white; border: none; padding: 10px 20px;
-      border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s;
-    }
-    #cookie-accept-btn:hover { background: #27ae60; }
-    @media (max-width: 768px) {
-      #cookie-banner { flex-direction: column; text-align: center; }
-      #cookie-banner p { margin-bottom: 10px; }
-    }
-  </style>
-  <!-- Sintra + Cookie + FAQ + Forms (defer) -->
-  <script defer>
-    const KNOWLEDGE_PROFILE_ID = "36920698-f605-42ac-b1c8-7b257c82ea9d";
-    const sintra = new SintraFramework({
-      baseUrl: "https://alluring-encouragement-production.up.railway.app",
-      knowledgeProfileId: KNOWLEDGE_PROFILE_ID
-    });
-    function setCookie(n, v, d) {
-      const e = new Date(); e.setTime(e.getTime() + d*24*60*60*1000);
-      document.cookie = `${n}=${v};expires=${e.toUTCString()};path=/;SameSite=Lax`;
-    }
-    function getCookie(n) {
-      const ca = document.cookie.split(';');
-      for (let c of ca) {
-        let x = c.trim();
-        if (x.startsWith(n + '=')) return x.substring(n.length + 1);
-      }
-      return null;
-    }
-    function initCookieBanner() {
-      const b = document.getElementById('cookie-banner');
-      const btn = document.getElementById('cookie-accept-btn');
-      if (!b || !btn) return; // Added guard clause
-      if (!getCookie('cookie_consent')) b.style.display = 'flex';
-      btn.addEventListener('click', () => {
-        setCookie('cookie_consent', 'true', 365);
-        b.style.display = 'none';
-      });
-    }
-    // Optimierte FAQ-Funktionalität
-    function initFAQ() {
-      const faqItems = document.querySelectorAll('.faq-item');
-      faqItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const container = item.parentElement; // KORREKTUR: War item.closest('.border-b')
-          if (!container) return;
-          const answer = container.querySelector('.faq-answer');
-          const chevron = item.querySelector('.faq-chevron');
-          if (!answer || !chevron) return;
-          // Schließe alle anderen geöffneten FAQs
-          document.querySelectorAll('.faq-answer').forEach(ans => {
-            if (ans !== answer && !ans.classList.contains('hidden')) {
-              ans.classList.add('hidden');
-              ans.previousElementSibling?.querySelector('.faq-chevron')?.classList.remove('rotate-180');
-            }
-          });
-          // Toggle aktuelle FAQ
-          answer.classList.toggle('hidden');
-          chevron.classList.toggle('rotate-180');
-        });
-      });
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      initCookieBanner();
-      initFAQ();
-      // Form Handling (Hero + Contact)
-      ['hero-email-form', 'contact-form'].forEach(id => {
-        const form = document.getElementById(id);
-        const overlay = document.getElementById(id === 'hero-email-form' ? 'hero-success-overlay' : 'contact-success-overlay');
-        if (!form || !overlay) return;
-        form.addEventListener('submit', async e => {
-          e.preventDefault();
-          const fd = new FormData(form);
-          const data = id === 'hero-email-form'
-            ? { email: fd.get('email'), details: 'Hero-Form' }
-            : { name: fd.get('name'), email: fd.get('email'), details: fd.get('message') };
-          try {
-            const res = await sintra.submitContactForm(data);
-            if (res.ok) {
-              overlay.classList.remove('hidden');
-              form.reset();
-              setTimeout(() => overlay.classList.add('hidden'), 5000);
-            } else {
-              console.error('Fehler beim Senden. Bitte erneut versuchen.'); // Besser für Debugging
-            }
-          } catch {
-            console.error('Netzwerkfehler. Bitte erneut versuchen.'); // Besser für Debugging
-          }
-        });
-      });
-    });
-  </script></head><body class="w-full font-['Inter'] [.lumen_&]:font-['Inter'] [.terra_&]:font-['Inter'] lumen">
-  <!-- Header -->
-  <header class="px-4 md:px-8 py-2.5 lg:px-26 lg:py-4 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] flex flex-row items-start justify-between overflow-hidden">
-    <div class="w-36 h-12 md:w-48 md:h-16 max-w-48 max-h-16 min-w-16 min-h-4 relative overflow-hidden flex items-center justify-start">
-      <img class="max-h-full object-contain" src="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png" alt="WildWave Marketing Logo - Professionelles Webdesign für KMU in der Schweiz" loading="lazy" />
-    </div>
-    <a href="#contact"
-       class="px-5 py-2.5 bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-white [.lumen_&]:text-black text-base font-semibold">
-      Kontakt aufnehmen
-    </a>
-  </header>
-  <!-- Hero Section -->
-  <section class="px-4 md:px-8 lg:py-16 py-12 lg:px-26 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-between items-start md:items-center gap-4 md:gap-8 lg:gap-16">
-      <div class="w-full md:w-1/2 md:flex-shrink-0 flex flex-col justify-start md:justify-center items-stretch gap-6 flex-1">
-        <h1 class="justify-start text-black [.lumen_&]:text-white text-4xl lg:text-6xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[48px] lg:leading-[72px] tracking-[-2%]">
-          Verlieren Sie Kunden, weil Google Ihr Unternehmen nicht findet?
-        </h1>
-        <h2 class="justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
-          Ihre Konkurrenz ist auf Google sichtbar. Ihre Konkurrenz hat eine professionelle Website mit SEO. Ihre Konkurrenz gewinnt die Kunden in der Schweiz, die eigentlich zu Ihnen gehören. Stoppen Sie das jetzt – mit professionellem Webdesign und Marketing von WildWave.
-        </h2>
-        <form id="hero-email-form" class="flex flex-col justify-start items-start gap-2.5 group relative">
-          <div id="hero-success-overlay" class="hidden absolute inset-0 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white rounded-full flex justify-center items-center gap-3 px-6 py-2.5 z-10">
-            <div class="size-6 relative flex-shrink-0">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.5 12L10.5 15L16.5 9M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#12B76A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+    <!-- Navigationsleiste -->
+    <header class="shadow-lg sticky top-0 z-10 bg-gray-900/90 backdrop-blur-sm border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Marke -->
+                <a href="#hero" class="flex items-center space-x-2">
+                    <img src="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png"
+                         alt="WildWave Logo - Löwenkopf-Symbol"
+                         class="h-8 w-auto"
+                         onerror="this.onerror=null; this.outerHTML='<span class=\'text-2xl font-extrabold text-indigo-400 tracking-tight\'>WildWave<span class=\'text-gray-300 font-medium\'>.ch</span></span>';"
+                    >
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#mission" class="text-gray-300 hover:text-indigo-400 transition duration-150">Mission</a>
+                    <a href="#services" class="text-gray-300 hover:text-indigo-400 transition duration-150">Services</a>
+                    <a href="#vorteile" class="text-gray-300 hover:text-indigo-400 transition duration-150">Vorteile</a>
+                    <a href="#kontakt" class="text-gray-300 hover:text-indigo-400 transition duration-150">Kontakt</a>
+                </nav>
+                
+                <!-- Mobile Menu Button (Toggle-Funktionalität hinzugefügt) -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-indigo-400 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <!-- Hamburger Icon SVG (Standard) -->
+                        <svg class="h-6 w-6" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Close Icon SVG (Initial versteckt) -->
+                        <svg class="h-6 w-6 hidden" id="menu-icon-close" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div class="text-black [.lumen_&]:text-white text-base font-medium">
-              Anfrage erhalten! Ihre Daten wurden für das Erstgespräch gespeichert. Bei einer Buchung werden die Projektdaten erfasst und geändert.
-            </div>
-          </div>
-          <div class="self-stretch bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white rounded-full flex flex-col justify-start items-start focus-within:outline outline-black [.lumen_&]:outline-neutral-600 [.terra_&]:outline-neutral-200 outline-offset-[-1px]">
-            <div class="self-stretch pl-6 pr-2.5 py-2.5 inline-flex justify-start items-center gap-2">
-              <input class="flex-1 bg-transparent border-none outline-none justify-start text-black [.lumen_&]:text-white text-base font-normal leading-normal placeholder:text-neutral-400 [.lumen_&]:placeholder:text-neutral-500"
-                     type="email" name="email" placeholder="Ihre E-Mail-Adresse" required />
-              <button type="submit"
-                      class="size-11 px-5 py-2.5 bg-black/50 [.lumen_&]:bg-lime-400/50 [.terra_&]:bg-[#623f35]/50 hover:bg-black/55 [.lumen_&]:hover:bg-lime-500/55 [.terra_&]:hover:bg-[#623f35]/55 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 cursor-pointer rounded-full flex justify-center items-center gap-2 group-valid:bg-black [.lumen_&]:group-valid:bg-lime-400 [.terra_&]:group-valid:bg-[#623f35] group-invalid:bg-gray-400 [.lumen_&]:group-invalid:bg-lime-400/50 [.terra_&]:group-invalid:bg-[#623f35]/50 group-invalid:cursor-not-allowed transition-colors duration-200">
-                <span class="text-white [.lumen_&]:text-black text-lg font-bold">→</span>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <img class="w-full md:w-1/2 rounded-xl flex-1 object-cover min-w-1 aspect-square hover-lift"
-           src="https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/c4d1f7bf-034d-480c-a440-861860240134/image.png?w=1024&h=1024"
-           srcset="https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/c4d1f7bf-034d-480c-a440-861860240134/image.png?w=600&h=600 600w,
-                   https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/c4d1f7bf-034d-480c-a440-861860240134/image.png?w=1024&h=1024 1024w,
-                   https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/c4d1f7bf-034d-480c-a440-861860240134/image.png?w=2048&h=2048 2048w"
-           sizes="(max-width: 768px) 100vw, 50vw"
-           alt="Professionelles Webdesign für KMU in der Schweiz – SEO-optimiert und mobilfreundlich"
-           loading="lazy" />
-    </div>
-  </section>
-  <!-- Mission Section -->
-  <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-center gap-10">
-      <div class="w-full lg:w-[768px] mx-auto flex flex-col justify-center items-center gap-4">
-        <div class="w-full lg:w-[768px] text-center justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium">
-          Unsere Mission
         </div>
-        <h2 class="self-stretch text-center justify-start text-black [.lumen_&]:text-white text-2xl lg:text-4xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal lg:leading-[44px] tracking-[-2%]">
-          Professionelle Websites und digitales Marketing für Schweizer KMU – ohne Risiko, ohne Agentur-Preise, monatlich kündbar
-        </h2>
-      </div>
+    </header>
+
+    <!-- Mobile Menu (Initial versteckt, wird per JS eingeblendet) -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 bg-gray-900/95 shadow-xl border-t border-gray-700 pb-2 z-50">
+        <a href="#mission" class="block px-4 py-3 text-base font-medium text-gray-300 hover:bg-gray-800 hover:text-indigo-400 transition duration-150">Mission</a>
+        <a href="#services" class="block px-4 py-3 text-base font-medium text-gray-300 hover:bg-gray-800 hover:text-indigo-400 transition duration-150">Services</a>
+        <a href="#vorteile" class="block px-4 py-3 text-base font-medium text-gray-300 hover:bg-gray-800 hover:text-indigo-400 transition duration-150">Vorteile</a>
+        <a href="#kontakt" class="block px-4 py-3 text-base font-medium text-gray-300 hover:bg-gray-800 hover:text-indigo-400 transition duration-150">Kontakt</a>
     </div>
-  </section>
-  <!-- Services Section -->
-  <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
-    <div class="max-w-7xl mx-auto space-y-10">
-      <div class="flex flex-col-reverse md:flex-row justify-center items-stretch md:items-center gap-8 lg:gap-16">
-        <img class="rounded-xl flex-1 object-cover min-w-1 aspect-square hover-lift"
-             src="https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/03e2b36e-b868-4af8-9d8b-a974f91dcc9c/image.png?w=1024&h=1024"
-             srcset="https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/03e2b36e-b868-4af8-9d8b-a974f91dcc9c/image.png?w=600&h=600 600w,
-                     https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/03e2b36e-b868-4af8-9d8b-a974f91dcc9c/image.png?w=1024&h=1024 1024w,
-                     https://eu.chat-img.sintra.ai/a4621265-6980-4a0f-ae6b-02a654ea28a5/03e2b36e-b868-4af8-9d8b-a974f91dcc9c/image.png?w=2048&h=2048 2048w"
-             sizes="(max-width: 768px) 100vw, 50vw"
-             alt="Webdesign und Marketing-Lösungen für Schweizer KMU - WildWave Marketing"
-             loading="lazy" />
-        <div class="inline-flex flex-col justify-start md:justify-center items-stretch gap-6 flex-1">
-          <div class="self-stretch flex flex-col justify-start items-start gap-6">
-            <div class="self-stretch flex flex-col justify-start items-start gap-4">
-              <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium">Services</div>
-              <h2 class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal lg:leading-[60px] tracking-[-2%]">
-                Webdesign und Marketing-Lösungen für Schweizer KMU
-              </h2>
+
+    <!-- 1. Hero Sektion mit Hintergrundbild -->
+    <section id="hero" class="relative overflow-hidden h-[60vh] md:h-[80vh] flex items-center justify-center">
+        
+        <!-- Hintergrundbild (Pexels) -->
+        <img src="https://images.pexels.com/photos/40185/mac-freelancer-macintosh-macbook-40185.jpeg" 
+             alt="Ein Mac-Laptop auf einem Schreibtisch, der professionelle Arbeit symbolisiert" 
+             class="absolute inset-0 w-full h-full object-cover">
+        
+        <!-- Dunkle Überlagerung für bessere Lesbarkeit des Textes (etwas dunkler im DM) -->
+        <div class="absolute inset-0 bg-gray-900/70"></div>
+
+        <!-- Hero Inhalt -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Verlieren Sie Kunden, weil Google Ihr Unternehmen nicht findet?
+                </h1>
+                <p class="mt-6 text-xl text-gray-300 max-w-3xl mx-auto">
+                    Ihre Konkurrenz ist auf Google sichtbar. Ihre Konkurrenz hat eine professionelle Website mit SEO. Ihre Konkurrenz gewinnt die Kunden in der Schweiz, die eigentlich zu Ihnen gehören. Stoppen Sie das jetzt – mit professionellem Webdesign und Marketing von <span class="font-semibold text-indigo-400">WildWave</span>.
+                </p>
+                <!-- Hier wurde der primäre Buchungs-Button entfernt. Der verbleibende Button erhält den Gradient-Stil. -->
+                <div class="mt-10 flex justify-center">
+                    <a href="#services" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-xl shadow-lg text-white wildwave-gradient hover:opacity-90 transition duration-300">
+                        Unsere Services entdecken
+                    </a>
+                </div>
             </div>
-            <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
-              Problem: Keine Zeit für Website-Pflege und Online-Marketing. Lösung: WildWave übernimmt alles. Problem: Webdesign-Agenturen sind zu teuer. Lösung: Faire Monatspreise ohne Bindung. Problem: Angst vor langen Verträgen. Lösung: Monatlich kündbar. Problem: Niemand findet Sie auf Google. Lösung: Professionelles SEO und Social Media Marketing für die Schweiz.
+        </div>
+    </section>
+
+    <!-- 2. Mission Sektion -->
+    <section id="mission" class="py-12 md:py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-base font-semibold tracking-wider text-indigo-400 uppercase">Unsere Mission</h2>
+            <p class="mt-2 text-3xl sm:text-4xl font-extrabold text-white leading-tight max-w-4xl mx-auto">
+                Professionelle Websites und digitales Marketing für Schweizer KMU – ohne Risiko, ohne Agentur-Preise, monatlich kündbar
             </p>
-          </div>
-          <div class="hidden md:block">
-            <a href="#contact"
-               class="px-5 py-2.5 rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-white [.lumen_&]:text-black text-base font-semibold block md:inline-block">
-              Kontakt aufnehmen
-            </a>
-          </div>
         </div>
-      </div>
-      <div>
-        <div class="flex flex-col md:flex-row items-stretch gap-8">
-          <div class="flex-1 space-y-4 hover-lift">
-            <div class="space-y-3">
-              <div class="flex flex-row md:flex-col items-center md:items-start gap-2">
-                <div class="flex-0">
-                  <svg class="size-6 lg:size-8 [.lumen_&]:stroke-white" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_756_1929_services)">
-                      <path d="M16 5V27" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M6 10L26 22" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M6 22L26 10" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </g>
-                    <defs><clipPath id="clip0_756_1929_services"><rect width="32" height="32" fill="white" /></clipPath></defs>
-                  </svg>
+    </section>
+
+    <!-- 3. Services Sektion -->
+    <section id="services" class="py-16 md:py-24 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base font-semibold tracking-wider text-indigo-400 uppercase">Services</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                    Webdesign und Marketing-Lösungen für Schweizer KMU
+                </p>
+            </div>
+
+            <div class="mt-10 lg:mt-16">
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    
+                    <!-- WildWave Lösungsblock (Problem & Lösung) - MIT NEUEM BILD -->
+                    <div class="col-span-1 md:col-span-2 lg:col-span-1 p-0 bg-indigo-600 text-white rounded-xl shadow-2xl flex flex-col overflow-hidden">
+                        <!-- Bild oben in der Karte - URL AKTUALISIERT -->
+                        <img src="https://images.pexels.com/photos/34804018/pexels-photo-34804018.jpeg"
+                             alt="Person arbeitet am Laptop im Café"
+                             class="h-48 w-full object-cover"
+                             onerror="this.onerror=null; this.outerHTML='<div class=\'h-48 flex items-center justify-center bg-indigo-700 font-semibold\'>Bild: Freelancer arbeitet</div>';"
+                        >
+                        <div class="p-6 flex flex-col justify-center flex-grow">
+                            <h3 class="text-xl font-bold mb-4">Ihre Herausforderungen, unsere Lösungen:</h3>
+                            <ul class="space-y-4 text-lg">
+                                <li>
+                                    <span class="font-semibold">Problem:</span> Keine Zeit für Website-Pflege und Online-Marketing. <br>
+                                    <span class="font-medium text-indigo-200">Lösung: WildWave übernimmt alles.</span>
+                                </li>
+                                <li>
+                                    <span class="font-semibold">Problem:</span> Webdesign-Agenturen sind zu teuer. <br>
+                                    <span class="font-medium text-indigo-200">Lösung: Faire Monatspreise ohne Bindung.</span>
+                                </li>
+                                <li>
+                                    <span class="font-semibold">Problem:</span> Angst vor langen Verträgen. <br>
+                                    <span class="font-medium text-indigo-200">Lösung: Monatlich kündbar.</span>
+                                </li>
+                                <li>
+                                    <span class="font-semibold">Problem:</span> Niemand findet Sie auf Google. <br>
+                                    <span class="font-medium text-indigo-200">Lösung: Professionelles SEO und Social Media Marketing für die Schweiz.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 1. Webdesign Service Card (Dark Background) -->
+                    <div class="p-6 bg-gray-900 rounded-xl shadow-xl border border-gray-700 hover:shadow-2xl transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full icon-bg mb-4">
+                             <!-- Monitor SVG Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Warum ist professionelles Webdesign für KMU wichtig?</h3>
+                        <p class="mt-3 text-gray-400">
+                            Eine professionelle Website mit SEO-Optimierung ist heute essentiell für Schweizer KMU. Ohne starke Online-Präsenz verlieren Sie Kunden an die Konkurrenz, die bei Google besser gefunden wird.
+                        </p>
+                    </div>
+
+                    <!-- 2. SEO & Google Marketing Service Card (Dark Background) -->
+                    <div class="p-6 bg-gray-900 rounded-xl shadow-xl border border-gray-700 hover:shadow-2xl transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full icon-bg mb-4">
+                            <!-- Search/SEO SVG Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="9" y1="16" x2="13" y2="12"></line><line x1="9" y1="12" x2="13" y2="16"></line>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">SEO & Google Marketing</h3>
+                        <p class="mt-3 text-gray-400">
+                            Gezielte Suchmaschinenoptimierung für Google Schweiz und lokales Online-Marketing. Mehr Sichtbarkeit in Ihrer Region, mehr Kundenanfragen, messbare Ergebnisse für Ihr Unternehmen.
+                        </p>
+                    </div>
+
+                    <!-- 3. Online-Shop & Buchungssystem Card (Dark Background) -->
+                    <div class="p-6 bg-gray-900 rounded-xl shadow-xl border border-gray-700 hover:shadow-2xl transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full icon-bg mb-4">
+                            <!-- Shopping Cart SVG Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Online-Shop & Buchungssystem</h3>
+                        <p class="mt-3 text-gray-400">
+                            E-Commerce-Lösung oder Online-Buchungssystem nahtlos in Ihre Website integriert. Premium-Design, vollständige technische Umsetzung und Schulung – alles aus einer Hand.
+                        </p>
+                    </div>
                 </div>
-              
-<h3 class="text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[28px]">
-                  SEO-optimierte Websites ab 150 CHF/Monat
-              </div>
-              <p class="text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-[21px]">
-                Eine professionelle Website mit SEO-Optimierung ist heute essentiell für Schweizer KMU. Ohne starke Online-Präsenz verlieren Sie Kunden an die Konkurrenz, die bei Google besser gefunden wird.
-              </p>
             </div>
-          </div>
-          <div class="flex-1 space-y-4 hover-lift">
-            <div class="space-y-3">
-              <div class="flex flex-row md:flex-col items-center md:items-start gap-2">
-                <div class="flex-0">
-                  <svg class="size-6 lg:size-8 [.lumen_&]:stroke-white" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_756_1929_seo)">
-                      <path d="M16 5V27" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M6 10L26 22" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M6 22L26 10" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </g>
-                    <defs><clipPath id="clip0_756_1929_seo"><rect width="32" height="32" fill="white" /></clipPath></defs>
-                  </svg>
+        </div>
+    </section>
+
+    <!-- 4. Vorteile Sektion -->
+    <section id="vorteile" class="py-16 md:py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base font-semibold tracking-wider text-indigo-400 uppercase">Vorteile</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                    Warum Schweizer KMU wie Coiffeure und Restaurants WildWave Marketing vertrauen
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto">
+                    Wir kennen die Sorgen von kleinen Unternehmen in der Schweiz: Webdesign ist zu teuer. Marketing-Agenturen sind zu kompliziert. Lange Verträge sind zu riskant. Deshalb haben wir WildWave Marketing anders aufgebaut – fair, transparent, flexibel und spezialisiert auf KMU.
+                </p>
+                
+                <!-- NEUES BILD EINGEFÜGT: Visualisierung des Wertes/Kosten-Vorteils -->
+                <div class="mt-12 mb-8 flex justify-center">
+                    <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg"
+                         alt="Ein Stapel Münzen, der finanzielle Vorteile und faire Preise symbolisiert"
+                         class="rounded-2xl shadow-2xl max-w-xl w-full h-auto object-cover border-4 border-indigo-600/50"
+                         onerror="this.onerror=null; this.outerHTML='<div class=\'h-48 w-full flex items-center justify-center bg-gray-700 text-lg font-semibold rounded-2xl\'>Bild: Geldstapel (Fairer Preis)</div>';"
+                    >
                 </div>
-                <h3 class="text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[28px]">
-                  SEO &amp; Google Marketing
-                </h3>
-              </div>
-              <p class="text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-[21px]">
-                Gezielte Suchmaschinenoptimierung für Google Schweiz und lokales Online-Marketing. Mehr Sichtbarkeit in Ihrer Region, mehr Kundenanfragen, messbare Ergebnisse für Ihr Unternehmen.
-              </p>
             </div>
-          </div>
-          <div class="flex-1 space-y-4 hover-lift">
-            <div class="space-y-3">
-              <div class="flex flex-row md:flex-col items-center md:items-start gap-2">
-                <div class="flex-0">
-                  <svg class="size-6 lg:size-8 [.lumen_&]:stroke-white" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_756_1929_shop)">
-                      <path d="M16 5V27" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M6 10L26 22" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M6 22L26 10" stroke="black" class="[.lumen_&]:stroke-white [.terra_&]:stroke-[#623f35]" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </g>
-                    <defs><clipPath id="clip0_756_1929_shop"><rect width="32" height="32" fill="white" /></clipPath></defs>
-                  </svg>
+
+            <div class="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3">
+                
+                <!-- Vorteil 1: Monatlich kündbar -->
+                <div class="text-center">
+                    <div class="flex justify-center mb-6">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full wildwave-gradient text-white">
+                             <!-- Checkmark SVG Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Monatlich kündbar</h3>
+                    <p class="mt-2 text-gray-400">
+                        Keine Knebelverträge oder lange Laufzeiten. Sie können das Abo monatlich kündigen, wenn Sie nicht zufrieden sind. Maximale Flexibilität für Ihr KMU.
+                    </p>
                 </div>
-                <h3 class="text-black [.lumen_&]:text-white text-lg lg:text-xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-[28px]">
-                  Online-Shop &amp; Buchungssystem
-                </h3>
-              </div>
-              <p class="text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-[21px]">
-                E-Commerce-Lösung oder Online-Buchungssystem nahtlos in Ihre Website integriert. Premium-Design, vollständige technische Umsetzung und Schulung – alles aus einer Hand.
-              </p>
+
+                <!-- Vorteil 2: Inklusive SEO & Hosting -->
+                <div class="text-center">
+                    <div class="flex justify-center mb-6">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full wildwave-gradient text-white">
+                             <!-- Globe SVG Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Inklusive SEO & Hosting</h3>
+                    <p class="mt-2 text-gray-400">
+                        Ihre Website wird von Anfang an für Google optimiert. Schnelles Hosting in der Schweiz, SSL-Zertifikat und regelmässige Backups sind inklusive.
+                    </p>
+                </div>
+
+                <!-- Vorteil 3: Persönlicher Support -->
+                <div class="text-center">
+                    <div class="flex justify-center mb-6">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full wildwave-gradient text-white">
+                             <!-- Headset/Phone SVG Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Persönlicher Support</h3>
+                    <p class="mt-2 text-gray-400">
+                        Keine anonyme Hotline. Ich bin Ihr persönlicher Ansprechpartner für alle Fragen. Schnelle Hilfe und Anpassungen, damit Sie sich auf Ihr Geschäft konzentrieren können.
+                    </p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="md:hidden">
-        <a href="#contact"
-           class="px-5 py-2.5 rounded-full outline outline-1 outline-black [.lumen_&]:outline-lime-400 [.terra_&]:outline-[#623f35] bg-black [.lumen_&]:bg-lime-400 [.terra_&]:bg-[#623f35] hover:bg-black/90 [.lumen_&]:hover:bg-lime-500 [.terra_&]:hover:bg-[#623f35]/90 focus:bg-black [.lumen_&]:focus:bg-lime-400 [.terra_&]:focus:bg-[#623f35] focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 scroll-smooth text-white [.lumen_&]:text-black text-base font-semibold block md:inline-block">
-          Kontakt aufnehmen
-        </a>
-      </div>
-    </div>
-  </section>
-  <!-- Benefits Section -->
-  <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white flex flex-col justify-center items-start gap-8 lg:gap-10 overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-start gap-8 lg:gap-10">
-      <div class="self-stretch w-full lg:w-[768px] flex flex-col justify-start items-start gap-4">
-        <div class="self-stretch flex flex-col justify-start items-start gap-6">
-          <div class="self-stretch flex flex-col justify-start items-start gap-4">
-            <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium leading-tight">
-              Vorteile
+    </section>
+
+    <!-- 5. Projekte Sektion -->
+    <section id="projekte" class="py-16 md:py-24 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base font-semibold tracking-wider text-indigo-400 uppercase">Ausgewählte Projekte</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                    Das Vertrauen unserer Partner ist unsere beste Referenz.
+                </p>
             </div>
-            <h2 class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-9 lg:leading-[60px] tracking-[-2%]">
-              Warum Schweizer KMU wie Coiffeure und Restaurants WildWave Marketing vertrauen
-            </h2>
-          </div>
-          <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
-            Wir kennen die Sorgen von kleinen Unternehmen in der Schweiz: Webdesign ist zu teuer. Marketing-Agenturen sind zu kompliziert. Lange Verträge sind zu riskant. Deshalb haben wir WildWave Marketing anders aufgebaut – fair, transparent, flexibel und spezialisiert auf KMU.
-          </p>
-        </div>
-      </div>
-      <div class="self-stretch flex flex-col md:flex-row justify-start items-stretch md:items-start gap-3 lg:gap-8">
-        <div class="flex-1 p-4 lg:p-6 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-xl flex flex-col justify-start items-start gap-4 hover-lift">
-          <div class="w-6 h-6 lg:w-8 lg:h-8 relative">
-            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
-              <g clip-path="url(#a-benefits)">
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.666 17 3 3 7-7"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16.166 26.667 12-10-12-10-12 10 12 10Z"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.166 16.667 4 11.667"/>
-              </g>
-              <defs><clipPath id="a-benefits"><rect width="32" height="32" x=".166" fill="#fff" rx="4"/></clipPath></defs>
-            </svg>
-          </div>
-          <h3 class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg font-medium leading-[28px]">
-            Monatlich kündbar
-          </h3>
-          <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-[21px]">
-            Keine Knebelverträge oder lange Laufzeiten. Sie können das Abo monatlich kündigen, wenn Sie nicht zufrieden sind. Maximale Flexibilität für Ihr KMU.
-          </p>
-        </div>
-        <div class="flex-1 p-4 lg:p-6 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-xl flex flex-col justify-start items-start gap-4 hover-lift">
-          <div class="w-6 h-6 lg:w-8 lg:h-8 relative">
-            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
-              <g clip-path="url(#b-benefits)">
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.166 11c-2.43 0-4.444 1.705-4.88 4"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.166 21c2.43 0 4.444-1.705 4.88-4"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.166 16.667h10M12.166 16.667v.666m10-.666v.666"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.166 26.667l12-10-12-10-12 10 12 10Z"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.166 16.667 4 11.667"/>
-              </g>
-              <defs><clipPath id="b-benefits"><rect width="32" height="32" x=".166" fill="#fff" rx="4"/></clipPath></defs>
-            </svg>
-          </div>
-          <h3 class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg font-medium leading-[28px]">
-            Inklusive SEO &amp; Hosting
-          </h3>
-          <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-[21px]">
-            Ihre Website wird von Anfang an für Google optimiert. Schnelles Hosting in der Schweiz, SSL-Zertifikat und regelmässige Backups sind inklusive.
-          </p>
-        </div>
-        <div class="flex-1 p-4 lg:p-6 bg-white [.lumen_&]:bg-neutral-700 [.terra_&]:bg-[#e9e4df] rounded-xl flex flex-col justify-start items-start gap-4 hover-lift">
-          <div class="w-6 h-6 lg:w-8 lg:h-8 relative">
-            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" fill="none" viewBox="0 0 33 32">
-              <g clip-path="url(#c-benefits)">
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.166 14.667c-1.667 0-3.334 1.667-3.334 3.333V25c0 1.667 1.667 3.333 3.334 3.333h4.004c1.667 0 3.33-1.666 3.33-3.333V18c0-1.666-1.663-3.333-3.33-3.333h-4.004Zm0 0V11m4.004 3.667V11"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.166 11V8m8 3V8M14.166 7.667V4m4.004 3.667V4"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.166 26.667l12-10-12-10-12 10 12 10Z"/>
-                <path stroke="#000" class="[.lumen_&]:stroke-lime-400 [.terra_&]:stroke-[#623f35]" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.166 16.667 4 11.667"/>
-              </g>
-              <defs><clipPath id="c-benefits"><rect width="32" height="32" x=".166" fill="#fff" rx="4"/></clipPath></defs>
-            </svg>
-          </div>
-          <h3 class="self-stretch justify-start text-black [.lumen_&]:text-white text-lg font-medium leading-[28px]">
-            Persönlicher Support
-          </h3>
-          <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-sm font-normal font-['Roboto'] leading-[21px]">
-            Keine anonyme Hotline. Ich bin Ihr persönlicher Ansprechpartner für alle Fragen. Schnelle Hilfe und Anpassungen, damit Sie sich auf Ihr Geschäft konzentrieren können.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- REFERENZEN SECTION (NEU EINGEFÜGT) -->
-  <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
-      <div class="w-full max-w-7xl mx-auto">
-          <header class="text-center mb-10">
-              <h2 class="text-3xl sm:text-4xl font-extrabold text-black [.lumen_&]:text-white mb-2">Ausgewählte Projekte</h2>
-              <p class="text-lg text-neutral-600 [.lumen_&]:text-neutral-400">Das Vertrauen unserer Partner ist unsere beste Referenz.</p>
-          </header>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-              <!-- Referenz 1: Sinoqi (AKTUALISIERT) -->
-              <div class="card p-6 bg-white [.lumen_&]:bg-neutral-900 rounded-xl border border-gray-200 [.lumen_&]:border-neutral-700 hover:border-blue-500 hover:text-blue-600 flex flex-col h-full hover-lift">
-                  <a href="https://sinoqi.ch/info-gutschein/gutschein" target="_blank" rel="noopener noreferrer" class="flex flex-col flex-grow">
-                      
-                      <!-- Logo mit Fallback bei Ladefehler -->
-                      <div class="h-24 w-full flex items-center justify-center mb-4">
-                          <img 
-                              src="https://s3.eu-central-1.amazonaws.com/metro-sqq-prod/Sinoqi_Logo_RroPtne.jpg" 
-                              alt="Sinoqi Logo" 
-                              class="logo-img max-w-full"
-                              onerror="this.onerror=null; this.src='https://placehold.co/200x80/2563eb/ffffff?text=Sinoqi+Logo';"
-                          >
-                      </div>
-
-                      <h3 class="text-2xl font-bold mb-1 text-gray-800 [.lumen_&]:text-white text-center">Sinoqi.ch</h3>
-                      
-                      <!-- Aktualisierte Beschreibung -->
-                      <p class="text-base text-gray-500 [.lumen_&]:text-neutral-400 mb-6 text-center flex-grow">
-                          Entwicklung des Gutschein-Checkout-Prozesses und vollständiger Aufbau des TikTok-Auftritts (Content-Strategie und Umsetzung).
-                      </p>
-                      
-                      <!-- Link Button Style am unteren Rand (Blue Theme) -->
-                      <div class="mt-auto flex justify-center">
-                          <span class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-blue-600 [.lumen_&]:bg-blue-500 hover:bg-blue-700 [.lumen_&]:hover:bg-blue-600 transition shadow-lg">
-                              Zur Webseite
-                              <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                              </svg>
-                          </span>
-                      </div>
-                  </a>
-              </div>
-
-              <!-- Referenz 2: Jeshua Coiffeur -->
-              <div class="card p-6 bg-white [.lumen_&]:bg-neutral-900 rounded-xl border border-gray-200 [.lumen_&]:border-neutral-700 hover:border-indigo-500 hover:text-indigo-600 flex flex-col h-full hover-lift">
-                  <a href="https://jeshua-coiffeur.ch/" target="_blank" rel="noopener noreferrer" class="flex flex-col flex-grow">
-                      
-                      <!-- Logo mit Fallback bei Ladefehler -->
-                      <div class="h-24 w-full flex items-center justify-center mb-4">
-                          <img 
-                              src="https://i.ibb.co/4wjDsQYC/466137210-484531547938223-3500590581028824832-n-removebg-preview.png" 
-                              alt="Jeshua Coiffeur Logo" 
-                              class="logo-img max-w-full"
-                              onerror="this.onerror=null; this.src='https://placehold.co/200x80/6366f1/ffffff?text=Jeshua+Coiffeur+Logo';"
-                          >
-                      </div>
-
-                      <h3 class="text-2xl font-bold mb-1 text-gray-800 [.lumen_&]:text-white text-center">Jeshua Coiffeur</h3>
-                      
-                      <p class="text-base text-gray-500 [.lumen_&]:text-neutral-400 mb-6 text-center flex-grow">
-                          Komplette Erstellung und Betreuung der responsiven Webseite für den Coiffeur-Salon, inklusive Buchungsintegration.
-                      </p>
-
-                      <!-- Link Button Style am unteren Rand (Indigo Theme) -->
-                      <div class="mt-auto flex justify-center">
-                          <span class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-indigo-600 [.lumen_&]:bg-indigo-500 hover:bg-indigo-700 [.lumen_&]:hover:bg-indigo-600 transition shadow-lg">
-                              Zur Webseite
-                              <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                              </svg>
-                          </span>
-                      </div>
-                  </a>
-              </div>
             
-      </div>
-  </section>
-  <!-- ENDE REFERENZEN SECTION -->
-  
-  <!-- FAQ Section -->
-  <section class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col justify-center items-start gap-8 lg:gap-10" id="faq-section">
-      <div class="self-stretch flex flex-col justify-start items-start gap-4">
-        <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium leading-tight">
-          Häufige Fragen
-        </div>
-        <h2 class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-9 lg:leading-[60px] tracking-[-2%]">
-          Alles, was Sie über Webdesign und Verträge wissen müssen
-        </h2>
-      </div>
-      <div class="self-stretch flex flex-col justify-start items-start divide-y divide-gray-200 [.lumen_&]:divide-neutral-700">
-        <div class="self-stretch py-5">
-          <button class="faq-item w-full flex justify-between items-start text-left cursor-pointer focus:outline-none">
-            <h3 class="flex-1 text-black [.lumen_&]:text-white text-lg font-semibold leading-relaxed">
-              Warum ist Webdesign bei WildWave günstiger als bei grossen Agenturen?
-            </h3>
-            <span class="faq-chevron ml-6 text-black [.lumen_&]:text-white transform transition-transform duration-300">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer hidden mt-2">
-            <p class="text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal pb-3 pr-6">
-              Weil wir als spezialisierte Webdesign-Agentur für KMU effizient arbeiten und auf unnötigen Luxus verzichten. Keine teuren Büros in Zürich, kein Overhead. Als Webdesigner aus Uster gebe ich diese Ersparnisse direkt an Schweizer Unternehmen weiter. Faire Preise für professionelles Webdesign, SEO und Marketing – keine versteckten Kosten.
-            </p>
-          </div>
-        </div>
-        <div class="self-stretch py-5">
-          <button class="faq-item w-full flex justify-between items-start text-left cursor-pointer focus:outline-none">
-            <h3 class="flex-1 text-black [.lumen_&]:text-white text-lg font-semibold leading-relaxed">
-              Was passiert mit meiner Website, wenn ich kündige?
-            </h3>
-            <span class="faq-chevron ml-6 text-black [.lumen_&]:text-white transform transition-transform duration-300">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer hidden mt-2">
-            <p class="text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal pb-3 pr-6">
-              Sie können monatlich kündigen – ohne Kündigungsfrist. Nach der Kündigung haben Sie zwei Optionen: Entweder Sie kaufen die Website für eine faire Offerte aus dem Vertrag – ähnlich wie beim Leasing – und die Website gehört dann vollständig Ihnen. Oder die Website wird auf den Werkszustand zurückgesetzt bzw. offline genommen. Sie entscheiden flexibel, was für Ihr Unternehmen am besten passt.
-            </p>
-          </div>
-        </div>
-        <div class="self-stretch py-5">
-          <button class="faq-item w-full flex justify-between items-start text-left cursor-pointer focus:outline-none">
-            <h3 class="flex-1 text-black [.lumen_&]:text-white text-lg font-semibold leading-relaxed">
-              Wie schnell ist meine neue Website online?
-            </h3>
-            <span class="faq-chevron ml-6 text-black [.lumen_&]:text-white transform transition-transform duration-300">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer hidden mt-2">
-            <p class="text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal pb-3 pr-6">
-              Nach dem Onboarding-Gespräch und Ihrer Zahlungsbestätigung starte ich sofort mit dem Webdesign. Je nach Umfang und Anforderungen ist Ihre professionelle Website in 1-2 Wochen live und auf Google indexiert. Schnell, professionell, zuverlässig – so arbeitet WildWave Marketing.
-            </p>
-          </div>
-        </div>
-        <div class="self-stretch py-5">
-          <button class="faq-item w-full flex justify-between items-start text-left cursor-pointer focus:outline-none">
-            <h3 class="flex-1 text-black [.lumen_&]:text-white text-lg font-semibold leading-relaxed">
-              Was brauchen Sie von mir für die Website-Erstellung?
-            </h3>
-            <span class="faq-chevron ml-6 text-black [.lumen_&]:text-white transform transition-transform duration-300">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer hidden mt-2">
-            <p class="text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal pb-3 pr-6">
-              Für professionelles Webdesign brauche ich von Ihnen: Ihre Ideen und Wünsche, bevorzugte Farben für Ihre Marke, Öffnungszeiten, Informationen über Ihre Dienstleistungen – und vor allem hochwertige Fotos von Ihrem Betrieb, Team und Produkten. Je mehr Material Sie mir geben, desto besser wird das Ergebnis. Ich führe Sie Schritt für Schritt durch den Prozess.
-            </p>
-          </div>
-        </div>
-        <div class="self-stretch py-5">
-          <button class="faq-item w-full flex justify-between items-start text-left cursor-pointer focus:outline-none">
-            <h3 class="flex-1 text-black [.lumen_&]:text-white text-lg font-semibold leading-relaxed">
-              Bieten Sie auch SEO und Social Media Marketing an?
-            </h3>
-            <span class="faq-chevron ml-6 text-black [.lumen_&]:text-white transform transition-transform duration-300">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer hidden mt-2">
-            <p class="text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal pb-3 pr-6">
-              Ja! Neben Webdesign bietet WildWave Marketing auch professionelle Suchmaschinenoptimierung (SEO) für Google, Social Media Management für Facebook und Instagram, sowie die Integration von Online-Shops und Buchungssystemen. Alles aus einer Hand – spezialisiert auf Schweizer KMU.
-            </p>
-          </div>
-        </div>
-        <div class="self-stretch py-5">
-          <button class="faq-item w-full flex justify-between items-start text-left cursor-pointer focus:outline-none">
-            <h3 class="flex-1 text-black [.lumen_&]:text-white text-lg font-semibold leading-relaxed">
-              Ist meine Website auch für Handys optimiert?
-            </h3>
-            <span class="faq-chevron ml-6 text-black [.lumen_&]:text-white transform transition-transform duration-300">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </button>
-          <div class="faq-answer hidden mt-2">
-            <p class="text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal pb-3 pr-6">
-              Absolut. Alle WildWave-Websites sind responsive und für Mobilgeräte optimiert. Da über 70% der Schweizer Nutzer Websites auf dem Smartphone besuchen, ist mobiles Webdesign bei uns Standard – nicht optional.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Contact Section -->
-  <section id="contact" class="px-4 md:px-8 py-12 lg:px-26 lg:py-16 bg-white [.lumen_&]:bg-black [.terra_&]:bg-[#e9e4df] overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center gap-8 lg:gap-16">
-      <div class="w-full md:w-1/2 flex flex-col justify-start items-start gap-4 flex-1">
-        <div class="self-stretch flex flex-col justify-start items-start gap-6">
-          <div class="self-stretch flex flex-col justify-start items-start gap-4">
-            <div class="self-stretch justify-start text-neutral-500 [.lumen_&]:text-neutral-400 text-sm font-medium leading-tight">
-              Kontakt
-            </div>
-            <h2 class="self-stretch justify-start text-black [.lumen_&]:text-white text-3xl lg:text-5xl font-medium [.lumen_&]:font-['Archivo'] [.terra_&]:font-['Domine'] [.terra_&]:font-normal leading-9 lg:leading-[60px] tracking-[-2%]">
-              Starten Sie Ihr Projekt heute
-            </h2>
-          </div>
-          <p class="self-stretch justify-start text-neutral-700 [.lumen_&]:text-neutral-300 text-base font-normal">
-            Senden Sie uns eine Nachricht oder rufen Sie direkt an, um Ihr kostenloses Erstgespräch zu vereinbaren. Finden Sie heraus, wie wir Ihr KMU in der Schweiz online erfolgreich machen können.
-          </p>
-        </div>
-        <div class="flex flex-col justify-start items-start gap-4">
-          <div class="flex flex-row justify-start items-center gap-2">
-            <svg class="w-6 h-6 text-black [.lumen_&]:text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.85-5.23a2 2 0 012.3 0L21 8m-2 1h-2a2 2 0 01-2-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 00-2-2H1M3 14v6a2 2 0 002 2h14a2 2 0 002-2v-6M3 14h18"></path></svg>
-            <a href="mailto:wildwave@mail.ch" class="text-black [.lumen_&]:text-white text-base font-normal hover:text-neutral-700 [.lumen_&]:hover:text-neutral-300 transition-colors">wildwave@mail.ch</a>
-          </div>
-          <div class="flex flex-row justify-start items-center gap-2">
-            <svg class="w-6 h-6 text-black [.lumen_&]:text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-            <a href="tel:+41782630406" class="text-black [.lumen_&]:text-white text-base font-normal hover:text-neutral-700 [.lumen_&]:hover:text-neutral-300 transition-colors">+41 78 263 04 06</a>
-          </div>
-        </div>
-      </div>
-      <form id="contact-form" class="w-full md:w-1/2 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white rounded-xl p-6 lg:p-8 flex flex-col justify-start items-stretch gap-6 relative">
-        <div id="contact-success-overlay" class="hidden absolute inset-0 bg-neutral-100 [.lumen_&]:bg-neutral-800/95 [.terra_&]:bg-white/95 backdrop-blur-sm rounded-xl flex justify-center items-center gap-3 px-6 py-2.5 z-10 text-center">
-            <div class="text-black [.lumen_&]:text-white text-xl font-bold">
-              Vielen Dank! Ihre Nachricht wurde gesendet. Wir melden uns in Kürze.
+            <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+                <!-- Projekt 1: Sinoqi.ch (Dark Card) -->
+                <div class="bg-gray-900 rounded-xl shadow-xl overflow-hidden border border-gray-700">
+                    <!-- LOGO AKTUALISIERT -->
+                    <div class="h-64 bg-gray-700 flex items-center justify-center p-8">
+                        <img src="https://s3.eu-central-1.amazonaws.com/metro-sqq-prod/Sinoqi_Logo_RroPtne.jpg" 
+                             alt="Logo des Sinoqi.ch Projekts" 
+                             class="w-full h-full object-contain opacity-100">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Sinoqi.ch</h3>
+                        <p class="text-gray-400">
+                            Entwicklung des Gutschein-Checkout-Prozesses und vollständiger Aufbau des TikTok-Auftritts (Content-Strategie und Umsetzung).
+                        </p>
+                        <div class="mt-4">
+                            <!-- Link zu Sinoqi.ch -->
+                            <a href="https://www.sinoqi.ch" target="_blank" class="text-indigo-400 font-semibold hover:text-indigo-300 transition duration-150 flex items-center">
+                                Zur Webseite
+                                <!-- Arrow Right SVG Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projekt 2: Jeshua Coiffeur (Dark Card) -->
+                <div class="bg-gray-900 rounded-xl shadow-xl overflow-hidden border border-gray-700">
+                    <!-- LOGO AKTUALISIERT -->
+                    <div class="h-64 bg-gray-700 flex items-center justify-center p-8">
+                        <img src="https://i.ibb.co/4wjDsQYC/466137210-484531547938223-3500590581028824832-n-removebg-preview.png" 
+                             alt="Logo des Jeshua Coiffeur Projekts" 
+                             class="w-full h-full object-contain opacity-100">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Jeshua Coiffeur</h3>
+                        <p class="text-gray-400">
+                            Komplette Erstellung und Betreuung der responsiven Webseite für den Coiffeur-Salon, inklusive Buchungsintegration.
+                        </p>
+                        <div class="mt-4">
+                            <!-- Link zu Jeshua-Coiffeur.ch -->
+                            <a href="https://jeshua-coiffeur.ch" target="_blank" class="text-indigo-400 font-semibold hover:text-indigo-300 transition duration-150 flex items-center">
+                                Zur Webseite
+                                <!-- Arrow Right SVG Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="flex flex-col justify-start items-start gap-2">
-          <label for="contact-name" class="text-black [.lumen_&]:text-white text-sm font-medium">Name</label>
-          <input id="contact-name" type="text" name="name" placeholder="Ihr Name" required
-                 class="self-stretch px-4 py-3 bg-white [.lumen_&]:bg-neutral-700 border border-gray-300 [.lumen_&]:border-neutral-600 rounded-lg focus:ring-2 focus:ring-lime-400 focus:border-lime-400 outline-none text-black [.lumen_&]:text-white transition-colors">
-        </div>
-        <div class="flex flex-col justify-start items-start gap-2">
-          <label for="contact-email" class="text-black [.lumen_&]:text-white text-sm font-medium">E-Mail</label>
-          <input id="contact-email" type="email" name="email" placeholder="Ihre E-Mail-Adresse" required
-                 class="self-stretch px-4 py-3 bg-white [.lumen_&]:bg-neutral-700 border border-gray-300 [.lumen_&]:border-neutral-600 rounded-lg focus:ring-2 focus:ring-lime-400 focus:border-lime-400 outline-none text-black [.lumen_&]:text-white transition-colors">
-        </div>
-        <div class="flex flex-col justify-start items-start gap-2">
-          <label for="contact-message" class="text-black [.lumen_&]:text-white text-sm font-medium">Nachricht</label>
-          <textarea id="contact-message" name="message" placeholder="Ihre Nachricht oder Projektbeschreibung" rows="4" required
-                    class="self-stretch px-4 py-3 bg-white [.lumen_&]:bg-neutral-700 border border-gray-300 [.lumen_&]:border-neutral-600 rounded-lg focus:ring-2 focus:ring-lime-400 focus:border-lime-400 outline-none text-black [.lumen_&]:text-white transition-colors"></textarea>
-        </div>
-        <button type="submit"
-                class="px-5 py-3 bg-lime-400 rounded-lg hover:bg-lime-500 focus:bg-lime-400 focus:outline-gray-400 focus:outline-4 focus:outline-offset-2 transition-colors duration-200 text-black text-base font-semibold shadow-md">
-          Nachricht senden
-        </button>
-      </form>
-    </div>
-  </section>
-  <!-- Footer -->
-  <footer class="px-4 md:px-8 py-8 lg:px-26 bg-neutral-100 [.lumen_&]:bg-neutral-800 [.terra_&]:bg-white overflow-hidden">
-    <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-sm text-neutral-500 [.lumen_&]:text-neutral-400 text-center md:text-left">
-        © 2025 WildWave Marketing. Alle Rechte vorbehalten.
-      </div>
-      <div class="flex flex-row justify-center items-center gap-4 text-sm">
-        <a href="datenschutz.html" class="text-neutral-700 [.lumen_&]:text-neutral-300 hover:text-black [.lumen_&]:hover:text-white transition-colors scroll-smooth">Datenschutz</a>
-        <a href="agb.html" class="text-neutral-700 [.lumen_&]:text-neutral-300 hover:text-black [.lumen_&]:hover:text-white transition-colors scroll-smooth">AGB</a>
-        <a href="impressum.html" class="text-neutral-700 [.lumen_&]:text-neutral-300 hover:text-black [.lumen_&]:hover:text-white transition-colors scroll-smooth">Impressum</a>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <!-- Cookie Banner -->
-  <div id="cookie-banner" role="alert" aria-live="polite">
-    <p>Wir verwenden Cookies, um Ihnen die bestmögliche Nutzung unserer Webseite zu ermöglichen. <a href="/datenschutz.html" target="_blank">Weitere Informationen</a></p>
-    <button id="cookie-accept-btn">Zustimmen</button>
-  </div>
+    <!-- 6. FAQ Sektion -->
+    <section id="faq" class="py-16 md:py-24 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base font-semibold tracking-wider text-indigo-400 uppercase">Häufige Fragen</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                    Alles, was Sie über Webdesign und Verträge wissen müssen
+                </p>
+            </div>
+            
+            <!-- Einfache FAQ Liste -->
+            <div class="mt-12 space-y-6">
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold text-white">Wie lange dauert die Erstellung einer Website?</h3>
+                    <p class="mt-2 text-gray-400">
+                        In der Regel benötigen wir 4–6 Wochen von der Konzeption bis zum Launch, abhängig von der Komplexität und der schnellen Bereitstellung der Inhalte durch Sie.
+                    </p>
+                </div>
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold text-white">Was ist in den monatlichen Kosten enthalten?</h3>
+                    <p class="mt-2 text-gray-400">
+                        Die monatlichen Kosten beinhalten Hosting in der Schweiz, technische Wartung, regelmässige Backups, SSL-Zertifikat und kontinuierliches SEO-Monitoring.
+                    </p>
+                </div>
+                <div class="border-b border-gray-700 pb-4">
+                    <h3 class="text-lg font-semibold text-white">Kann ich meine Website jederzeit kündigen?</h3>
+                    <p class="mt-2 text-gray-400">
+                        Ja, unsere Verträge sind monatlich kündbar, um Ihnen maximale Flexibilität zu bieten.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</body></html>
+    <!-- 7. Kontakt Sektion (mit eingebettetem Elfsight Widget) -->
+    <section id="kontakt" class="py-16 md:py-24 wildwave-gradient text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                
+                <!-- Kontakt-Informationen (LEFT COLUMN) -->
+                <div>
+                    <h2 class="text-base font-semibold tracking-wider text-indigo-200 uppercase">Kostenloses Erstgespräch</h2>
+                    <p class="mt-2 text-4xl leading-8 font-extrabold tracking-tight sm:text-5xl">
+                        Starten Sie Ihr Projekt heute
+                    </p>
+                    <p class="mt-4 text-xl text-indigo-200">
+                        Buchen Sie jetzt direkt online einen Termin mit mir, um in einem kostenlosen Erstgespräch herauszufinden, wie wir Ihr KMU in der Schweiz online erfolgreich machen können.
+                    </p>
+                    
+                    <div class="mt-8 space-y-4">
+                        <p class="flex items-center text-lg font-medium">
+                            <!-- E-Mail Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-indigo-200" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            wildwave@mail.ch
+                        </p>
+                        <p class="flex items-center text-lg font-medium">
+                            <!-- Phone Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-indigo-200" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            +41 78 263 04 06
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Elfsight Buchungs-Widget (RIGHT COLUMN) -->
+                <div class="w-full">
+                    <div class="bg-gray-800 p-4 rounded-xl shadow-2xl text-white border border-gray-700">
+                        
+                        <!-- Elfsight Appointment Booking Widget Container -->
+                        <div class="elfsight-app-0e354119-8d63-4c1f-bd86-74be33e26bc3" data-elfsight-app-lazy></div>
+                        <!-- END Elfsight Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start space-y-4 md:space-y-0">
+                <!-- Branding & Copyright (Logo im Footer) -->
+                <div class="flex items-center space-x-2">
+                    <img src="https://i.ibb.co/k6cXjqNm/15175-removebg-preview.png"
+                         alt="WildWave Logo - Löwenkopf-Symbol"
+                         class="h-6 w-auto opacity-70"
+                    >
+                    <p class="text-sm text-gray-400">
+                        © 2025 WildWave Marketing. Alle Rechte vorbehalten.
+                    </p>
+                </div>
+                <!-- Legal Links -->
+                <div class="flex space-x-6 text-sm">
+                    <a href="datenschutz.html" class="text-gray-400 hover:text-white transition duration-150">Datenschutz</a>
+                    <a href="agb.html" class="text-gray-400 hover:text-white transition duration-150">AGB</a>
+                    <a href="impressum.html" class="text-gray-400 hover:text-white transition duration-150">Impressum</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner (schwebend, links unten, mit neuem Design) -->
+    <div id="cookie-banner" 
+         class="fixed bottom-4 md:bottom-8 left-4 right-4 md:right-auto md:left-8 z-50 max-w-lg mx-auto md:mx-0 
+                bg-gray-800 p-6 rounded-2xl shadow-2xl transition-transform duration-300 transform translate-y-0 border border-gray-700">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+            <!-- Link im Cookie Banner für Datenschutz -->
+            <p class="text-sm text-gray-200">
+                Wir verwenden Cookies, um Ihnen die bestmögliche Nutzung unserer Webseite zu ermöglichen. 
+                <a href="datenschutz.html" class="underline text-indigo-400 hover:text-indigo-300 transition duration-150">Weitere Informationen</a>
+            </p>
+            <button id="cookie-accept-button"
+                    class="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-xl hover:bg-indigo-700 transition duration-150 shadow-md flex-shrink-0">
+                Akzeptieren
+            </button>
+        </div>
+    </div>
+    
+    <!-- Elfsight Platform Script (Async loading for performance) -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+
+    <!-- Eigener JavaScript-Code zur Steuerung des mobilen Menüs und des Cookie Banners -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. Mobile Menu Toggle Logik ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+
+            function toggleMobileMenu() {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    // Menü einblenden
+                    mobileMenu.classList.remove('hidden');
+                    openIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                } else {
+                    // Menü ausblenden
+                    mobileMenu.classList.add('hidden');
+                    openIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
+            }
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+                
+                // Menü schliessen, wenn ein Link angeklickt wird (wichtig für die Navigation auf Mobilgeräten)
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Kurze Verzögerung, um das Scrollen zu ermöglichen, bevor das Menü ausgeblendet wird
+                        setTimeout(() => {
+                            if (!mobileMenu.classList.contains('hidden')) {
+                                toggleMobileMenu();
+                            }
+                        }, 100);
+                    });
+                });
+            }
+
+            // --- 2. Cookie Banner Logik ---
+            const cookieButton = document.getElementById('cookie-accept-button');
+            const banner = document.getElementById('cookie-banner');
+
+            if (cookieButton && banner) {
+                cookieButton.addEventListener('click', () => {
+                    // Klasse für die sanfte Ausblendungsanimation hinzufügen
+                    banner.classList.add('translate-y-full'); 
+                    
+                    // Nach der Animation das Element komplett ausblenden
+                    setTimeout(() => {
+                        banner.style.display = 'none';
+                    }, 300);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
