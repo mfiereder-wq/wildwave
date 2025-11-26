@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webdesign & Marketing Portfolio | Wildwave</title>
+    
+    <!-- NEU: Favicon hinzugefügt -->
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/rf0tdbn9/Screenshot-2024-12-28-18-43-43-063-com-whatsapp-w4b-edit-1.jpg">
+    
+    <!-- SEO OPTIMIERUNG: Verbessert den Titel für Google -->
+    <title>Professionelles Webdesign & SEO Marketing | Wildwave Schweiz</title>
+    
+    <!-- SEO OPTIMIERUNG: Relevante Meta-Beschreibung für Suchergebnisse -->
+    <meta name="description" content="Wildwave Marketing bietet professionelles Webdesign, Conversion-Optimierung und effektive SEO-Strategien für KMU in der Schweiz. Erhöhen Sie Ihre Sichtbarkeit und Kundengewinnung.">
+    
     <!-- Tailwind CSS laden -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Phosphor Icons für moderne Icons (Optional, aber empfohlen für bessere Icons) -->
@@ -37,14 +46,14 @@
             /* Das Video wird leicht abgedunkelt */
             filter: brightness(0.6) grayscale(30%);
          }
-        /* Überlagerung für bessere Lesbarkeit */
+        /* Überlagerung für bessere Lesbarkeit - WENIGER DECKKRAFT (von 0.5 auf 0.3) */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3); /* Angepasst: Weniger Dunkel */
             z-index: -1;
         }
         /* Styling für die aufklappbaren Artikel */
@@ -209,8 +218,8 @@
     <!-- Haupt-Wrapper -->
     <div id="wrapper" class="p-4 sm:p-8 max-w-4xl mx-auto flex flex-col items-center justify-center w-full relative z-10">
         
-        <!-- Header/Menü Karte -->
-        <header id="header" class="text-center p-8 bg-gray-900/90 backdrop-blur-sm rounded-2xl shadow-2xl transition duration-500 hover:bg-gray-900/95 w-full max-w-md border border-gray-700">
+        <!-- Header/Menü Karte - TRANSPARENZ AUF 70% REDUZIERT -->
+        <header id="header" class="text-center p-8 bg-gray-900/70 backdrop-blur-sm rounded-2xl shadow-2xl transition duration-500 hover:bg-gray-900/95 w-full max-w-md border border-gray-700">
             <div class="mb-8">
                 <!-- AVATAR -->
                 <div class="avatar-container mb-6">
@@ -222,7 +231,11 @@
                     />
                 </div>
                 
-                <h1 class="text-3xl sm:text-4xl font-extrabold mb-3 text-white tracking-tight">Webdesign &<br><span class="text-green-400">Marketing</span></h1>
+                <!-- SEO OPTIMIERUNG: H1-Titel mit SEO-Keyword -->
+                <h1 class="text-3xl sm:text-4xl font-extrabold mb-3 text-white tracking-tight">
+                    Webdesign, 
+                    <span class="text-green-400">SEO & Marketing</span>
+                </h1>
                 
                 <p class="text-sm text-gray-400 font-light italic leading-relaxed px-4">
                     "Fokussieren Sie sich auf Ihr Kerngeschäft.<br>
@@ -518,9 +531,10 @@
                 
                 <div class="border-t border-gray-700 pt-8 w-1/2 mx-auto">
                     <div class="flex justify-center space-x-8">
-                        <!-- Platzhalter Icons -->
-                        <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110">LinkedIn</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110">Instagram</a>
+                        <!-- Facebook Link -->
+                        <a href="https://www.facebook.com/profile.php?id=61554309159791" target="_blank" class="text-gray-400 hover:text-white transition transform hover:scale-110">Facebook</a>
+                        <!-- Instagram Link -->
+                        <a href="https://instagram.com/wildwave.ch" target="_blank" class="text-gray-400 hover:text-white transition transform hover:scale-110">Instagram</a>
                     </div>
                 </div>
             </div>
@@ -605,8 +619,7 @@
 
     </div>
 
-    <!-- NEU HINZUGEFÜGT: COOKIE-ZUSTIMMUNGS-BANNER -->
-    <!-- Z-Index ist wichtig, damit der Banner über allen Overlays liegt -->
+    <!-- COOKIE-ZUSTIMMUNGS-BANNER -->
     <div id="cookie-banner" class="fixed inset-x-0 bottom-0 bg-gray-900 text-white p-4 transition-transform duration-500 transform translate-y-0 shadow-2xl z-[105] border-t border-green-600">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-6">
             <p class="text-sm text-gray-300">
@@ -634,7 +647,7 @@
             const closeButtons = document.querySelectorAll('.close-button');
             const wrapper = document.getElementById('wrapper');
             const header = document.getElementById('header');
-            // NEU: Cookie Elemente
+            // Cookie Elemente
             const banner = document.getElementById('cookie-banner');
             const acceptButton = document.getElementById('accept-cookies');
             const COOKIE_NAME = 'cookies_accepted';
