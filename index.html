@@ -3,776 +3,721 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WildWave Marketing | Webdesign & SEO Schweiz</title>
-    
-    <!-- Tailwind CSS CDN -->
+    <title>Webdesign & Marketing Portfolio</title>
+    <!-- Tailwind CSS laden -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome Icons CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Der Elfsight Script-Tag wird HIER ENTFERNT und erst bei Cookie-Akzeptanz per JS geladen, um Tracking vorab zu verhindern. -->
-
     <style>
+        /* Definieren des Hintergrunds und der globalen Schriftart */
         :root {
-            --primary: #4f46e5;
-            --secondary: #10b981;
-            --dark: #1e293b;
-            --light: #f8fafc;
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --accent-color: #4CAF50; /* Grün-Akzent */
         }
-        
         body {
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.5s ease;
         }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(16,185,129,0.1) 100%);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 40px rgba(79, 70, 229, 0.1);
-        }
-        
-        .service-card {
-            transition: all 0.3s ease;
-        }
-        
-        .animate-pulse-slow {
-            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .testimonial-card {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        
-        .input-focus:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
-        }
-        
-        /* Zusätzlicher Stil für Logo-Hintergrundanpassung */
-        .logo-bg-light {
-            background-color: #f7f7f7; /* Heller Hintergrund für dunkle Logos */
-        }
-
-        /* Stil für die kleinen Bild-Logos im Clients-Bereich */
-        .client-image {
-            height: 4.5rem; /* Etwas größer als die ursprünglichen SVGs */
-            width: 4.5rem;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-        }
-
-        .client-wrapper:hover .client-image {
-            transform: scale(1.05);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Stil für das responsive Video-Embedding (Vimeo-Standard) */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Seitenverhältnis */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            border-radius: 0.75rem; /* rounded-lg */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        .video-container iframe {
-            position: absolute;
+        /* Video-Hintergrund Styling */
+        .video-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100vw;
+            min-height: 100vh;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            /* Das Video wird leicht abgedunkelt, aber hell genug gehalten */
+            filter: brightness(0.8) grayscale(50%);
+         }
+        /* Überlagerung für bessere Lesbarkeit */
+        .overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            /* Opazität auf 0.4 reduziert, um das Video heller zu zeigen */
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+        /* Styling für die aufklappbaren Artikel */
+        .article {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            overflow-y: auto;
+            transform: translateX(100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s;
+        }
+        /* Anpassung für mobile Geräte: Padding reduzieren */
+        @media (max-width: 640px) {
+            .article {
+                padding: 1rem;
+            }
+        }
+        .article.is-active {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        /* Styling des Schließen-Buttons */
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: 2px solid var(--text-color);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .close-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        /* Spezielles Header-Styling */
+        #header {
+            max-width: 25rem;
+            min-width: 18rem;
+            /* Zusätzliche mobile Optimierung: max-width auf kleinen Geräten */
+            width: 90%;
+         }
+        /* Allgemeine Optimierung des Wrappers für Mobilgeräte */
+        #wrapper {
+            padding: 1rem; /* Reduziertes Padding auf Mobilgeräten */
+        }
+        /* Sicherstellen, dass der Elfsight-Container mobilfreundlich ist */
+        .elfsight-app-container {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+        /* Zusätzliches Styling für den WhatsApp-Button */
+        .whatsapp-button:hover svg {
+            animation: bounce 0.6s infinite alternate;
+        }
+        @keyframes bounce {
+          from {
+            transform: translateY(0);
+          }
+          to {
+            transform: translateY(-5px);
+          }
+        }
+        /* Styling für den Profilbild-Container */
+        .avatar-container {
+            width: 8rem; /* 128px */
+            height: 8rem; /* 128px */
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* Leichter grüner Schein */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .avatar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Styling für Projekt-Badges (Skills) */
+        .badge {
+            display: inline-block;
+            background-color: #374151; /* gray-700 */
+            color: #d1d5db; /* gray-300 */
+            font-size: 0.75rem; /* text-xs */
+            line-height: 1rem;
+            padding: 0.25rem 0.625rem; /* px-2.5 py-0.5 */
+            border-radius: 9999px; /* rounded-full */
+            font-weight: 500; /* font-medium */
+            margin-right: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        /* Styling für das neue "Über mich" Bild */
+        .about-image {
+            width: 100%;
+            max-width: 20rem; /* max-width auf 320px beschränken */
+            height: auto;
+            border-radius: 0.75rem; /* abgerundete Ecken */
+            margin-bottom: 1.5rem; /* Abstand nach unten */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+        }
+        /* Stil für den Cookie-Banner (damit der Übergang funktioniert) */
+        #cookie-banner.hidden {
+            display: none;
+        }
+        #cookie-banner.translate-y-full {
+            transform: translateY(100%);
+        }
+        #cookie-banner.slide-in {
+            transform: translateY(0);
+        }
+        /* Spezielles Styling für die Nummerierung der Probleme */
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .problem-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-right: 0.75rem;
+            line-height: 1.2;
+        }
+        .problem-text {
+            font-size: 1.125rem; /* text-lg */
+            color: #d1d5db; /* gray-300 */
         }
     </style>
+        <!-- Elfsight Plattform Skript -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <!-- WildWave Logo/Name -->
-                        <span class="text-2xl font-bold text-indigo-600">WildWave Marketing</span>
-                    </div>
-                    <div class="hidden md:block ml-10">
-                        <div class="flex space-x-8">
-                            <a href="#home" class="nav-link text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Home</a>
-                            <a href="#services" class="nav-link text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Services</a>
-                            <a href="#projekte" class="nav-link text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Projekte</a>
-                            <a href="#vorteile" class="nav-link text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Vorteile</a>
-                            <a href="#kontakt" class="nav-link text-gray-900 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Kontakt</a>
+<body class="flex items-center justify-center min-h-screen">
+    <!-- VIDEO-HINTERGRUND ELEMENT -->
+    <video playsinline autoplay loop muted class="video-background" id="video-bg">
+        <!-- NEUER VIDEO-LINK VON PEXELS -->
+        <source src="https://www.pexels.com/de-de/download/video/7680121/" type="video/mp4">
+        <!-- Fallback für Browser, die kein Video unterstützen (zeigt statische Hintergrundfarbe) -->
+        Ihr Browser unterstützt keine Video-Hintergründe.
+    </video>
+    <!-- Überlagerung für bessere Lesbarkeit -->
+    <div class="overlay"></div>
+    <!-- Haupt-Wrapper -->
+    <div id="wrapper" class="p-4 sm:p-8 max-w-4xl mx-auto flex flex-col items-center justify-center w-full">
+        <!-- Header/Menü (Zentral) -->
+        <header id="header" class="text-center p-6 bg-gray-900 bg-opacity-80 rounded-xl shadow-2xl transition duration-500 hover:bg-opacity-95">
+            <div class="mb-6">
+                <!-- AVATAR: Bild eingefügt -->
+                <div class="avatar-container mx-auto mb-4">
+                    <img
+                        src="https://i.ibb.co/4n7386jv/Web-Craft-Solutions-20251126-113630-0000.png"
+                        alt="Profilbild Web Craft Solutions"
+                        class="avatar-image"
+                        onerror="this.onerror=null; this.src='https://placehold.co/128x128/3b82f6/ffffff?text=WCS';"
+                    />
+                </div>
+                <!-- GEÄNDERT: Überschrift zu Webdesign und Marketing -->
+                <h1 class="text-4xl font-extrabold mb-2 text-white">Webdesign und Marketing</h1>
+                <!-- NEUER, FOKUSSIERTER TEXT -->
+                <p class="text-sm text-gray-400 font-light italic">
+                    Fokussieren Sie sich auf Ihr Kerngeschäft.<br>
+                    Lassen Sie uns Ihre Neukunden finden & Ihre digitale Präsenz verbessern.
+                </p>
+            </div>
+            <!-- Navigationslinks -->
+            <nav>
+                <ul class="flex flex-col space-y-3">
+                    <li><a href="#intro" class="link-item">Einführung</a></li>
+                    <li><a href="#work" class="link-item">Projekte & Arbeit</a></li>
+                    <li><a href="#compare" class="link-item">Vorher/Nachher</a></li>
+                    <li><a href="#about" class="link-item">Über mich</a></li>
+                    <li><a href="#contact" class="link-item">Kontakt</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Footer (Mit Impressum und Datenschutz) -->
+        <footer id="footer" class="mt-8 text-center text-gray-500 text-xs w-full">
+             <ul class="flex justify-center space-x-4">
+                <li><a href="#imprint" class="text-gray-400 hover:text-accent-color">Impressum</a></li>
+                <li class="hidden sm:inline">&bull;</li>
+                <li class="hidden sm:inline"><a href="#privacy" class="text-gray-400 hover:text-accent-color">Datenschutz</a></li>
+                <li class="hidden sm:inline">&bull;</li>
+                <li class="hidden sm:inline">&copy; Untitled. Design: <a href="https://html5up.net" target="_blank" class="text-gray-400 hover:text-accent-color">HTML5 UP</a>.</li>
+            </ul>
+            <!-- Anzeige auf kleinen Bildschirmen -->
+            <div class="sm:hidden mt-2 space-y-1">
+                <a href="#privacy" class="text-gray-400 hover:text-accent-color block">Datenschutz</a>
+                <span class="block">&copy; Untitled. Design: <a href="https://html5up.net" target="_blank" class="text-gray-400 hover:text-accent-color">HTML5 UP</a>.</span>
+            </div>
+        </footer>
+        <!-- Artikel (Hauptbereich) -->
+        <div id="main" class="w-full">
+            <!-- Artikel: Einführung -->
+            <article id="intro" class="article">
+                <button class="close-button" onclick="closeArticle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="max-w-3xl mx-auto py-12">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 border-b-2 border-accent-color pb-2">Einführung</h2>
+
+                    <!-- Die Rolle der Klein- und Mittelunternehmen (KMU) in einer sich wandelnden Welt -->
+                    <h3 class="text-2xl font-bold mb-4 text-green-400">Die Rolle der Klein- und Mittelunternehmen (KMU)</h3>
+                    <p class="text-base sm:text-lg mb-6 text-gray-300">
+                        Klein- und Mittelunternehmen (KMU) sind das Rückgrat jeder modernen Volkswirtschaft und Innovationsmotor unserer Gesellschaft. Sie schaffen Arbeitsplätze, sichern die lokale Versorgung und tragen maßgeblich zur regionalen Stabilität bei. Trotz dieser entscheidenden Rolle stehen KMU heute jedoch vor monumentalen Herausforderungen, die ihre Existenz und ihr Wachstum bedrohen können.
+                    </p>
+
+                    <!-- Die zentralen Probleme kleiner Unternehmen in der Digitalisierung -->
+                    <h3 class="text-2xl font-bold mb-4 text-green-400">Die zentralen Probleme kleiner Unternehmen in der Digitalisierung</h3>
+                    <p class="text-base sm:text-lg mb-6 text-gray-300">
+                        Die häufigsten Stolpersteine für Kleinunternehmen sind fast immer dieselben:
+                    </p>
+
+                    <!-- Probleme als Liste dargestellt -->
+                    <div class="space-y-4 mb-8 p-4 bg-gray-800 rounded-lg shadow-inner">
+                        <div class="problem-item">
+                            <span class="problem-number">1.</span>
+                            <p class="problem-text"><strong>Die unsichtbare Website:</strong> Veraltete, langsame oder mobil unfreundliche Webseiten, die das Vertrauen der Kunden untergraben.</p>
+                        </div>
+                        <div class="problem-item">
+                            <span class="problem-number">2.</span>
+                            <p class="problem-text"><strong>Das fehlende Ranking:</strong> Ein Mangel an spezialisiertem Know-how im Bereich Suchmaschinenoptimierung (SEO) führt dazu, dass das Unternehmen in den Google-Suchergebnissen unsichtbar bleibt.</p>
+                        </div>
+                        <div class="problem-item">
+                            <span class="problem-number">3.</span>
+                            <p class="problem-text"><strong>Die stille Präsenz:</strong> Eine inkonsequente oder gar fehlende Social-Media-Strategie, die es nicht schafft, neue Zielgruppen zu erreichen und die Kundenbindung zu stärken.</p>
                         </div>
                     </div>
-                </div>
-                <div class="hidden md:block">
-                    <a href="#kontakt" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Kostenloses Gespräch
-                    </a>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                        <span class="sr-only">Hauptmenü öffnen</span>
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">Home</a>
-                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">Services</a>
-                <a href="#projekte" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">Projekte</a>
-                <a href="#vorteile" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">Vorteile</a>
-                <a href="#kontakt" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-50">Kontakt</a>
-                <a href="#kontakt" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Kostenloses Gespräch</a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 hero-gradient">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
-                    <div>
-                        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                            <span class="block">Ihre Online-Präsenz</span>
-                            <span class="block text-indigo-600">in der Schweiz stärken</span>
-                        </h1>
-                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                            Wir erstellen professionelle Websites und datengestützte SEO-Strategien, die Schweizer KMU helfen, online zu wachsen – flexibel und monatlich kündbar.
-                        </p>
-                        <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
-                            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                                <a href="#kontakt" class="px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    Jetzt kostenlos beraten lassen
+                    <p class="text-base sm:text-lg mb-8 text-gray-300">
+                        Viele KMU fühlen sich durch die Komplexität der Digitalisierung überfordert, kämpfen mit ineffizienten internen Prozessen und finden kaum Zeit, sich auf ihre Kernkompetenzen zu konzentrieren. Oftmals bedeutet dies, dass wertvolle Zeit und Kapital in komplizierte Verwaltungsaufgaben oder unproduktive Marketingstrategien investiert werden.
+                    </p>
+
+                    <!-- Der Weg zur Lösung: Ihr ganzheitliches Digitalpaket -->
+                    <h3 class="text-2xl font-bold mb-4 text-accent-color">Der Weg zur Lösung: Ihr ganzheitliches Digitalpaket</h3>
+                    <p class="text-base sm:text-lg text-gray-200 p-4 bg-green-900 bg-opacity-30 rounded-lg border-l-4 border-accent-color">
+                        Ich, Marco, habe **WildWave Marketing** gegründet, um diesen Kreislauf zu durchbrechen. Wir bieten eine **klare, umsetzbare und kosteneffiziente Lösung** an: die Einführung einer **ganzheitlichen digitalen Präsenz-Strategie**, die professionelles Webdesign, starkes Google-Ranking und engagierte Social-Media-Kommunikation in einem Paket vereint. Unser Ansatz zielt darauf ab, die Komplexität zu reduzieren, verborgene Effizienzpotenziale freizusetzen und KMU die notwendigen Werkzeuge an die Hand zu geben, um im digitalen Zeitalter nicht nur zu überleben, sondern erfolgreich zu florieren, während Sie sich auf das konzentrieren, was Sie am besten können: Ihr Geschäft.
+                    </p>
+
+                </div>
+            </article>
+            <!-- Artikel: Projekte & Arbeit (Projekt C entfernt) -->
+            <article id="work" class="article">
+                <button class="close-button" onclick="closeArticle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="max-w-3xl mx-auto py-12">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 border-b-2 border-accent-color pb-2">Projekte & Arbeit</h2>
+                    <div class="space-y-6 sm:space-y-8">
+                        <!-- Projekt 1: Jeshua Coiffeur -->
+                        <div class="p-4 sm:p-6 bg-gray-800 rounded-lg shadow-xl border-l-4 border-green-500">
+                            <h3 class="text-2xl sm:text-3xl font-semibold mb-2 text-green-400">Jeshua Coiffeur - Webpräsenz & Buchung</h3>
+                            <p class="text-gray-300 mb-3 text-sm sm:text-base">
+                                **Aufgabe:** Konzeption und Erstellung einer modernen, mobiloptimierten Webseite für den Coiffeur-Salon.
+                                **Schwerpunkt:** Integration eines nahtlosen Online-Buchungssystems, um die Terminverwaltung zu automatisieren und die Kundenzufriedenheit zu steigern.
+                            </p>
+                            <p class="mb-3">
+                                <a href="https://jeshua-coiffeur.ch" target="_blank" class="text-accent-color hover:text-green-300 underline font-medium transition duration-200">
+                                    Zur Webseite: jeshua-coiffeur.ch
                                 </a>
-                                <a href="#projekte" class="px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    Unsere Projekte ansehen
-                                </a>
+                            </p>
+                            <div class="flex flex-wrap">
+                                <span class="badge">Webdesign</span>
+                                <span class="badge">Online-Buchung</span>
+                                <span class="badge">CMS (z.B. WordPress/Wix)</span>
+                                <span class="badge">Responsive Design</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                    <div class="relative mx-auto w-full lg:max-w-md">
-                        <!-- START: Vimeo Video Integration -->
-                        <div class="video-container">
-                            <!-- Das Vimeo iframe ist hier eingefügt. Die responsive Formatierung erfolgt über den .video-container Stil in <style> -->
-                            <iframe 
-                                src="https://player.vimeo.com/video/1140712325?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                                frameborder="0" 
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" 
-                                title="renderforest_1761853749077">
-                            </iframe>
+                        <!-- Projekt 2: Sinoqi medical GmbH -->
+                        <div class="p-4 sm:p-6 bg-gray-800 rounded-lg shadow-xl border-l-4 border-green-500">
+                            <h3 class="text-2xl sm:text-3xl font-semibold mb-2 text-green-400">Sinoqi medical GmbH - Payment & Social Media</h3>
+                            <p class="text-gray-300 mb-3 text-sm sm:text-base">
+                                **Aufgabe 1 (Technik):** Implementierung eines sicheren und effizienten Zahlungsgateways (Payment Gateway) für den Online-Verkauf medizinischer Produkte.
+                                **Aufgabe 2 (Marketing):** Übernahme der TikTok Social Media Verwaltung zur Steigerung der Markenbekanntheit und des Engagements in der jungen Zielgruppe.
+                            </p>
+                            <div class="flex flex-wrap">
+                                <span class="badge">Zahlungsintegration (Stripe/PayPal)</span>
+                                <span class="badge">E-Commerce</span>
+                                <span class="badge">Social Media Marketing</span>
+                                <span class="badge">TikTok Management</span>
+                            </div>
                         </div>
-                        <script src="https://player.vimeo.com/api/player.js"></script>
-                        <!-- END: Vimeo Video Integration -->
-                        
-                        <!-- Der kosmetische Hintergrundkreis bleibt, um den Design-Stil beizubehalten -->
-                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-indigo-100 rounded-full animate-pulse-slow z-[-1]"></div>
+                        <!-- Das ursprüngliche Projekt C wurde hier entfernt -->
                     </div>
                 </div>
-            </div>
+            </article>
+            <!-- Artikel: Vorher/Nachher -->
+            <article id="compare" class="article">
+                <button class="close-button" onclick="closeArticle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="max-w-3xl mx-auto py-12">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 border-b-2 border-accent-color pb-2">Vorher / Nachher</h2>
+                    <p class="text-base sm:text-lg mb-8">Sehen Sie den Unterschied, den meine Arbeit macht. Bewegen Sie den Schieberegler, um die Resultate zu vergleichen.</p>
+                    <!-- Elfsight Before and After Slider -->
+                    <!-- Elfsight Slider ist darauf angewiesen, dass das Skript im <head> geladen wird. -->
+                    <div class="elfsight-app-30ba7350-0dce-491c-aafc-0fe3d99a2fa4 elfsight-app-container" data-elfsight-app-lazy></div>
+                    <p class="text-sm text-gray-500 mt-8">Hinweis: Der Inhalt des Sliders wird von Elfsight geladen und benötigt eine aktive Internetverbindung, um sichtbar zu sein.</p>
+                </div>
+            </article>
+            <!-- Artikel: Über mich -->
+            <article id="about" class="article">
+                <button class="close-button" onclick="closeArticle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="max-w-3xl mx-auto py-12">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 border-b-2 border-accent-color pb-2">Über Marco</h2>
+                    <!-- Hier wurde das neue Bild eingefügt, zentriert und mit speziellem Styling -->
+                    <div class="flex justify-center">
+                        <img
+                            src="https://i.ibb.co/m5sC2Xpd/1762655778522.jpg"
+                            alt="Marco - Webdesigner mit Sales- und Marketing-Erfahrung"
+                            class="about-image"
+                        />
+                    </div>
+                    <!-- Hier wurde der Text eingefügt -->
+                    <p class="text-base sm:text-lg mb-4">
+                        Ich bin Marco, ein passionierter Webdesigner, der weiß, dass Ästhetik allein nicht ausreicht. Mit meiner umfassenden Erfahrung in Sales und Marketing verbinde ich kreative Vision mit strategischem Denken. Mein Ziel ist es, intuitive und visuell ansprechende Websites zu entwickeln, die nicht nur Nutzer begeistern, sondern vor allem **messbare Geschäftsergebnisse** liefern. Ich verstehe die Customer Journey und weiß, wie man Design nutzt, um Konversionen und Kundenbindung zu optimieren.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4 sm:gap-6 mt-8">
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <h4 class="text-xl font-semibold text-accent-color">Kernkompetenzen</h4>
+                            <ul class="list-disc list-inside ml-4 mt-2 text-gray-300 text-sm sm:text-base">
+                                <li>Strategisches Webdesign (Performance- & Conversions-Optimierung)</li>
+                                <li>Sales- und Marketing-Integration</li>
+                                <li>Full Responsive Development (Mobile First)</li>
+                                <li>Content Management Systeme (CMS)</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <h4 class="text-xl font-semibold text-accent-color">Technologien & Tools</h4>
+                            <ul class="list-disc list-inside ml-4 mt-2 text-gray-300 text-sm sm:text-base">
+                                <li>HTML5 / CSS3 (Tailwind CSS)</li>
+                                <li>JavaScript / jQuery</li>
+                                <li>SEO & Analytics Tools</li>
+                                <li>Adobe Creative Suite</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- Artikel: Kontakt -->
+            <article id="contact" class="article">
+                <button class="close-button" onclick="closeArticle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="max-w-3xl mx-auto py-12 text-center">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 border-b-2 border-accent-color pb-2">Kontakt</h2>
+                    <div class="space-y-6">
+                        <p class="text-lg text-gray-300">Für schnelle Anfragen und direkte Kommunikation nutzen Sie bitte WhatsApp:</p>
+                        <!-- WhatsApp Button mit Inline SVG -->
+                        <a
+                            href="https://wa.me/41782630406"
+                            target="_blank"
+                            class="whatsapp-button inline-flex items-center justify-center w-full max-w-sm px-6 py-4 bg-green-500 text-white text-lg font-bold rounded-xl shadow-lg hover:bg-green-600 transition duration-300 transform hover:scale-105 mx-auto"
+                            title="WhatsApp Chat mit 078 263 04 06"
+                        >
+                            <!-- WhatsApp Icon SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.92 4.46-9.92 9.92 0 1.63.4 3.2 1.17 4.6l-1.2 4.4 4.54-1.18c1.37.7 2.87 1.07 4.92 1.07 5.46 0 9.92-4.46 9.92-9.92C22.04 6.46 17.58 2 12.04 2zm5.75 14.82c-.28.16-.62.26-.95.26-.33 0-.67-.1-1.01-.26l-3.32-2.02-3.32 2.02c-.34.16-.68.26-1.01.26-.33 0-.67-.1-.95-.26-.78-.45-1.28-1.23-1.28-2.08 0-.85.5-1.63 1.28-2.08l3.32-2.02 3.32 2.02c.78.45 1.28 1.23 1.28 2.08 0 .85-.5 1.63-1.28 2.08z"/></svg>
+                            WhatsApp Nachricht senden
+                        </a>
+                        <p class="text-base text-gray-400">Telefon: <a href="tel:+41782630406" class="hover:text-accent-color">+41 78 263 04 06</a></p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-gray-700 text-center">
+                        <p class="text-gray-400">Oder verbinden Sie sich über Social Media:</p>
+                        <div class="flex justify-center space-x-4 mt-2">
+                            <a href="#" class="text-2xl text-white hover:text-accent-color transition duration-200" title="LinkedIn">in</a>
+                            <a href="#" class="text-2xl text-white hover:text-accent-color transition duration-200" title="GitHub">gh</a>
+                            <a href="#" class="text-2xl text-white hover:text-accent-color transition duration-200" title="X (Twitter)">x</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- AKTUALISIERTER ARTIKEL: Impressum (Schweiz-Konform) -->
+            <article id="imprint" class="article">
+                <button class="close-button" onclick="closeArticle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="max-w-3xl mx-auto py-12">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 border-b-2 border-accent-color pb-2">Impressum (Anbieterkennzeichnung)</h2>
+                    <p class="text-lg font-semibold mb-4 text-gray-300">Angaben gemäss Art. 3 Abs. 1 lit. s UWG (Schweizer Gesetz)</p>
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-accent-color">Name und Adresse des Anbieters:</h3>
+                        <div class="p-4 bg-gray-800 rounded-lg text-gray-300">
+                            <p class="font-semibold text-lg text-white">WildWave Marketing</p>
+                            <p>Inhaber: Marco</p>
+                            <p>Adresse: [Ihre vollständige Adresse in Uster]</p>
+                            <p>CH-8610 Uster, Schweiz</p>
+                        </div>
+                        <h3 class="text-xl font-bold text-accent-color pt-4">Kontakt:</h3>
+                        <div class="p-4 bg-gray-800 rounded-lg text-gray-300">
+                            <p>E-Mail: <a href="mailto:wildwave@mail.ch" class="text-accent-color hover:underline">wildwave@mail.ch</a></p>
+                            <p>Telefon: <a href="tel:+41782630406" class="text-accent-color hover:underline">+41 78 263 04 06</a></p>
+                        </div>
+                        <h3 class="text-xl font-bold text-accent-color pt-4">Weitere Angaben:</h3>
+                        <div class="p-4 bg-gray-800 rounded-lg text-gray-300">
+                            <p>Rechtsform: Einzelunternehmen</p>
+                            <p>Unternehmens-Identifikationsnummer (UID): [Falls vorhanden]</p>
+                            <p>Gerichtsstand: Uster</p>
+                        </div>
+                        <p class="text-sm text-yellow-300 pt-8 p-4 bg-gray-900 rounded-lg border border-yellow-500">
+                            *WICHTIGER HINWEIS: Bitte ersetzen Sie [Ihre vollständige Adresse in Uster] und [Falls vorhanden] (UID) durch die korrekten, vollständigen Angaben, um allen rechtlichen Anforderungen der Schweiz zu genügen.
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <!-- ARTIKEL: Datenschutz -->
+            <article id="privacy" class="article">
+                <button class="close-button" onclick="closeArticle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="max-w-3xl mx-auto py-12">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 border-b-2 border-accent-color pb-2">Datenschutzerklärung</h2>
+                    <p class="text-sm text-gray-500 mb-8">Stand: Mai 2025</p>
+                    <!-- 1. Allgemeines -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-4 mb-3">1. Allgemeines</h3>
+                    <p class="text-gray-300 mt-2 text-base sm:text-lg">
+                        Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Diese Datenschutzerklärung
+                        informiert Sie darüber, welche Daten wir erheben, wie wir sie verwenden und welche Rechte Sie haben.
+                    </p>
+                    <!-- 2. Verantwortliche Stelle -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-8 mb-3">2. Verantwortliche Stelle</h3>
+                    <p class="text-gray-300 mt-2 text-base sm:text-lg">
+                        Verantwortlich für die Datenverarbeitung auf dieser Website ist:
+                    </p>
+                    <div class="mt-4 p-4 bg-gray-800 rounded-lg text-gray-300">
+                        <p class="font-semibold text-lg text-white">WildWave Marketing</p>
+                        <p>Marco</p>
+                        <p>Uster, Schweiz</p>
+                        <p>E-Mail: <a href="mailto:wildwave@mail.ch" class="text-accent-color hover:underline">wildwave@mail.ch</a></p>
+                        <p>Telefon: <a href="tel:+41782630406" class="text-accent-color hover:underline">+41 78 263 04 06</a></p>
+                    </div>
+                    <!-- 3. Erhebung und Speicherung personenbezogener Daten -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-8 mb-4">3. Erhebung und Speicherung personenbezogener Daten</h3>
+                    <!-- 3.1 Beim Besuch der Website -->
+                    <h4 class="text-xl font-semibold text-gray-100 pt-4 mb-2">3.1 Beim Besuch der Website</h4>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Beim Aufrufen unserer Website werden automatisch Informationen erfasst:
+                    </p>
+                    <ul class="list-disc list-inside ml-4 mt-2 text-gray-300 text-sm space-y-1">
+                        <li>IP-Adresse</li>
+                        <li>Datum und Uhrzeit des Zugriffs</li>
+                        <li>Browsertyp und -version</li>
+                        <li>Betriebssystem</li>
+                    </ul>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Diese Daten werden ausschliesslich zur Sicherstellung der Funktionsfähigkeit und Verbesserung unserer Website verwendet.
+                    </p>
+                    <!-- 3.2 Bei Kontaktaufnahme -->
+                    <h4 class="text-xl font-semibold text-gray-100 pt-6 mb-2">3.2 Bei Kontaktaufnahme</h4>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Wenn Sie uns per E-Mail, Telefon oder Kontaktformular kontaktieren, werden Ihre Angaben
+                        (Name, E-Mail-Adresse, Telefonnummer, Nachricht) zur Bearbeitung Ihrer Anfrage gespeichert.
+                    </p>
+                    <!-- 3.3 Bei Vertragsabschluss -->
+                    <h4 class="text-xl font-semibold text-gray-100 pt-6 mb-2">3.3 Bei Vertragsabschluss</h4>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Für die Abwicklung unserer Dienstleistungen erheben wir:
+                    </p>
+                    <ul class="list-disc list-inside ml-4 mt-2 text-gray-300 text-sm space-y-1">
+                        <li>Name und Firmenname</li>
+                        <li>Kontaktdaten (E-Mail, Telefon, Adresse)</li>
+                        <li>Zahlungsinformationen (über Stripe)</li>
+                        <li>Projektspezifische Informationen (Farbwünsche, Öffnungszeiten, Fotos)</li>
+                    </ul>
+                    <!-- 4. Zweck der Datenverarbeitung -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-8 mb-4">4. Zweck der Datenverarbeitung</h3>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Ihre Daten werden verwendet für:
+                    </p>
+                    <ul class="list-disc list-inside ml-4 mt-2 text-gray-300 text-base space-y-1">
+                        <li>Bearbeitung von Anfragen</li>
+                        <li>Vertragsabwicklung und Projektdurchführung</li>
+                        <li>Rechnungsstellung</li>
+                        <li>Kundensupport</li>
+                        <li>Verbesserung unserer Dienstleistungen</li>
+                    </ul>
+                    <!-- 5. Weitergabe von Daten -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-8 mb-4">5. Weitergabe von Daten</h3>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Wir geben Ihre Daten nur weiter, wenn:
+                    </p>
+                    <ul class="list-disc list-inside ml-4 mt-2 text-gray-300 text-base space-y-1">
+                        <li>Sie ausdrücklich eingewilligt haben</li>
+                        <li>Es zur Vertragserfüllung erforderlich ist (z.B. Zahlungsabwicklung über Stripe)</li>
+                        <li>Eine gesetzliche Verpflichtung besteht</li>
+                    </ul>
+                    <!-- 5.1 Stripe (Zahlungsabwicklung) -->
+                    <h4 class="text-xl font-semibold text-gray-100 pt-6 mb-2">5.1 Stripe (Zahlungsabwicklung)</h4>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Für die Zahlungsabwicklung nutzen wir Stripe. Dabei werden Zahlungsdaten direkt an Stripe übermittelt.
+                        Weitere Informationen finden Sie in der Datenschutzerklärung von Stripe:
+                        <a href="https://stripe.com/privacy" target="_blank" class="text-accent-color hover:underline">https://stripe.com/privacy</a>
+                    </p>
+                    <!-- 6. Speicherdauer -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-8 mb-3">6. Speicherdauer</h3>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Wir speichern Ihre Daten nur so lange, wie es für die jeweiligen Zwecke erforderlich ist
+                        oder gesetzliche Aufbewahrungsfristen bestehen (in der Regel 10 Jahre für Geschäftsunterlagen).
+                    </p>
+                    <!-- 7. Ihre Rechte -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-8 mb-3">7. Ihre Rechte</h3>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Sie haben das Recht auf:
+                    </p>
+                    <ul class="list-disc list-inside ml-4 mt-2 text-gray-300 text-base space-y-1">
+                        <li>Auskunft über Ihre gespeicherten Daten</li>
+                        <li>Berichtigung unrichtiger Daten</li>
+                        <li>Löschung Ihrer Daten</li>
+                        <li>Einschränkung der Verarbeitung</li>
+                        <li>Datenübertragbarkeit</li>
+                        <li>Widerspruch gegen die Verarbeitung</li>
+                    </ul>
+                    <p class="text-gray-300 mt-4 text-base">
+                        Zur Ausübung Ihrer Rechte kontaktieren Sie uns unter: <a href="mailto:wildwave@mail.ch" class="text-accent-color hover:underline">wildwave@mail.ch</a>
+                    </p>
+                    <!-- 8. Cookies -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-8 mb-3">8. Cookies</h3>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Unsere Website kann Cookies verwenden, um die Benutzerfreundlichkeit zu verbessern.
+                        Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert
+                        werden und diese nur im Einzelfall erlauben.
+                    </p>
+                    <!-- 9. Social Media -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-8 mb-3">9. Social Media</h3>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Falls wir Social-Media-Plugins einsetzen, werden Daten an die jeweiligen Plattformen
+                        (Facebook, Instagram, TikTok) übertragen. Weitere Informationen finden Sie in den
+                        Datenschutzerklärungen der jeweiligen Anbieter.
+                    </p>
+                    <!-- 10. Änderungen der Datenschutzerklärung -->
+                    <h3 class="text-2xl font-bold text-accent-color pt-8 mb-3">10. Änderungen der Datenschutzerklärung</h3>
+                    <p class="text-gray-300 mt-2 text-base">
+                        Wir behalten uns vor, diese Datenschutzerklärung anzupassen, um sie an geänderte
+                        Rechtslagen oder Dienstleistungen anzupassen.
+                    </p>
+                </div>
+            </article>
         </div>
-    </section>
-
-    <!-- Clients Section -->
-    <section class="py-12 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="text-center text-sm font-semibold uppercase text-gray-500 tracking-wide">
-                Vertraut von KMU und lokalen Dienstleistern in der Schweiz
+    </div>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 p-4 sm:p-6 bg-gray-900 bg-opacity-95 backdrop-blur-sm shadow-2xl z-50 transition-transform duration-500 transform translate-y-full hidden">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 sm:space-x-6">
+            <!-- Text Content -->
+            <p class="text-sm sm:text-base text-gray-200">
+                Wir nutzen Cookies, um die Funktionalität dieser Website zu gewährleisten und das Nutzererlebnis zu optimieren. Durch Klicken auf 'Alle akzeptieren' stimmen Sie dem zu.
+                <!-- Link zum Datenschutz-Artikel -->
+                <a href="#privacy" onclick="closeArticle(); showArticleFromHash(); return false;" class="text-accent-color hover:underline font-semibold whitespace-nowrap">Mehr erfahren</a>
             </p>
-            <!-- Ersetzte Platzhalter-Logos durch die bereitgestellten Bilder -->
-            <div class="mt-6 grid grid-cols-2 gap-8 md:grid-cols-5 lg:grid-cols-5">
-                <!-- Coiffeur Salon -->
-                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
-                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/7447148/pexels-photo-7447148.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Coiffeur-Salon">
-                    <span class="mt-2 text-xs font-medium text-gray-500">Coiffeur Salon</span>
-                </div>
-                
-                <!-- Restaurant -->
-                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
-                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Restaurant">
-                    <span class="mt-2 text-xs font-medium text-gray-500">Restaurant</span>
-                </div>
-                
-                <!-- Handwerker -->
-                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
-                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/1659748/pexels-photo-1659748.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Handwerker">
-                    <span class="mt-2 text-xs font-medium text-gray-500">Handwerker</span>
-                </div>
-                
-                <!-- Online Shop -->
-                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
-                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/7679446/pexels-photo-7679446.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Online Shop">
-                    <span class="mt-2 text-xs font-medium text-gray-500">Online Shop</span>
-                </div>
-                
-                <!-- Bürodienstleister -->
-                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
-                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Bürodienstleister">
-                    <span class="mt-2 text-xs font-medium text-gray-500">Bürodienstleister</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Unsere digitalen Services
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-                    Umfassende Lösungen, zugeschnitten auf Ihre Geschäftsbedürfnisse
-                </p>
-            </div>
-            
-            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Service 1: Webdesign & Entwicklung -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-md">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-indigo-600">
-                        <i class="fas fa-laptop-code text-xl"></i>
-                    </div>
-                    <h3 class="mt-6 text-lg font-medium text-gray-900">Webdesign & Entwicklung</h3>
-                    <p class="mt-2 text-base text-gray-500">
-                        Moderne, responsive Websites mit Fokus auf Performance, Nutzererfahrung (UX) und Conversion.
-                    </p>
-                    <div class="mt-6">
-                        <a href="#kontakt" class="text-indigo-600 hover:text-indigo-500 font-medium">Mehr erfahren →</a>
-                    </div>
-                </div>
-                
-                <!-- Service 2: Gezieltes SEO -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-md">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600">
-                        <i class="fas fa-search text-xl"></i>
-                    </div>
-                    <h3 class="mt-6 text-lg font-medium text-gray-900">Gezieltes SEO (Google Schweiz)</h3>
-                    <p class="mt-2 text-base text-gray-500">
-                        Wir verbessern Ihr Ranking in den Suchmaschinen, damit lokale Kunden in Ihrer Region Sie finden.
-                    </p>
-                    <div class="mt-6">
-                        <a href="#kontakt" class="text-indigo-600 hover:text-indigo-500 font-medium">Mehr erfahren →</a>
-                    </div>
-                </div>
-                
-                <!-- Service 3: E-Commerce & Buchung -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-md">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-100 text-purple-600">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                    </div>
-                    <h3 class="mt-6 text-lg font-medium text-gray-900">E-Commerce & Buchungssysteme</h3>
-                    <p class="mt-2 text-base text-gray-500">
-                        Integration von Online-Shops oder nahtlosen Kalender- und Buchungssystemen in Ihre Website.
-                    </p>
-                    <div class="mt-6">
-                        <a href="#kontakt" class="text-indigo-600 hover:text-indigo-500 font-medium">Mehr erfahren →</a>
-                    </div>
-                </div>
-                
-                <!-- Service 4: Digitales Marketing -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-md">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-600">
-                        <i class="fas fa-bullseye text-xl"></i>
-                    </div>
-                    <h3 class="mt-6 text-lg font-medium text-gray-900">Digitales Marketing</h3>
-                    <p class="mt-2 text-base text-gray-500">
-                        Ganzheitliche Strategien inklusive Google Ads (PPC) und Performance-Optimierung.
-                    </p>
-                    <div class="mt-6">
-                        <a href="#kontakt" class="text-indigo-600 hover:text-indigo-500 font-medium">Mehr erfahren →</a>
-                    </div>
-                </div>
-                
-                <!-- Service 5: Content & Social Media -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-md">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-100 text-yellow-600">
-                        <i class="fas fa-camera-retro text-xl"></i>
-                    </div>
-                    <h3 class="mt-6 text-lg font-medium text-gray-900">Content & Social Media</h3>
-                    <p class="mt-2 text-base text-gray-500">
-                        Entwicklung von Content-Strategien und Management Ihrer Social-Media-Kanäle (z.B. TikTok, Instagram).
-                    </p>
-                    <div class="mt-6">
-                        <a href="#kontakt" class="text-indigo-600 hover:text-indigo-500 font-medium">Mehr erfahren →</a>
-                    </div>
-                </div>
-                
-                <!-- Service 6: Analytics & Reporting -->
-                <div class="service-card bg-white p-8 rounded-xl shadow-md">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-red-100 text-red-600">
-                        <i class="fas fa-chart-line text-xl"></i>
-                    </div>
-                    <h3 class="mt-6 text-lg font-medium text-gray-900">Analytics & Reporting</h3>
-                    <p class="mt-2 text-base text-gray-500">
-                        Detaillierte Leistungsberichte und umsetzbare Erkenntnisse zur Messung und Verbesserung Ihres ROI.
-                    </p>
-                    <div class="mt-6">
-                        <a href="#kontakt" class="text-indigo-600 hover:text-indigo-500 font-medium">Mehr erfahren →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vorteile Section (New Section) -->
-    <section id="vorteile" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-16">
-                <div class="lg:col-span-6">
-                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                        Ihre WildWave Vorteile: Flexibilität ohne Risiko
-                    </h2>
-                    <p class="mt-4 text-xl text-gray-500">
-                        Wir kennen die Herausforderungen von KMU in der Schweiz: Wir bieten maximale Flexibilität und transparente Preise.
-                    </p>
-
-                    <div class="mt-8 space-y-6">
-                        <div class="flex">
-                            <i class="fas fa-calendar-times text-indigo-600 text-2xl mt-1 flex-shrink-0"></i>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-gray-900">Monatlich kündbar</h3>
-                                <p class="text-gray-500">Maximale Flexibilität ohne lange Vertragsbindung oder versteckte Kosten. Starten Sie, wann Sie wollen, und bleiben Sie, solange Sie zufrieden sind.</p>
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <i class="fas fa-globe-europe text-indigo-600 text-2xl mt-1 flex-shrink-0"></i>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-gray-900">Inklusive SEO & Hosting</h3>
-                                <p class="text-gray-500">Ihre Website ist von Anfang an für Google optimiert, inklusive schnellem, zuverlässigem Hosting und täglichen Backups.</p>
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <i class="fas fa-user-headset text-indigo-600 text-2xl mt-1 flex-shrink-0"></i>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-gray-900">Persönlicher Support</h3>
-                                <p class="text-gray-500">Keine anonyme Hotline. Ich bin Ihr direkter Ansprechpartner und reagiere schnell auf Ihre Anliegen und Anpassungswünsche.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-6 mt-12 lg:mt-0">
-                     <!-- Placeholder-Bild für Flexibilität/Support -->
-                    <img class="w-full rounded-xl shadow-2xl" src="https://images.unsplash.com/photo-1542831371-29b0f74f9d13?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Zusammenarbeit und Support">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="projekte" class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Unsere aktuellen Projekte
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-                    Sehen Sie, wie wir Unternehmen zum Online-Erfolg verholfen haben
-                </p>
-            </div>
-            
-            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Projekt 1: Sinoqi.ch - Jetzt mit echtem Logo-Bild -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <!-- Verwendung des Sinoqi Logos -->
-                    <div class="w-full h-64 flex items-center justify-center p-4 logo-bg-light">
-                        <img class="max-h-full max-w-full object-contain transform group-hover:scale-105 transition-transform duration-500" 
-                             src="https://s3.eu-central-1.amazonaws.com/metro-sqq-prod/Sinoqi_Logo_RroPtne.jpg" 
-                             alt="Sinoqi Logo"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x256/4f46e5/ffffff?text=Sinoqi+Logo';"
-                        >
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Sinoqi.ch</h3>
-                        <p class="mt-1 text-gray-200">Gutschein-Checkout-Prozess und TikTok-Strategie</p>
-                        <a href="https://www.sinoqi.ch" target="_blank" class="mt-3 inline-flex items-center text-sm font-medium text-white hover:text-indigo-200">
-                            Zur Webseite
-                            <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Projekt 2: Jeshua Coiffeur - Jetzt mit echtem Logo-Bild -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <!-- Verwendung des Jeshua Coiffeur Logos -->
-                    <div class="w-full h-64 flex items-center justify-center p-4 logo-bg-light">
-                        <img class="max-h-full max-w-full object-contain transform group-hover:scale-105 transition-transform duration-500" 
-                             src="https://i.ibb.co/4wjDsQYC/466137210-484531547938223-3500590581028824832-n-removebg-preview.png" 
-                             alt="Jeshua Coiffeur Logo"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x256/ec4899/ffffff?text=Jeshua+Coiffeur+Logo';"
-                        >
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Jeshua Coiffeur</h3>
-                        <p class="mt-1 text-gray-200">Responsive Website inkl. Buchungsintegration</p>
-                        <a href="https://jeshua-coiffeur.ch" target="_blank" class="mt-3 inline-flex items-center text-sm font-medium text-white hover:text-indigo-200">
-                            Zur Webseite
-                            <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Projekt 3: Beispiel-Platzhalter -->
-                <div class="group relative overflow-hidden rounded-lg shadow-lg">
-                    <img class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Marketing Campaign">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Startup-Landingpage</h3>
-                        <p class="mt-1 text-gray-200">Schnelle Website zur Lead-Generierung</p>
-                        <a href="#" class="mt-3 inline-flex items-center text-sm font-medium text-white hover:text-indigo-200">
-                            Mehr Details
-                            <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center">
-                <a href="#kontakt" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Sprechen Sie über Ihr Projekt
-                    <i class="fas fa-paper-plane ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-16 bg-indigo-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-                <div class="text-center">
-                    <div class="text-5xl font-extrabold">25+</div>
-                    <div class="mt-2 text-lg font-medium">Zufriedene Schweizer Partner</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-5xl font-extrabold">95%</div>
-                    <div class="mt-2 text-lg font-medium">Kundenbindung</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-5xl font-extrabold">5x</div>
-                    <div class="mt-2 text-lg font-medium">Besserer ROI durch SEO</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Was unsere Partner sagen
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-                    Hören Sie von unseren zufriedenen Kunden in der Schweiz
-                </p>
-            </div>
-            
-            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Testimonial 1 (Placeholder) -->
-                <div class="testimonial-card bg-white p-8 rounded-lg">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-lg font-medium text-gray-900">Sandra Müller</div>
-                            <div class="text-indigo-600">Geschäftsführerin, Coiffeur-Salon</div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <p class="text-gray-600 italic">
-                            "Unsere neue Website von WildWave ist fantastisch. Das Online-Buchungssystem läuft reibungslos und wir haben dank des besseren Google-Rankings viel mehr Neukunden gewonnen."
-                        </p>
-                    </div>
-                    <div class="mt-4 flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 (Placeholder) -->
-                <div class="testimonial-card bg-white p-8 rounded-lg">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=80" alt="Michael Chen">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-lg font-medium text-gray-900">Markus Weber</div>
-                            <div class="text-indigo-600">Inhaber, Elektro-Dienstleistungen</div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <p class="text-gray-600 italic">
-                            "Endlich eine Agentur, die versteht, dass ich keine langfristigen Knebelverträge brauche. Die monatliche Kündbarkeit gibt mir Sicherheit und die Ergebnisse sprechen für sich."
-                        </p>
-                    </div>
-                    <div class="mt-4 flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 (Placeholder) -->
-                <div class="testimonial-card bg-white p-8 rounded-lg">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <img class="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1506794778202-dfa99ef17760?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=80" alt="David Lee">
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-lg font-medium text-gray-900">Anna Steiner</div>
-                            <div class="text-indigo-600">Gründerin, Online-Handel</div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <p class="text-gray-600 italic">
-                            "Der E-Commerce-Shop war schnell aufgebaut und sicher. Ich schätze den persönlichen Support, der immer schnell und kompetent auf meine Fragen antwortet."
-                        </p>
-                    </div>
-                    <div class="mt-4 flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="kontakt" class="py-16 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Kostenloses Erstgespräch vereinbaren
-                </h2>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-                    Lassen Sie uns in einem kurzen Gespräch über Ihre Online-Ziele sprechen. Unverbindlich und persönlich.
-                </p>
-            </div>
-
-            <div class="mt-12 max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
-                <!-- Container für das Elfsight Buchungs-Widget. Es wird erst nach Cookie-Zustimmung befüllt. -->
-                <div id="elfsight-widget-container" class="elfsight-widget-container p-2 flex items-center justify-center min-h-[400px]">
-                     <p class="text-center text-gray-500">
-                         Um das Terminbuchungs-Widget zu laden, akzeptieren Sie bitte die Cookies.
-                     </p>
-                </div>
-
-                <div class="mt-8 pt-4 border-t border-gray-200">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Oder direkt kontaktieren:</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-600">
-                        <div class="flex items-center">
-                            <i class="fas fa-envelope text-indigo-600 mr-3"></i>
-                            <span class="font-medium">E-Mail: wildwave@mail.ch</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-phone-alt text-indigo-600 mr-3"></i>
-                            <span class="font-medium">Telefon: +41 78 263 04 06</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="md:flex md:justify-between md:items-center">
-                <div class="mb-6 md:mb-0">
-                    <span class="text-xl font-bold text-indigo-400">WildWave Marketing</span>
-                    <p class="mt-2 text-gray-400 text-sm">Digitaler Erfolg für Schweizer KMU. Flexibel. Transparent. Effektiv.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <!-- Facebook Link -->
-                    <a href="https://www.facebook.com/share/1ARTQqefZL/" target="_blank" class="text-gray-400 hover:text-indigo-400 transition" title="Facebook">
-                        <i class="fab fa-facebook-f text-lg"></i>
-                    </a>
-                    <!-- Twitter (Platzhalter) -->
-                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition" title="Twitter">
-                        <i class="fab fa-twitter text-lg"></i>
-                    </a>
-                    <!-- Instagram Link -->
-                    <a href="https://www.instagram.com/wildwave.ch" target="_blank" class="text-gray-400 hover:text-indigo-400 transition" title="Instagram">
-                        <i class="fab fa-instagram text-lg"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Rechtliche Links (Neu hinzugefügt) -->
-            <div class="mt-8 pt-4 border-t border-gray-700 text-center">
-                <div class="space-x-4 text-sm font-medium">
-                    <a href="impressum.html" class="text-gray-400 hover:text-white transition">Impressum</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="agb.html" class="text-gray-400 hover:text-white transition">AGB</a>
-                    <span class="text-gray-600">|</span>
-                    <a href="datenschutz.html" class="text-gray-400 hover:text-white transition">Datenschutz</a>
-                </div>
-            </div>
-            
-            <div class="mt-4 text-center">
-                <p class="text-sm text-gray-400">&copy; 2024 WildWave Marketing. Alle Rechte vorbehalten.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- START: Cookie Consent Banner (Hoher Z-Index, liegt über allem) -->
-    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white shadow-2xl border-t border-gray-200 z-[9999] hidden">
-        <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between">
-                <div class="text-sm text-gray-700 mb-3 sm:mb-0 sm:mr-4">
-                    <p>
-                        Diese Website verwendet Cookies, um die bestmögliche Erfahrung zu gewährleisten.
-                        <a href="datenschutz.html" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500 underline ml-1">Weitere Informationen zum Datenschutz.</a>
-                    </p>
-                </div>
-                <div class="flex flex-row space-x-3">
-                    <button id="accept-cookies" class="px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
-                        Akzeptieren
-                    </button>
-                    <button id="reject-cookies" class="px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
-                        Ablehnen
-                    </button>
-                </div>
+            <!-- Buttons -->
+            <div class="flex space-x-3 w-full sm:w-auto justify-end">
+                <button onclick="closeCookieBanner(true)" class="px-4 py-2 text-sm sm:text-base bg-accent-color text-white font-bold rounded-lg hover:bg-green-600 transition duration-200 shadow-md flex-shrink-0 w-full sm:w-auto">
+                    Alle akzeptieren
+                </button>
             </div>
         </div>
     </div>
-    <!-- END: Cookie Consent Banner -->
-
-    <!-- JS for Mobile Menu and Cookie Banner/Widget Loading -->
     <script>
-        const ELFSIGHT_APP_ID = "0e354119-8d63-4c1f-bd86-74be33e26bc3";
-        const ELFSIGHT_SCRIPT_URL = "https://elfsightcdn.com/platform.js";
-        const COOKIE_CONSENT_KEY = 'cookieConsent';
-
-        // Funktion zum dynamischen Laden des Elfsight Widgets
-        function loadElfsightWidget() {
-            const container = document.getElementById('elfsight-widget-container');
-            
-            // 1. Placeholder entfernen und Widget-Div einfügen
-            container.innerHTML = `<div class="elfsight-app-${ELFSIGHT_APP_ID}" data-elfsight-app-lazy></div>`;
-            container.classList.remove('flex', 'items-center', 'justify-center', 'min-h-[400px]');
-            container.classList.add('min-h-0'); // Mindesthöhe anpassen
-
-            // 2. Elfsight Script dynamisch in den DOM laden
-            const script = document.createElement('script');
-            script.src = ELFSIGHT_SCRIPT_URL;
-            script.async = true;
-            document.body.appendChild(script);
-            
-            console.log('Elfsight Script und Widget wurden geladen.');
-        }
-
-        // Funktion zum Anzeigen des Cookie-Banners
-        function showCookieBanner() {
-            const banner = document.getElementById('cookie-banner');
-            // Zeige den Banner nur, wenn der Zustand noch nicht gespeichert ist
-            if (localStorage.getItem(COOKIE_CONSENT_KEY) === null) {
-                banner.classList.remove('hidden');
-            }
-        }
-
-        // Funktion zum Setzen des Zustands und Ausblenden
-        function setCookieConsent(status) {
-            localStorage.setItem(COOKIE_CONSENT_KEY, status);
-            document.getElementById('cookie-banner').classList.add('hidden');
-            
-            if (status === 'accepted') {
-                console.log('Cookie-Zustimmung akzeptiert. Tracking-Skripte (z.B. Elfsight) können geladen werden.');
-                loadElfsightWidget();
-            } else if (status === 'rejected') {
-                console.log('Cookie-Zustimmung abgelehnt. Nur notwendige Skripte werden ausgeführt.');
-            }
-        }
-
-        // Überprüfen des Zustands beim Laden der Seite
-        function checkInitialConsent() {
-            const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-            if (consent === 'accepted') {
-                // Wenn bereits akzeptiert, lade das Widget sofort
-                loadElfsightWidget();
-            } else {
-                // Wenn nicht akzeptiert oder abgelehnt, zeige den Banner
-                showCookieBanner();
-            }
-        }
-
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Menu Logik (unverändert)
-            document.getElementById('mobile-menu-button').addEventListener('click', function() {
-                var menu = document.getElementById('mobile-menu');
-                menu.classList.toggle('hidden');
+        // JavaScript für die Hash-basierte Navigation (Dimension-Stil)
+        // Utility: Fügt einen Klick-Effekt für die Buttons hinzu
+        document.querySelectorAll('a.link-item, button').forEach(el => {
+            el.addEventListener('click', function(e) {
+                this.classList.add('scale-95', 'transition-transform', 'duration-150');
+                setTimeout(() => {
+                    this.classList.remove('scale-95');
+                }, 150);
             });
-            
-            // Smooth Scrolling Logik (unverändert)
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    // Hide mobile menu after clicking a link
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                });
-            });
-
-            // Cookie Banner Event-Listener
-            const acceptBtn = document.getElementById('accept-cookies');
-            const rejectBtn = document.getElementById('reject-cookies');
-
-            if (acceptBtn && rejectBtn) {
-                acceptBtn.addEventListener('click', () => setCookieConsent('accepted'));
-                rejectBtn.addEventListener('click', () => setCookieConsent('rejected'));
-            }
-
-            // Initialen Zustand prüfen
-            checkInitialConsent();
         });
+        // Abrufen aller Artikel
+        const articles = document.querySelectorAll('.article');
+        /**
+         * Zeigt den Artikel basierend auf dem Hash in der URL an.
+         */
+        function showArticleFromHash() {
+            const hash = window.location.hash.substring(1); // #intro -> intro
+            // Verstecke alle Artikel
+            articles.forEach(article => {
+                article.classList.remove('is-active');
+            });
+            const header = document.getElementById('header');
+            const footer = document.getElementById('footer');
+            if (hash) {
+                const activeArticle = document.getElementById(hash);
+                if (activeArticle) {
+                    activeArticle.classList.add('is-active');
+                    activeArticle.scrollTop = 0; // Scrollen Sie zum Anfang des Artikels
+                    // Header und Footer ausblenden
+                    header.classList.add('opacity-0', 'pointer-events-none');
+                    footer.classList.add('opacity-0', 'pointer-events-none');
+                }
+            } else {
+                 // Zeige den Header wieder an, wenn kein Hash vorhanden ist (auf der Hauptseite)
+                header.classList.remove('opacity-0', 'pointer-events-none');
+                footer.classList.remove('opacity-0', 'pointer-events-none');
+            }
+        }
+        /**
+         * Schließt den aktuell aktiven Artikel.
+         */
+        window.closeArticle = function() { // Global machen, da es in HTML aufgerufen wird
+            window.location.hash = '';
+            showArticleFromHash();
+         }
+
+        // --- Cookie Banner Logik ---
+        const COOKIE_STORAGE_KEY = 'cookies_accepted';
+        const cookieBanner = document.getElementById('cookie-banner');
+        
+        /**
+         * Zeigt den Cookie-Banner an, falls noch keine Entscheidung getroffen wurde.
+         */
+        function showCookieBanner() {
+            if (localStorage.getItem(COOKIE_STORAGE_KEY) !== 'true') {
+                // Banner sichtbar machen (entfernt 'hidden') und den Slide-in-Effekt starten
+                cookieBanner.classList.remove('hidden');
+                // Timeout, um sicherzustellen, dass die CSS-Klasse 'hidden' zuerst entfernt wird, bevor der Übergang startet
+                setTimeout(() => {
+                    cookieBanner.classList.add('slide-in');
+                    cookieBanner.classList.remove('translate-y-full');
+                }, 100);
+            }
+        }
+        
+        /**
+         * Schliesst den Cookie-Banner und speichert die Entscheidung.
+         * @param {boolean} accepted - True, wenn der Benutzer akzeptiert hat.
+         */
+        window.closeCookieBanner = function(accepted) {
+            cookieBanner.classList.remove('slide-in');
+            cookieBanner.classList.add('translate-y-full');
+            // Nach dem Übergang (0.5s) ausblenden
+            setTimeout(() => {
+                cookieBanner.classList.add('hidden');
+            }, 500);
+            
+            if (accepted) {
+                localStorage.setItem(COOKIE_STORAGE_KEY, 'true');
+                console.log("Cookies akzeptiert.");
+            } else {
+                // In einem echten Szenario müsste hier die Ablehnung geloggt und Tracking deaktiviert werden
+                localStorage.setItem(COOKIE_STORAGE_KEY, 'false');
+                console.log("Cookies abgelehnt oder nur Datenschutz eingesehen.");
+            }
+        }
+        // --- Ende Cookie Banner Logik ---
+
+        // Event-Listener für Hash-Änderungen (durch Klick oder Browser-Zurück)
+        window.addEventListener('hashchange', showArticleFromHash);
+        
+        // Initialer Aufruf beim Laden der Seite
+        window.onload = function() {
+            setTimeout(() => {
+                document.body.classList.remove('is-preload');
+                showArticleFromHash();
+                // Zeige den Cookie Banner, nachdem alles geladen ist
+                showCookieBanner();
+            }, 100);
+        };
     </script>
 </body>
 </html>
