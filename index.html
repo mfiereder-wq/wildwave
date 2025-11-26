@@ -86,6 +86,21 @@
         .logo-bg-light {
             background-color: #f7f7f7; /* Heller Hintergrund für dunkle Logos */
         }
+
+        /* Stil für die kleinen Bild-Logos im Clients-Bereich */
+        .client-image {
+            height: 4.5rem; /* Etwas größer als die ursprünglichen SVGs */
+            width: 4.5rem;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .client-wrapper:hover .client-image {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -179,22 +194,36 @@
             <p class="text-center text-sm font-semibold uppercase text-gray-500 tracking-wide">
                 Vertraut von KMU und lokalen Dienstleistern in der Schweiz
             </p>
-            <!-- Platzhalter für Firmenlogos -->
-            <div class="mt-6 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
-                <div class="col-span-1 flex justify-center opacity-70 hover:opacity-100 transition-opacity">
-                    <img class="h-12" src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg" alt="Coiffeur-Salon">
+            <!-- Ersetzte Platzhalter-Logos durch die bereitgestellten Bilder -->
+            <div class="mt-6 grid grid-cols-2 gap-8 md:grid-cols-5 lg:grid-cols-5">
+                <!-- Coiffeur Salon -->
+                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
+                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/7447148/pexels-photo-7447148.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Coiffeur-Salon">
+                    <span class="mt-2 text-xs font-medium text-gray-500">Coiffeur Salon</span>
                 </div>
-                <div class="col-span-1 flex justify-center opacity-70 hover:opacity-100 transition-opacity">
-                    <img class="h-12" src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg" alt="Restaurant">
+                
+                <!-- Restaurant -->
+                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
+                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Restaurant">
+                    <span class="mt-2 text-xs font-medium text-gray-500">Restaurant</span>
                 </div>
-                <div class="col-span-1 flex justify-center opacity-70 hover:opacity-100 transition-opacity">
-                    <img class="h-12" src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg" alt="Handwerker">
+                
+                <!-- Handwerker -->
+                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
+                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/1659748/pexels-photo-1659748.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Handwerker">
+                    <span class="mt-2 text-xs font-medium text-gray-500">Handwerker</span>
                 </div>
-                <div class="col-span-1 flex justify-center opacity-70 hover:opacity-100 transition-opacity">
-                    <img class="h-12" src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg" alt="Online Shop">
+                
+                <!-- Online Shop -->
+                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
+                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/7679446/pexels-photo-7679446.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Online Shop">
+                    <span class="mt-2 text-xs font-medium text-gray-500">Online Shop</span>
                 </div>
-                <div class="col-span-1 flex justify-center opacity-70 hover:opacity-100 transition-opacity">
-                    <img class="h-12" src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg" alt="Bürodienstleister">
+                
+                <!-- Bürodienstleister -->
+                <div class="col-span-1 flex flex-col items-center justify-center opacity-70 hover:opacity-100 transition-opacity client-wrapper">
+                    <img class="client-image bg-gray-100" src="https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150" alt="Bürodienstleister">
+                    <span class="mt-2 text-xs font-medium text-gray-500">Bürodienstleister</span>
                 </div>
             </div>
         </div>
