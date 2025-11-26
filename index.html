@@ -11,8 +11,7 @@
     <!-- Font Awesome Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Elfsight Buchungs-Widget Script (wird im Kontaktbereich verwendet) -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <!-- Der Elfsight Script-Tag wird HIER ENTFERNT und erst bei Cookie-Akzeptanz per JS geladen, um Tracking vorab zu verhindern. -->
 
     <style>
         :root {
@@ -34,21 +33,11 @@
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 0 40px rgba(79, 70, 229, 0.1);
         }
         
         .service-card {
             transition: all 0.3s ease;
-        }
-        
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
         }
         
         .animate-pulse-slow {
@@ -100,6 +89,25 @@
         .client-wrapper:hover .client-image {
             transform: scale(1.05);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Stil für das responsive Video-Embedding (Vimeo-Standard) */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Seitenverhältnis */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -176,12 +184,23 @@
                     </div>
                 </div>
                 <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                        <div class="relative block w-full bg-white rounded-lg overflow-hidden">
-                            <!-- Placeholder Bild für Webdesign -->
-                            <img class="w-full h-auto animate-float" src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="Webdesign Illustration">
+                    <div class="relative mx-auto w-full lg:max-w-md">
+                        <!-- START: Vimeo Video Integration -->
+                        <div class="video-container">
+                            <!-- Das Vimeo iframe ist hier eingefügt. Die responsive Formatierung erfolgt über den .video-container Stil in <style> -->
+                            <iframe 
+                                src="https://player.vimeo.com/video/1140712325?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                                frameborder="0" 
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                title="renderforest_1761853749077">
+                            </iframe>
                         </div>
-                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-indigo-100 rounded-full animate-pulse-slow"></div>
+                        <script src="https://player.vimeo.com/api/player.js"></script>
+                        <!-- END: Vimeo Video Integration -->
+                        
+                        <!-- Der kosmetische Hintergrundkreis bleibt, um den Design-Stil beizubehalten -->
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-indigo-100 rounded-full animate-pulse-slow z-[-1]"></div>
                     </div>
                 </div>
             </div>
@@ -576,10 +595,11 @@
             </div>
 
             <div class="mt-12 max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
-                <!-- Elfsight Buchungs-Widget (Platzhalter für den Kalender) -->
-                <div class="elfsight-widget-container p-2">
-                     <!-- Bitte fügen Sie hier den korrekten Elfsight App ID Code ein, falls bekannt -->
-                     <div class="elfsight-app-0e354119-8d63-4c1f-bd86-74be33e26bc3" data-elfsight-app-lazy></div>
+                <!-- Container für das Elfsight Buchungs-Widget. Es wird erst nach Cookie-Zustimmung befüllt. -->
+                <div id="elfsight-widget-container" class="elfsight-widget-container p-2 flex items-center justify-center min-h-[400px]">
+                     <p class="text-center text-gray-500">
+                         Um das Terminbuchungs-Widget zu laden, akzeptieren Sie bitte die Cookies.
+                     </p>
                 </div>
 
                 <div class="mt-8 pt-4 border-t border-gray-200">
@@ -608,40 +628,150 @@
                     <p class="mt-2 text-gray-400 text-sm">Digitaler Erfolg für Schweizer KMU. Flexibel. Transparent. Effektiv.</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                    <!-- Facebook Link -->
+                    <a href="https://www.facebook.com/share/1ARTQqefZL/" target="_blank" class="text-gray-400 hover:text-indigo-400 transition" title="Facebook">
                         <i class="fab fa-facebook-f text-lg"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                    <!-- Twitter (Platzhalter) -->
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition" title="Twitter">
                         <i class="fab fa-twitter text-lg"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                    <!-- Instagram Link -->
+                    <a href="https://www.instagram.com/wildwave.ch" target="_blank" class="text-gray-400 hover:text-indigo-400 transition" title="Instagram">
                         <i class="fab fa-instagram text-lg"></i>
                     </a>
                 </div>
             </div>
-            <div class="mt-8 border-t border-gray-700 pt-8 text-center">
+            
+            <!-- Rechtliche Links (Neu hinzugefügt) -->
+            <div class="mt-8 pt-4 border-t border-gray-700 text-center">
+                <div class="space-x-4 text-sm font-medium">
+                    <a href="impressum.html" class="text-gray-400 hover:text-white transition">Impressum</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="agb.html" class="text-gray-400 hover:text-white transition">AGB</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="datenschutz.html" class="text-gray-400 hover:text-white transition">Datenschutz</a>
+                </div>
+            </div>
+            
+            <div class="mt-4 text-center">
                 <p class="text-sm text-gray-400">&copy; 2024 WildWave Marketing. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JS for Mobile Menu -->
+    <!-- START: Cookie Consent Banner (Hoher Z-Index, liegt über allem) -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white shadow-2xl border-t border-gray-200 z-[9999] hidden">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between">
+                <div class="text-sm text-gray-700 mb-3 sm:mb-0 sm:mr-4">
+                    <p>
+                        Diese Website verwendet Cookies, um die bestmögliche Erfahrung zu gewährleisten.
+                        <a href="datenschutz.html" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500 underline ml-1">Weitere Informationen zum Datenschutz.</a>
+                    </p>
+                </div>
+                <div class="flex flex-row space-x-3">
+                    <button id="accept-cookies" class="px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+                        Akzeptieren
+                    </button>
+                    <button id="reject-cookies" class="px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+                        Ablehnen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Cookie Consent Banner -->
+
+    <!-- JS for Mobile Menu and Cookie Banner/Widget Loading -->
     <script>
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            var menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-        // Optional: Smooth scrolling for all internal anchors
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Hide mobile menu after clicking a link
-                document.getElementById('mobile-menu').classList.add('hidden');
+        const ELFSIGHT_APP_ID = "0e354119-8d63-4c1f-bd86-74be33e26bc3";
+        const ELFSIGHT_SCRIPT_URL = "https://elfsightcdn.com/platform.js";
+        const COOKIE_CONSENT_KEY = 'cookieConsent';
+
+        // Funktion zum dynamischen Laden des Elfsight Widgets
+        function loadElfsightWidget() {
+            const container = document.getElementById('elfsight-widget-container');
+            
+            // 1. Placeholder entfernen und Widget-Div einfügen
+            container.innerHTML = `<div class="elfsight-app-${ELFSIGHT_APP_ID}" data-elfsight-app-lazy></div>`;
+            container.classList.remove('flex', 'items-center', 'justify-center', 'min-h-[400px]');
+            container.classList.add('min-h-0'); // Mindesthöhe anpassen
+
+            // 2. Elfsight Script dynamisch in den DOM laden
+            const script = document.createElement('script');
+            script.src = ELFSIGHT_SCRIPT_URL;
+            script.async = true;
+            document.body.appendChild(script);
+            
+            console.log('Elfsight Script und Widget wurden geladen.');
+        }
+
+        // Funktion zum Anzeigen des Cookie-Banners
+        function showCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            // Zeige den Banner nur, wenn der Zustand noch nicht gespeichert ist
+            if (localStorage.getItem(COOKIE_CONSENT_KEY) === null) {
+                banner.classList.remove('hidden');
+            }
+        }
+
+        // Funktion zum Setzen des Zustands und Ausblenden
+        function setCookieConsent(status) {
+            localStorage.setItem(COOKIE_CONSENT_KEY, status);
+            document.getElementById('cookie-banner').classList.add('hidden');
+            
+            if (status === 'accepted') {
+                console.log('Cookie-Zustimmung akzeptiert. Tracking-Skripte (z.B. Elfsight) können geladen werden.');
+                loadElfsightWidget();
+            } else if (status === 'rejected') {
+                console.log('Cookie-Zustimmung abgelehnt. Nur notwendige Skripte werden ausgeführt.');
+            }
+        }
+
+        // Überprüfen des Zustands beim Laden der Seite
+        function checkInitialConsent() {
+            const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+            if (consent === 'accepted') {
+                // Wenn bereits akzeptiert, lade das Widget sofort
+                loadElfsightWidget();
+            } else {
+                // Wenn nicht akzeptiert oder abgelehnt, zeige den Banner
+                showCookieBanner();
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Logik (unverändert)
+            document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                var menu = document.getElementById('mobile-menu');
+                menu.classList.toggle('hidden');
             });
+            
+            // Smooth Scrolling Logik (unverändert)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Hide mobile menu after clicking a link
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                });
+            });
+
+            // Cookie Banner Event-Listener
+            const acceptBtn = document.getElementById('accept-cookies');
+            const rejectBtn = document.getElementById('reject-cookies');
+
+            if (acceptBtn && rejectBtn) {
+                acceptBtn.addEventListener('click', () => setCookieConsent('accepted'));
+                rejectBtn.addEventListener('click', () => setCookieConsent('rejected'));
+            }
+
+            // Initialen Zustand prüfen
+            checkInitialConsent();
         });
     </script>
 </body>
