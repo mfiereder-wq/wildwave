@@ -4,19 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- NEU: Favicon hinzugefügt -->
+    <!-- PERFORMANCE: Preconnect für schnellere Ladezeiten externer Ressourcen -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://i.ibb.co">
+
+    <!-- SEO: Canonical Tag (Verhindert Duplicate Content) -->
+    <!-- BITTE PRÜFEN: Ersetze 'www.wildwave.ch' mit deiner tatsächlichen Domain, falls abweichend -->
+    <link rel="canonical" href="https://www.wildwave.ch">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/rf0tdbn9/Screenshot-2024-12-28-18-43-43-063-com-whatsapp-w4b-edit-1.jpg">
     
-    <!-- SEO OPTIMIERUNG: Verbessert den Titel für Google -->
+    <!-- SEO: Titel -->
     <title>Professionelles Webdesign & SEO Marketing | Wildwave Schweiz</title>
     
-    <!-- SEO OPTIMIERUNG: Relevante Meta-Beschreibung für Suchergebnisse -->
-    <meta name="description" content="Wildwave Marketing bietet professionelles Webdesign, Conversion-Optimierung und effektive SEO-Strategien für KMU in der Schweiz. Erhöhen Sie Ihre Sichtbarkeit und Kundengewinnung.">
+    <!-- SEO: Optimierte Meta-Beschreibung (Max. 155 Zeichen) -->
+    <meta name="description" content="Wildwave Marketing: Webdesign & SEO für KMU in der Schweiz. Mehr Sichtbarkeit & neue Kunden gewinnen!">
     
-    <!-- Tailwind CSS laden -->
+    <!-- ANALYTICS: Google Analytics 4 (Korrekt eingefügt) -->
+    <!-- Google tag (gtag.js) mit ID G-C9MMXEG3JB -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9MMXEG3JB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-C9MMXEG3JB'); 
+    </script>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Phosphor Icons für moderne Icons (Optional, aber empfohlen für bessere Icons) -->
+    
+    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
     <style>
         /* Definieren des Hintergrunds und der globalen Schriftart */
         :root {
@@ -24,6 +46,7 @@
             --text-color: #ffffff;
             --accent-color: #4CAF50; /* Grün-Akzent */
         }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
@@ -31,6 +54,7 @@
             transition: background-color 0.5s ease;
             overflow-x: hidden; /* Verhindert horizontales Scrollen */
         }
+
         /* Video-Hintergrund Styling */
         .video-background {
             position: fixed;
@@ -45,7 +69,8 @@
             object-fit: cover;
             /* Das Video wird leicht abgedunkelt */
             filter: brightness(0.6) grayscale(30%);
-         }
+        }
+
         /* Überlagerung für bessere Lesbarkeit - WENIGER DECKKRAFT (von 0.5 auf 0.3) */
         .overlay {
             position: fixed;
@@ -56,6 +81,7 @@
             background: rgba(0, 0, 0, 0.3); /* Angepasst: Weniger Dunkel */
             z-index: -1;
         }
+
         /* Styling für die aufklappbaren Artikel */
         .article {
             position: fixed;
@@ -73,6 +99,7 @@
             visibility: hidden;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-out, visibility 0.4s;
         }
+
         /* Anpassung für mobile Geräte */
         @media (max-width: 640px) {
             .article {
@@ -80,11 +107,13 @@
                 padding-top: 4rem; /* Platz für Close Button */
             }
         }
+
         .article.is-active {
             transform: translateX(0);
             opacity: 1;
             visibility: visible;
         }
+
         /* Styling des Schließen-Buttons */
         .close-button {
             position: fixed; /* Fixed damit er beim Scrollen sichtbar bleibt */
@@ -103,10 +132,12 @@
             color: var(--text-color);
             z-index: 101;
         }
+
         .close-button:hover {
             background-color: var(--accent-color);
             transform: rotate(90deg);
         }
+
         /* Styling für Projekt-Badges (Skills) */
         .badge {
             display: inline-block;
@@ -121,6 +152,7 @@
             margin-top: 0.5rem;
             border: 1px solid #4b5563;
         }
+
         /* Styling für das Profilbild */
         .avatar-container {
             width: 8rem;
@@ -131,25 +163,30 @@
             box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
             margin: 0 auto;
         }
+
         .avatar-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         /* WhatsApp Animation */
         .whatsapp-button:hover svg {
             animation: bounce 0.6s infinite alternate;
         }
+
         @keyframes bounce {
             from { transform: translateY(0); }
             to { transform: translateY(-5px); }
         }
+
         /* Nummerierung */
         .problem-item {
             display: flex;
             align-items: flex-start;
             margin-bottom: 1rem;
         }
+
         .problem-number {
             font-size: 1.5rem;
             font-weight: bold;
@@ -157,25 +194,29 @@
             margin-right: 0.75rem;
             line-height: 1.2;
         }
+
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #1f2937;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #4b5563;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-color);
         }
-        
+
         .elfsight-app-container {
              min-height: 400px; /* Fallback Höhe */
         }
-        
+
         /* Zusätzlicher Stil für das Review-Widget, um Platz zu schaffen */
         .review-widget-container {
             min-height: 50vh; /* Mindesthöhe für das Widget */
@@ -189,6 +230,7 @@
             padding: 1.5rem;
             border-radius: 0.5rem;
         }
+
         .quote-author {
             display: flex;
             align-items: center;
@@ -196,11 +238,13 @@
             padding-top: 0.75rem;
             border-top: 1px solid #374151;
         }
-        /* Stil für den Cookie Banner, damit er über dem Video und allen anderen Inhalten liegt */
+
+        /* Stil für den Cookie Banner */
         #cookie-banner {
-            z-index: 105; /* Höher als die Artikel (z-index 100) */
+            z-index: 105;
         }
     </style>
+
     <!-- Elfsight Plattform Skript -->
     <script src="https://elfsightcdn.com/platform.js" async></script>
     <!-- Google Review Widget Skript -->
@@ -223,20 +267,23 @@
             <div class="mb-8">
                 <!-- AVATAR -->
                 <div class="avatar-container mb-6">
+                    <!-- Bild mit Width/Height Attributen für Performance/CLS Optimierung -->
                     <img
                         src="https://i.ibb.co/rf0tdbn9/Screenshot-2024-12-28-18-43-43-063-com-whatsapp-w4b-edit-1.jpg"
                         alt="Profilbild Wildwave"
                         class="avatar-image"
+                        width="128"
+                        height="128"
                         onerror="this.onerror=null; this.src='https://placehold.co/128x128/3b82f6/ffffff?text=WCS';"
                     />
                 </div>
-                
+
                 <!-- SEO OPTIMIERUNG: H1-Titel mit SEO-Keyword -->
                 <h1 class="text-3xl sm:text-4xl font-extrabold mb-3 text-white tracking-tight">
                     Webdesign, 
                     <span class="text-green-400">SEO & Marketing</span>
                 </h1>
-                
+
                 <p class="text-sm text-gray-400 font-light italic leading-relaxed px-4">
                     "Fokussieren Sie sich auf Ihr Kerngeschäft.<br>
                     Lassen Sie uns Ihre Neukunden finden & Ihre digitale Präsenz verbessern."
@@ -304,7 +351,6 @@
             </button>
             <div class="max-w-3xl mx-auto py-12 px-4 sm:px-0">
                 <h2 class="text-3xl sm:text-5xl font-bold mb-8 border-b-2 border-green-500 pb-4 inline-block">Die Herausforderung</h2>
-
                 <div class="space-y-8">
                     <div>
                         <h3 class="text-xl sm:text-2xl font-bold mb-3 text-green-400">Die Rolle der KMU</h3>
@@ -312,7 +358,6 @@
                             Klein- und Mittelunternehmen (KMU) sind das Rückgrat jeder modernen Volkswirtschaft und Innovationsmotor unserer Gesellschaft. Trotz dieser entscheidenden Rolle stehen KMU heute jedoch vor monumentalen Herausforderungen, die ihre Existenz und ihr Wachstum bedrohen können.
                         </p>
                     </div>
-
                     <div>
                         <h3 class="text-xl sm:text-2xl font-bold mb-4 text-green-400">Zentrale Probleme der Digitalisierung</h3>
                         <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
@@ -330,7 +375,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="bg-green-900/20 p-6 rounded-xl border-l-4 border-green-500 mt-8">
                         <h3 class="text-xl font-bold mb-2 text-green-400">Die Lösung: WildWave Marketing</h3>
                         <p class="text-gray-200">
@@ -386,7 +430,7 @@
                 </div>
             </div>
         </article>
-        
+
         <!-- ARTIKEL: Kundenstimmen (Review Widget) -->
         <article id="reviews" class="article">
             <button class="close-button" aria-label="Schließen">
@@ -435,10 +479,10 @@
                         Das zugehörige Skript (grwapi.net/widget.min.js) wurde im <head> der Seite eingefügt.
                     -->
                     <div class="review-widget_net" 
-                         data-uuid="23da4250-c8d7-4f71-bc73-5009de12d031" 
-                         data-template="10" 
-                         data-lang="de" 
-                         data-theme="dark">
+                          data-uuid="23da4250-c8d7-4f71-bc73-5009de12d031" 
+                          data-template="10" 
+                          data-lang="de" 
+                          data-theme="dark">
                         <!-- Fallback Text, falls das Widget nicht geladen werden kann -->
                         Das Google Review Widget konnte nicht geladen werden.
                     </div>
@@ -446,7 +490,6 @@
                 </div>
             </div>
         </article>
-
 
         <!-- Artikel: Vorher/Nachher -->
         <article id="compare" class="article">
@@ -475,10 +518,12 @@
                 
                 <div class="flex flex-col md:flex-row gap-8 items-start">
                     <div class="w-full md:w-1/3">
+                        <!-- Optimiertes Bild: loading="lazy" und dimensions -->
                         <img
                             src="https://i.ibb.co/m5sC2Xpd/1762655778522.jpg"
                             alt="Marco Fiereder"
                             class="w-full h-auto rounded-xl shadow-lg border border-gray-700"
+                            loading="lazy"
                         />
                     </div>
                     <div class="w-full md:w-2/3">
@@ -573,13 +618,13 @@
             </button>
             <div class="max-w-3xl mx-auto py-12 px-4 sm:px-0 pb-24">
                 <h2 class="text-3xl font-bold mb-6 border-b-2 border-green-500 pb-2">Datenschutzerklärung</h2>
-                
+
                 <div class="space-y-8 text-gray-300">
                     <section>
                         <h3 class="text-xl font-bold text-white mb-2">1. Allgemeines</h3>
                         <p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
                     </section>
-
+                    
                     <section>
                         <h3 class="text-xl font-bold text-white mb-2">2. Server-Log-Files</h3>
                         <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Log-Files, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
@@ -623,7 +668,7 @@
     <div id="cookie-banner" class="fixed inset-x-0 bottom-0 bg-gray-900 text-white p-4 transition-transform duration-500 transform translate-y-0 shadow-2xl z-[105] border-t border-green-600">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-6">
             <p class="text-sm text-gray-300">
-                Wir verwenden Cookies, um die Funktionalität und Leistung unserer Website zu optimieren. Weitere Informationen finden Sie in unserer
+                Wir verwenden Cookies, um die Funktionalität und Leistung unserer Website zu optimieren. Weitere Informationen finden Sie in unserer 
                 <!-- Link zur Datenschutzerklärung (öffnet das Privacy Overlay) -->
                 <a href="#privacy" class="link-item text-green-400 hover:text-green-300 underline font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
                     Datenschutzerklärung
@@ -678,7 +723,7 @@
                     banner.style.display = 'none';
                 }, 500); // Entspricht der Transitionsdauer in Tailwind
             }
-            
+
             // Event Listener für den Cookie Accept Button
             if (acceptButton) {
                 acceptButton.addEventListener('click', hideBannerAndAccept);
@@ -705,7 +750,7 @@
                     // Verstecke Wrapper und Footer
                     wrapper.style.opacity = '0';
                     header.style.pointerEvents = 'none';
-
+                    
                     // Zeige den Artikel an
                     targetArticle.classList.add('is-active');
                     document.body.style.overflow = 'hidden'; // Verhindert Scrollen des Hintergrunds
@@ -722,9 +767,9 @@
                     // Zeige Wrapper und Footer wieder an
                     wrapper.style.opacity = '1';
                     header.style.pointerEvents = 'auto';
-                    
+
                     document.body.style.overflow = ''; // Erlaube normales Scrollen
-                    
+
                     // Update der URL nach dem Schließen (Optional)
                     history.pushState(null, '', window.location.pathname + window.location.search);
                 }
@@ -735,10 +780,10 @@
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetId = link.getAttribute('href').substring(1);
-                    
+
                     // Update der URL-Hash, ohne neu zu laden
                     history.pushState(null, '', '#' + targetId);
-                    
+
                     openArticle(targetId);
                 });
             });
