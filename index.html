@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://i.ibb.co">
 
     <!-- SEO: Canonical Tag (Verhindert Duplicate Content) -->
-    <!-- BITTE PRÜFEN: Ersetze 'www.wildwave.ch' mit deiner tatsächlichen Domain, falls abweichend -->
     <link rel="canonical" href="https://www.wildwave.ch">
 
     <!-- Favicon -->
@@ -243,6 +242,24 @@
         #cookie-banner {
             z-index: 105;
         }
+
+        /* PROMO POPUP STYLING */
+        #promo-popup {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease-out;
+        }
+        #promo-popup.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #promo-content {
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #promo-popup.active #promo-content {
+            transform: scale(1);
+        }
     </style>
 
     <!-- Elfsight Plattform Skript -->
@@ -259,11 +276,67 @@
     </video>
     <div class="overlay"></div>
 
+    <!-- PROMO POPUP MODAL -->
+    <div id="promo-popup" class="fixed inset-0 z-[200] flex items-center justify-center px-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="promo-backdrop"></div>
+        
+        <!-- Modal Content -->
+        <div id="promo-content" class="relative bg-gray-900 border border-green-500 rounded-2xl p-8 max-w-sm w-full shadow-2xl overflow-hidden">
+            <!-- Dekorativer Hintergrundeffekt -->
+            <div class="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-green-500/20 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-0 left-0 -mb-8 -ml-8 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"></div>
+
+            <!-- Schließen Button -->
+            <button id="close-promo" class="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors bg-gray-800/50 rounded-full p-1 z-20">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="relative z-10 text-center">
+                <!-- Bild für das Angebot -->
+                <div class="flex justify-center mb-5">
+                    <img src="https://i.ibb.co/tnMDkzq/6d65726368616e745f69643d616363745f314f4d487661416b54396f447675316526636c69656e743d5041594d454e545f50.png" 
+                         alt="Landingpage Angebot" 
+                         class="w-full h-auto max-h-32 object-contain rounded-lg shadow-lg"
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x200/4CAF50/ffffff?text=Angebot';"/>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mb-2">Power-Angebot</h3>
+                <!-- NEUE BESCHREIBUNG -->
+                <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                    Professionelle, hochoptimierte Landingpage (Conversion & SEO) mit den passenden Keywords und persönlichem Support für all deine Fragen. Perfekt für starke Verkäufe!
+                </p>
+
+                <div class="bg-gray-800/50 rounded-lg p-3 mb-6 border border-gray-700">
+                    <span class="block text-xs text-gray-400 uppercase tracking-wider">Aktionspreis (Limitierte Zeit)</span>
+                    <!-- NEUER PREIS MIT DURCHGESTICHENEM ALTEM PREIS -->
+                    <div class="flex items-center justify-center space-x-3 mt-1">
+                        <span class="block text-xl font-bold text-gray-500 line-through">CHF 1200.–</span>
+                        <span class="block text-3xl font-extrabold text-green-400">CHF 600.–</span>
+                    </div>
+                </div>
+
+                <!-- Call to Action mit Stripe Link -->
+                <a href="https://buy.stripe.com/4gM14m6THeBkbev8Q4gMw0g" target="_blank" class="flex items-center justify-center w-full py-3 px-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition transform hover:scale-105 shadow-lg group">
+                    <span>Jetzt buchen</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+                
+                <p class="text-[10px] text-gray-500 mt-4">Keine versteckten Kosten. Angebot limitiert.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Haupt-Wrapper -->
     <div id="wrapper" class="p-4 sm:p-8 max-w-4xl mx-auto flex flex-col items-center justify-center w-full relative z-10">
         
         <!-- Header/Menü Karte - TRANSPARENZ AUF 70% REDUZIERT -->
-        <header id="header" class="text-center p-8 bg-gray-900/70 backdrop-blur-sm rounded-2xl shadow-2xl transition duration-500 hover:bg-gray-900/95 w-full max-w-md border border-gray-700">
+        <header id="header" class="text-center p-8 bg-gray-900/70 backdrop-blur-sm rounded-2xl shadow-2xl transition duration-500 hover:bg-gray-900/95 w-full max-w-md border border-gray-700 relative overflow-hidden">
+            
             <div class="mb-8">
                 <!-- AVATAR -->
                 <div class="avatar-container mb-6">
@@ -696,6 +769,54 @@
             const banner = document.getElementById('cookie-banner');
             const acceptButton = document.getElementById('accept-cookies');
             const COOKIE_NAME = 'cookies_accepted';
+            
+            // PROMO POPUP LOGIC
+            const promoPopup = document.getElementById('promo-popup');
+            const closePromo = document.getElementById('close-promo');
+            const PROMO_SESSION_KEY = 'promo_seen_session';
+
+            /**
+             * Zeigt das Promo Popup an, wenn:
+             * 1. Es existiert
+             * 2. Cookies akzeptiert sind
+             * 3. Es in dieser Session noch nicht gesehen wurde
+             */
+            function showPromoPopup() {
+                if (!promoPopup) return;
+                
+                // Prüfen, ob bereits in Session gesehen
+                if (sessionStorage.getItem(PROMO_SESSION_KEY) === 'true') {
+                    return;
+                }
+
+                // WICHTIG: Prüfen, ob Cookies akzeptiert sind
+                if (localStorage.getItem(COOKIE_NAME) !== 'true') {
+                    return; 
+                }
+
+                // Wenn alles passt, zeige es nach 3 Sekunden
+                setTimeout(() => {
+                    promoPopup.classList.add('active');
+                }, 3000);
+            }
+
+            // Beim Laden versuchen anzuzeigen (falls Cookies schon akzeptiert waren)
+            showPromoPopup();
+
+            // Hide popup logic
+            if (closePromo && promoPopup) {
+                closePromo.addEventListener('click', () => {
+                    promoPopup.classList.remove('active');
+                    // Mark as seen for this session
+                    sessionStorage.setItem(PROMO_SESSION_KEY, 'true');
+                });
+                
+                // Close on backdrop click
+                document.getElementById('promo-backdrop').addEventListener('click', () => {
+                     promoPopup.classList.remove('active');
+                     sessionStorage.setItem(PROMO_SESSION_KEY, 'true');
+                });
+            }
 
 
             // ----- COOKIE BANNER FUNKTIONALITÄT -----
@@ -722,6 +843,10 @@
                 setTimeout(() => {
                     banner.style.display = 'none';
                 }, 500); // Entspricht der Transitionsdauer in Tailwind
+
+                // JETZT: Promo Popup Trigger prüfen
+                // Da Cookies jetzt akzeptiert sind, kann das Popup (verzögert) starten
+                showPromoPopup();
             }
 
             // Event Listener für den Cookie Accept Button
