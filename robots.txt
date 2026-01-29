@@ -1,17 +1,71 @@
+# robots.txt für WildWave Marketing
+# Generiert für wildwave.ch
+
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /config/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /log/
+Disallow: /*.php$
+Disallow: /*.sql$
+Disallow: /*.log$
+Disallow: /search/
 
-# Sitemap
-Sitemap: https://wildwave.ch/sitemapindex.xml
+# Spezifische Suchmaschinen-Anweisungen
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
 
-# Crawl-Delay (optional, für kleine Server)
-Crawl-delay: 10
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 3
 
-# Blockiere unnötige Pfade (falls vorhanden)
-Disallow: /cgi-bin/
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap hinzufügen (wenn verfügbar)
+Sitemap: https://wildwave.ch/sitemap.xml
+Sitemap: https://wildwave.ch/sitemap_index.xml
+
+# Crawling-Frequenz (optional)
+# Crawl-delay: 3
+
+# Host-Direktive (primäre Domain)
+Host: https://wildwave.ch
+
+# Weitere spezifische Einstellungen
+User-agent: *
 Disallow: /wp-admin/
 Disallow: /wp-includes/
-Disallow: /*?*
-Disallow: /trackback/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /wp-json/
+Disallow: /xmlrpc.php
 Disallow: /feed/
-Disallow: /comments/
+
+# Wichtige Seiten für SEO erlauben
+Allow: /*.html$
+Allow: /*.css$
+Allow: /*.js$
+
+# Crawl-Budget optimieren
+# Seiten mit niedrigem Wert oder Duplicate Content ausschließen
+Disallow: /tag/
+Disallow: /category/
+Disallow: /author/
+Disallow: /*?*
+Disallow: /*&*
+Disallow: /*?
+Disallow: /*utm_
+Disallow: /*gclid=
+Disallow: /*fbclid=
+
+# Schweizer SEO-Optimierung
+# CH-spezifische Crawler
+User-agent: SwisscowsBot
+Allow: /
+Crawl-delay: 2
