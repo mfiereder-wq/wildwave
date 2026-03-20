@@ -3,385 +3,507 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TITEL FÜR WILTWAVE ANGEPASST -->
-    <title>Wildwave | Ihr Spezialist für Digitalen Erfolg in der Schweiz</title>
-    
+    <title>Wildwave | Digitale Kundengewinnung für KMU in der Schweiz</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Schriftart auf Poppins umgestellt (wie im Design) -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            /* Hintergrundfarbe auf dunkles Grau für Kontrast mit hellem Content */
-            @apply bg-gray-900; 
-            overflow-x: hidden; /* Verhindert horizontales Scrollen auf allen Geräten */
+
+        :root {
+            color-scheme: dark;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
-        
-        /* HERO GRADIENT: VON BLAU (links) ÜBER CYAN (mitte) ZU VIOLETT (rechts) */
-        .hero-gradient {
-            background: linear-gradient(135deg, #007bff 0%, #00d4ff 50%, #8a2be2 100%);
-            background-size: 200% 200%;
-            animation: gradient 10s ease infinite;
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), transparent 35%),
+                radial-gradient(circle at top right, rgba(59, 130, 246, 0.18), transparent 30%),
+                linear-gradient(180deg, #020617 0%, #0f172a 45%, #020617 100%);
+            overflow-x: hidden;
         }
-        
-        @keyframes gradient {
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.92) 0%, rgba(6, 182, 212, 0.88) 45%, rgba(124, 58, 237, 0.88) 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 12s ease infinite;
+        }
+
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        
+
         .floating {
-            animation: floating 6s ease-in-out infinite;
+            animation: floating 7s ease-in-out infinite;
         }
-        
+
         @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-16px); }
         }
-        
-        .pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+        .service-card,
+        .package-card,
+        .insight-card,
+        .quiz-card,
+        .testimonial-card {
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
         }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+
+        .service-card:hover,
+        .package-card:hover,
+        .insight-card:hover,
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(34, 211, 238, 0.14);
+            border-color: rgba(34, 211, 238, 0.8);
         }
-        
+
+        .glass {
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+        }
+
+        .badge-glow {
+            box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.15), 0 0 24px rgba(34, 211, 238, 0.18);
+        }
+
         .typing {
             overflow: hidden;
-            border-right: 3px solid white;
+            border-right: 3px solid rgba(255, 255, 255, 0.9);
             white-space: nowrap;
-            /* Längere Animation für den deutschen Text */
-            animation: typing 4.5s steps(60, end), blink-caret 0.75s step-end infinite;
+            display: inline-block;
+            max-width: 100%;
+            animation: typing 4s steps(35, end), blink 0.85s step-end infinite;
         }
-        
+
         @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+            from { width: 0; }
+            to { width: 100%; }
         }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: white; }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: rgba(255, 255, 255, 0.9); }
         }
-        
+
         .scroll-down {
             position: absolute;
-            bottom: 30px;
             left: 50%;
+            bottom: 28px;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
         }
-        
+
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
-        }
-        
-        .service-card {
-             /* Basis Schatten für dunklen Modus */
-            @apply shadow-xl border border-gray-700; 
-            transition: all 0.3s ease-in-out;
+            40% { transform: translateY(-16px) translateX(-50%); }
+            60% { transform: translateY(-8px) translateX(-50%); }
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            /* Stärkerer Schatten und Glow mit Cyan-Akzent */
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-            @apply border-cyan-500;
-        }
-        
-        .glow {
-            /* GLOW FARBE ANGEPASST AUF CYAN */
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
-        }
-
-        /* Responsive Anpassungen für die Mobile Navigation */
         #mobile-menu {
-            transition: transform 0.3s ease-in-out;
             transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
         }
 
         #mobile-menu.open {
             transform: translateX(0);
         }
+
+        .quiz-option.active {
+            border-color: rgb(34 211 238);
+            background: rgba(8, 145, 178, 0.16);
+            box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25);
+        }
+
+        .quiz-result-enter {
+            animation: fadeUp 0.35s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body class="min-h-screen">
-    <!-- Navigation (Sticky) -->
-    <nav class="fixed w-full z-50 bg-gray-950/90 backdrop-blur-md shadow-lg border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <!-- LOGO/NAME: WILDWAVE -->
-                        <span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">WILDWAVE</span>
-                    </div>
+<body class="min-h-screen text-white">
+    <nav class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a href="#hero" class="flex items-center gap-3">
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 text-lg font-bold text-slate-950">W</span>
+                <div>
+                    <p class="text-lg font-bold tracking-[0.2em] text-cyan-300">WILDWAVE</p>
+                    <p class="text-xs text-slate-400">Websites, SEO & Leads für KMU</p>
                 </div>
-                <!-- Desktop Navigation -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <!-- ANKER-LINKS FÜR DEUTSCH UND ID'S ANGEPASST -->
-                        <a href="#hero" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Home</a>
-                        <a href="#leistungen" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Leistungen</a>
-                        <a href="#vorteile" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Vorteile</a>
-                        <a href="#kontakt" class="text-gray-300 hover:text-cyan-400 px-3 py-2 font-medium transition">Kontakt</a>
-                        
-                        <!-- CTA BUTTON ANGEPASST -->
-                        <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="ml-6 bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-2 rounded-full font-medium hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105 shadow-xl">
-                            Termin buchen
-                        </a>
-                    </div>
-                </div>
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button class="text-gray-300 mobile-menu-button">
-                        <i class="fas fa-bars text-2xl hover:text-cyan-400 transition"></i>
-                    </button>
-                </div>
+            </a>
+            <div class="hidden items-center gap-8 md:flex">
+                <a href="#leistungen" class="text-sm font-medium text-slate-300 transition hover:text-cyan-300">Leistungen</a>
+                <a href="#pakete" class="text-sm font-medium text-slate-300 transition hover:text-cyan-300">Pakete</a>
+                <a href="#quiz" class="text-sm font-medium text-slate-300 transition hover:text-cyan-300">Quiz</a>
+                <a href="#kontakt" class="text-sm font-medium text-slate-300 transition hover:text-cyan-300">Kontakt</a>
+                <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-cyan-500/20 transition hover:scale-105">Kostenloses Gespräch</a>
             </div>
+            <button class="mobile-menu-button text-slate-200 md:hidden" aria-label="Menü öffnen">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
     </nav>
-    
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-gray-950/95 backdrop-blur-md z-[100] flex flex-col pt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="flex justify-end">
-                 <button class="text-gray-300 close-menu-button absolute top-6 right-6">
-                    <i class="fas fa-times text-3xl hover:text-cyan-400 transition"></i>
-                </button>
-            </div>
-            <div class="flex flex-col space-y-6 mt-10">
-                <a href="#hero" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Home</a>
-                <a href="#leistungen" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Leistungen</a>
-                <a href="#vorteile" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Vorteile</a>
-                <a href="#kontakt" class="text-white text-3xl font-semibold hover:text-cyan-400 transition py-2 mobile-nav-link">Kontakt</a>
-                
-                <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="mt-8 text-center bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-3 rounded-full font-bold hover:shadow-cyan-500/50 transition-all duration-300 shadow-xl text-xl">
-                    Gratis Beratung
-                </a>
-            </div>
+
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-slate-950/95 px-6 pt-24 backdrop-blur-xl md:hidden">
+        <button class="close-menu-button absolute right-6 top-6 text-slate-200" aria-label="Menü schliessen">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+        <div class="flex flex-col gap-6">
+            <a href="#leistungen" class="mobile-nav-link text-3xl font-semibold text-white">Leistungen</a>
+            <a href="#pakete" class="mobile-nav-link text-3xl font-semibold text-white">Pakete</a>
+            <a href="#quiz" class="mobile-nav-link text-3xl font-semibold text-white">Quiz</a>
+            <a href="#kontakt" class="mobile-nav-link text-3xl font-semibold text-white">Kontakt</a>
+            <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="mt-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-4 text-center text-lg font-bold text-white">Gratis Beratung buchen</a>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero-gradient text-white min-h-screen flex items-center pt-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <!-- Textgröße auf Mobilgeräten leicht reduziert für bessere Lesbarkeit -->
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                        Wir <span class="typing">liefern messbare Resultate.</span>
+    <section id="hero" class="hero-gradient relative flex min-h-screen items-center overflow-hidden pt-24">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.22),_transparent_35%)]"></div>
+        <div class="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-14 px-4 py-16 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-24">
+            <div class="flex flex-col justify-center gap-8">
+                <div class="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white badge-glow">
+                    <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+                    Für Kleinunternehmen, Praxen und lokale Dienstleister
+                </div>
+                <div class="space-y-6">
+                    <h1 class="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                        Mehr Anfragen mit einer Website, die <span class="typing">verkauft statt nur gut aussieht.</span>
                     </h1>
-                    <!-- ÜNTERZEILE ANGEPASST -->
-                    <p class="text-lg md:text-xl text-white/90 max-w-lg">
-                        Datengetriebene digitale Lösungen für **Kleinunternehmen und Selbstständige**. Volle Flexibilität, keine langen Verträge.
+                    <p class="max-w-2xl text-lg text-white/85 sm:text-xl">
+                        Wildwave kombiniert Webdesign, Local SEO und Google Ads zu einem klaren System für planbare Kundengewinnung – ohne komplizierte Prozesse und ohne lange Vertragsbindung.
                     </p>
-                    <div class="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
-                        <!-- CTA Button 1: Auf mobilen Geräten volle Breite für einfache Bedienung -->
-                        <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="w-full sm:w-auto text-center bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
-                            <i class="fas fa-calendar-alt mr-2"></i> Jetzt Termin buchen
-                        </a>
-                        <!-- CTA Button 2: Auf mobilen Geräten volle Breite für einfache Bedienung -->
-                        <a href="#leistungen" class="w-full sm:w-auto text-center border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white/10 transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
-                            Unsere Leistungen <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+                </div>
+                <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                    <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-center font-bold text-blue-700 shadow-2xl transition hover:scale-105 hover:bg-slate-100">
+                        <i class="fas fa-calendar-alt mr-2"></i> Kostenloses Strategiegespräch
+                    </a>
+                    <a href="#quiz" class="inline-flex items-center justify-center rounded-full border-2 border-white/80 px-8 py-4 text-center font-bold text-white transition hover:scale-105 hover:bg-white/10">
+                        Paket-Quiz starten <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    <div class="rounded-2xl border border-white/15 bg-white/10 p-4">
+                        <p class="text-3xl font-bold">250+</p>
+                        <p class="mt-1 text-sm text-white/75">betreute KMU & lokale Marken</p>
                     </div>
-                    <div class="flex items-center space-x-6 pt-8">
-                        <!-- PLATZHALTER FÜR KUNDEN-AVATARE BEIBEHALTEN -->
-                        <div class="flex -space-x-2">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Kunden-Avatar 1">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Kunden-Avatar 2">
-                            <img class="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Kunden-Avatar 3">
+                    <div class="rounded-2xl border border-white/15 bg-white/10 p-4">
+                        <p class="text-3xl font-bold">14 Tage</p>
+                        <p class="mt-1 text-sm text-white/75">bis zum ersten Design-Entwurf</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/15 bg-white/10 p-4">
+                        <p class="text-3xl font-bold">100%</p>
+                        <p class="mt-1 text-sm text-white/75">transparente Betreuung & Reporting</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-5">
+                    <div class="flex -space-x-3">
+                        <img class="h-11 w-11 rounded-full border-2 border-white object-cover" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Kundin 1">
+                        <img class="h-11 w-11 rounded-full border-2 border-white object-cover" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Kunde 2">
+                        <img class="h-11 w-11 rounded-full border-2 border-white object-cover" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Kundin 3">
+                    </div>
+                    <div>
+                        <p class="font-semibold">4.9/5 Bewertung aus laufenden Projekten</p>
+                        <div class="mt-1 flex items-center gap-1 text-yellow-300">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span class="ml-2 text-sm text-white/75">vertrauensvolle Zusammenarbeit & schnelle Umsetzung</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex items-center justify-center">
+                <div class="floating relative w-full max-w-xl">
+                    <div class="glass rounded-[2rem] p-4 shadow-2xl shadow-cyan-950/40">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80" alt="Wildwave Dashboard und Teammeeting" class="h-[420px] w-full rounded-[1.5rem] object-cover">
+                    </div>
+                    <div class="glass absolute -left-4 top-8 rounded-2xl p-4 shadow-xl sm:-left-10">
+                        <p class="text-xs uppercase tracking-[0.3em] text-cyan-300">Leads</p>
+                        <p class="mt-2 text-3xl font-bold">+37%</p>
+                        <p class="text-sm text-slate-300">mehr Anfragen nach Relaunch</p>
+                    </div>
+                    <div class="glass absolute -bottom-8 right-0 rounded-2xl p-4 shadow-xl sm:-right-8">
+                        <p class="text-xs uppercase tracking-[0.3em] text-blue-300">SEO</p>
+                        <p class="mt-2 text-3xl font-bold">Top 3</p>
+                        <p class="text-sm text-slate-300">für lokale Suchbegriffe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <a href="#leistungen" class="text-white/80 transition hover:text-white"><i class="fas fa-chevron-down text-3xl"></i></a>
+        </div>
+    </section>
+
+    <section class="border-y border-white/5 bg-slate-950/70 py-8">
+        <div class="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 text-center text-sm text-slate-300 sm:grid-cols-4 sm:px-6 lg:px-8">
+            <div><span class="text-cyan-300">Webdesign</span> für Conversion statt nur Optik</div>
+            <div><span class="text-cyan-300">SEO</span> für regionale Sichtbarkeit</div>
+            <div><span class="text-cyan-300">Google Ads</span> für sofortige Nachfrage</div>
+            <div><span class="text-cyan-300">Reporting</span> für klare Entscheidungen</div>
+        </div>
+    </section>
+
+    <section id="leistungen" class="py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-3xl text-center">
+                <span class="text-sm font-bold uppercase tracking-[0.35em] text-cyan-300">Unsere Leistungen</span>
+                <h2 class="mt-4 text-3xl font-bold sm:text-4xl">Eine Wachstumsmaschine statt einzelner Einzelleistungen</h2>
+                <p class="mt-4 text-lg text-slate-400">Wir bauen den digitalen Verkaufsprozess von der ersten Sichtbarkeit bis zur qualifizierten Anfrage.</p>
+            </div>
+            <div class="mt-14 grid gap-8 lg:grid-cols-3">
+                <article class="service-card rounded-3xl border border-white/10 bg-slate-900/80 p-8 shadow-xl">
+                    <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600/20 text-2xl text-blue-300"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="text-2xl font-bold">Websites mit klarer Conversion-Struktur</h3>
+                    <p class="mt-4 text-slate-400">Schnelle, mobile Landingpages oder komplette Websites mit starken Texten, klaren CTA-Bausteinen und Vertrauen auf den ersten Blick.</p>
+                    <ul class="mt-6 space-y-3 text-sm text-slate-300">
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Positionierung, Copy und Design aus einem Guss</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Technisch sauber, schnell und mobil optimiert</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Mehr Anfragen statt nur mehr Seitenaufrufe</li>
+                    </ul>
+                </article>
+                <article class="service-card rounded-3xl border border-white/10 bg-slate-900/80 p-8 shadow-xl">
+                    <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/20 text-2xl text-cyan-300"><i class="fas fa-location-dot"></i></div>
+                    <h3 class="text-2xl font-bold">Local SEO für Ihre Region</h3>
+                    <p class="mt-4 text-slate-400">Wir verbessern Ihre Auffindbarkeit bei Google Suche und Maps, damit Kunden genau dann auf Sie stossen, wenn Bedarf besteht.</p>
+                    <ul class="mt-6 space-y-3 text-sm text-slate-300">
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Google-Unternehmensprofil & Bewertungsstrategie</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Lokale Seitenstruktur und relevante Keywords</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Messbare Verbesserungen in Sichtbarkeit und Leads</li>
+                    </ul>
+                </article>
+                <article class="service-card rounded-3xl border border-white/10 bg-slate-900/80 p-8 shadow-xl">
+                    <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-500/20 text-2xl text-violet-300"><i class="fas fa-bullhorn"></i></div>
+                    <h3 class="text-2xl font-bold">Google Ads für schnelle Ergebnisse</h3>
+                    <p class="mt-4 text-slate-400">Wenn Sie kurzfristig mehr Anfragen brauchen, setzen wir performante Suchkampagnen auf – fokussiert auf rentable Keywords statt Streuverlust.</p>
+                    <ul class="mt-6 space-y-3 text-sm text-slate-300">
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Kampagnenstruktur mit Fokus auf Kaufintention</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Landingpages passend zur Anzeige</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Kontinuierliche Optimierung & Reporting</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-950/60 border-y border-white/5">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-8 lg:grid-cols-3">
+                <div class="insight-card rounded-3xl border border-white/10 bg-slate-900/80 p-8">
+                    <p class="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">Klarer Prozess</p>
+                    <h3 class="mt-4 text-2xl font-bold">1. Analyse</h3>
+                    <p class="mt-3 text-slate-400">Wir prüfen Angebot, Zielgruppe, Wettbewerb und bestehende Online-Präsenz, bevor wir etwas bauen.</p>
+                </div>
+                <div class="insight-card rounded-3xl border border-white/10 bg-slate-900/80 p-8">
+                    <p class="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">Schnelle Umsetzung</p>
+                    <h3 class="mt-4 text-2xl font-bold">2. Aufbau</h3>
+                    <p class="mt-3 text-slate-400">Design, Inhalte, Tracking und Angebotslogik werden so aufgesetzt, dass Besucher schnell Vertrauen fassen.</p>
+                </div>
+                <div class="insight-card rounded-3xl border border-white/10 bg-slate-900/80 p-8">
+                    <p class="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">Messbares Wachstum</p>
+                    <h3 class="mt-4 text-2xl font-bold">3. Optimierung</h3>
+                    <p class="mt-3 text-slate-400">Wir verbessern kontinuierlich Sichtbarkeit, Conversion und Kosten pro Anfrage – auf Basis echter Daten.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pakete" class="py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-3xl text-center">
+                <span class="text-sm font-bold uppercase tracking-[0.35em] text-blue-300">Pakete</span>
+                <h2 class="mt-4 text-3xl font-bold sm:text-4xl">Wählen Sie das Tempo, das zu Ihrem Wachstum passt</h2>
+                <p class="mt-4 text-lg text-slate-400">Jedes Paket ist so aufgebaut, dass Sie je nach Ausgangslage klein starten oder direkt mehr Reichweite aufbauen können.</p>
+            </div>
+            <div class="mt-14 grid gap-8 xl:grid-cols-3">
+                <article class="package-card rounded-3xl border border-white/10 bg-slate-900/85 p-8">
+                    <p class="text-sm font-semibold uppercase tracking-[0.28em] text-slate-400">Starter</p>
+                    <h3 class="mt-4 text-3xl font-bold">Präsenz</h3>
+                    <p class="mt-2 text-slate-400">Für neue oder kleine Unternehmen, die professionell sichtbar werden wollen.</p>
+                    <p class="mt-6 text-4xl font-bold">ab CHF 990</p>
+                    <ul class="mt-8 space-y-3 text-slate-300">
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Onepager oder kompakte Website</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Grundlegendes SEO-Setup</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Texte, Struktur und CTA-Beratung</li>
+                    </ul>
+                </article>
+                <article class="package-card relative rounded-3xl border border-cyan-400/60 bg-gradient-to-b from-cyan-500/10 to-slate-900/90 p-8 shadow-2xl shadow-cyan-950/30">
+                    <div class="absolute -top-4 left-8 rounded-full bg-cyan-300 px-4 py-1 text-sm font-bold text-slate-950">Beliebt</div>
+                    <p class="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">Growth</p>
+                    <h3 class="mt-4 text-3xl font-bold">Anfragen</h3>
+                    <p class="mt-2 text-slate-300">Für Betriebe, die regelmässig neue Kunden gewinnen und lokal stärker gefunden werden möchten.</p>
+                    <p class="mt-6 text-4xl font-bold">ab CHF 1'990</p>
+                    <ul class="mt-8 space-y-3 text-slate-200">
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Mehrseitige Website mit Conversion-Fokus</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Local SEO & Google-Unternehmensprofil</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Tracking, Reporting & Optimierung</li>
+                    </ul>
+                </article>
+                <article class="package-card rounded-3xl border border-white/10 bg-slate-900/85 p-8">
+                    <p class="text-sm font-semibold uppercase tracking-[0.28em] text-violet-300">Scale</p>
+                    <h3 class="mt-4 text-3xl font-bold">Dominanz</h3>
+                    <p class="mt-2 text-slate-400">Für etablierte Anbieter, die SEO, Ads und Landingpages systematisch kombinieren wollen.</p>
+                    <p class="mt-6 text-4xl font-bold">ab CHF 3'490</p>
+                    <ul class="mt-8 space-y-3 text-slate-300">
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Website, SEO und Kampagnen aus einem System</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Google Ads Setup oder Relaunch</li>
+                        <li><i class="fas fa-check mr-2 text-cyan-300"></i>Strategische Betreuung mit Prioritätenplan</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="py-24 bg-slate-950/65 border-y border-white/5">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+                <div>
+                    <span class="text-sm font-bold uppercase tracking-[0.35em] text-cyan-300">Paket-Quiz</span>
+                    <h2 class="mt-4 text-3xl font-bold sm:text-4xl">Welches Paket passt zu Ihrem Unternehmen?</h2>
+                    <p class="mt-4 text-lg text-slate-400">Beantworten Sie drei kurze Fragen. Sie erhalten sofort eine Empfehlung inklusive Schwerpunkt und nächstem sinnvollen Schritt.</p>
+                    <div class="testimonial-card mt-8 rounded-3xl border border-white/10 bg-slate-900/75 p-6">
+                        <p class="text-sm uppercase tracking-[0.28em] text-slate-400">Warum das hilft</p>
+                        <ul class="mt-4 space-y-3 text-slate-300">
+                            <li><i class="fas fa-check mr-2 text-cyan-300"></i>Vermeidet Über- oder Unterinvestition</li>
+                            <li><i class="fas fa-check mr-2 text-cyan-300"></i>Ordnet Ihre Priorität klar ein: Website, SEO oder Ads</li>
+                            <li><i class="fas fa-check mr-2 text-cyan-300"></i>Gibt Ihrem Erstgespräch sofort mehr Fokus</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quiz-card rounded-[2rem] border border-white/10 bg-slate-900/90 p-6 shadow-2xl sm:p-8">
+                    <div class="space-y-8" id="quiz-form">
+                        <div>
+                            <label class="mb-4 block text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">1. Wo stehen Sie aktuell?</label>
+                            <div class="grid gap-3 sm:grid-cols-3" data-question="stage">
+                                <button type="button" class="quiz-option rounded-2xl border border-white/10 px-4 py-4 text-left text-slate-200" data-value="0">
+                                    <span class="block font-semibold">Start</span>
+                                    <span class="mt-1 block text-sm text-slate-400">Noch keine oder veraltete Website</span>
+                                </button>
+                                <button type="button" class="quiz-option rounded-2xl border border-white/10 px-4 py-4 text-left text-slate-200" data-value="2">
+                                    <span class="block font-semibold">Solide Basis</span>
+                                    <span class="mt-1 block text-sm text-slate-400">Website vorhanden, aber zu wenig Anfragen</span>
+                                </button>
+                                <button type="button" class="quiz-option rounded-2xl border border-white/10 px-4 py-4 text-left text-slate-200" data-value="4">
+                                    <span class="block font-semibold">Wachstum</span>
+                                    <span class="mt-1 block text-sm text-slate-400">Sie wollen Reichweite und Leads skalieren</span>
+                                </button>
+                            </div>
                         </div>
                         <div>
-                            <!-- TEXT ANGEPASST -->
-                            <p class="text-sm font-medium">Über 250 zufriedene KMU-Kunden</p>
-                            <div class="flex items-center space-x-1">
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star text-yellow-300"></i>
-                                <i class="fas fa-star-half-alt text-yellow-300"></i>
-                                <span class="text-sm text-white/80">4.9 (Trustpilot)</span>
+                            <label class="mb-4 block text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">2. Was ist Ihr Hauptziel in den nächsten 90 Tagen?</label>
+                            <div class="grid gap-3 sm:grid-cols-3" data-question="goal">
+                                <button type="button" class="quiz-option rounded-2xl border border-white/10 px-4 py-4 text-left text-slate-200" data-value="1">
+                                    <span class="block font-semibold">Professioneller Auftritt</span>
+                                    <span class="mt-1 block text-sm text-slate-400">Vertrauen aufbauen & modern wirken</span>
+                                </button>
+                                <button type="button" class="quiz-option rounded-2xl border border-white/10 px-4 py-4 text-left text-slate-200" data-value="3">
+                                    <span class="block font-semibold">Mehr lokale Sichtbarkeit</span>
+                                    <span class="mt-1 block text-sm text-slate-400">Bei Google besser gefunden werden</span>
+                                </button>
+                                <button type="button" class="quiz-option rounded-2xl border border-white/10 px-4 py-4 text-left text-slate-200" data-value="4">
+                                    <span class="block font-semibold">Schnell mehr Leads</span>
+                                    <span class="mt-1 block text-sm text-slate-400">Kurzfristig Nachfrage erzeugen</span>
+                                </button>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- BILD & KARTEN: Jetzt auf allen Geräten sichtbar. Zusätzliches Padding für Mobile (pt-10) hinzugefügt. -->
-                <div class="relative pt-10 md:pt-0"> 
-                    <div class="floating">
-                         <!-- BILDSTYLING: w-4/5 und mx-auto sorgen dafür, dass das Bild auf Mobile zentriert und nicht zu breit ist. -->
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="Wildwave Grafik Konzept: Business Meeting, Strategie" class="rounded-xl shadow-2xl border-8 border-white/20 transform rotate-3 w-4/5 max-w-sm mx-auto block">
-                    </div>
-                    <!-- STATS KARTE 1: Bleibt auf Mobile/Tablet versteckt (hidden lg:block), um Überlappungen zu vermeiden. -->
-                    <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl w-64 glow border-t-4 border-cyan-500 hidden lg:block">
-                        <div class="flex items-center space-x-3">
-                            <div class="bg-cyan-100 p-3 rounded-full">
-                                <i class="fas fa-chart-line text-cyan-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-bold text-gray-800">Top 3</p>
-                                <p class="text-sm text-gray-500">Google Platzierungen</p>
+                        <div>
+                            <label class="mb-4 block text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">3. Wie viel soll Ihre Online-Präsenz leisten?</label>
+                            <div class="grid gap-3 sm:grid-cols-3" data-question="scope">
+                                <button type="button" class="quiz-option rounded-2xl border border-white/10 px-4 py-4 text-left text-slate-200" data-value="1">
+                                    <span class="block font-semibold">Sauber sichtbar</span>
+                                    <span class="mt-1 block text-sm text-slate-400">Professionell auftreten und überzeugen</span>
+                                </button>
+                                <button type="button" class="quiz-option rounded-2xl border border-white/10 px-4 py-4 text-left text-slate-200" data-value="3">
+                                    <span class="block font-semibold">Regelmässig anfragen</span>
+                                    <span class="mt-1 block text-sm text-slate-400">Beständig neue Kontakte gewinnen</span>
+                                </button>
+                                <button type="button" class="quiz-option rounded-2xl border border-white/10 px-4 py-4 text-left text-slate-200" data-value="5">
+                                    <span class="block font-semibold">Systematisch skalieren</span>
+                                    <span class="mt-1 block text-sm text-slate-400">SEO, Ads und Website gemeinsam nutzen</span>
+                                </button>
                             </div>
                         </div>
-                    </div>
-                    <!-- STATS KARTE 2: Bleibt auf Mobile/Tablet versteckt (hidden lg:block). -->
-                    <div class="absolute -top-8 -right-8 bg-white p-6 rounded-xl shadow-xl w-64 glow border-t-4 border-blue-500 hidden lg:block">
-                        <div class="flex items-center space-x-3">
-                            <div class="bg-blue-100 p-3 rounded-full">
-                                <i class="fas fa-handshake text-blue-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-bold text-gray-800">100% Flexibel</p>
-                                <p class="text-sm text-gray-500">Monatlich kündbar</p>
-                            </div>
+                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                            <button id="quiz-submit" type="button" class="rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-8 py-4 font-bold text-white transition hover:scale-105">Empfehlung anzeigen</button>
+                            <button id="quiz-reset" type="button" class="rounded-full border border-white/15 px-6 py-4 font-semibold text-slate-300 transition hover:border-cyan-300 hover:text-cyan-300">Zurücksetzen</button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Scroll Down Pfeil -->
-        <div class="scroll-down">
-            <a href="#leistungen" class="text-white text-opacity-80 hover:text-white transition">
-                <i class="fas fa-chevron-down text-3xl"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Services Section (Leistungen) -->
-    <section id="leistungen" class="py-20 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <!-- TEXTE ANGEPASST -->
-                <span class="text-cyan-400 font-bold uppercase tracking-widest">Unsere Kern-Leistungen</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Digitale Lösungen, die Kunden bringen</h2>
-                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-                    Wir kombinieren modernes Webdesign mit gezielter Suchmaschinenoptimierung.
-                </p>
-            </div>
-            
-            <!-- Cards: 1 Spalte auf Mobile, 2 auf Tablet, 3 auf Desktop -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1: Webdesign -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition-all duration-300">
-                    <div class="bg-blue-600 w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-xl">
-                        <i class="fas fa-desktop text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Responsives Webdesign</h3>
-                    <p class="text-gray-400">
-                        Ihre moderne, mobile Website, die Besucher in Anfragen umwandelt. Inkl. Hosting, Wartung & SSL.
-                    </p>
-                </div>
-                
-                <!-- Service 2: SEO -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition-all duration-300">
-                    <div class="bg-cyan-500 w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-xl">
-                        <i class="fas fa-search-dollar text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Local SEO Optimierung</h3>
-                    <p class="text-gray-400">
-                        Wir bringen Sie in den lokalen Suchergebnissen von Google ganz nach vorne (Google Maps & Suche).
-                    </p>
-                </div>
-                
-                <!-- Service 3: Google Ads / SEA -->
-                <div class="service-card bg-gray-800 rounded-xl p-8 transition-all duration-300">
-                    <div class="bg-indigo-600 w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-xl">
-                        <i class="fas fa-funnel-dollar text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Google Ads (SEA) Management</h3>
-                    <p class="text-gray-400">
-                        Gezielte und kosteneffiziente Werbung, um sofort qualifizierte Anfragen zu generieren.
-                    </p>
+                    <div id="quiz-result" class="mt-8 hidden rounded-3xl border border-cyan-400/20 bg-cyan-400/10 p-6"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section (Vorteile) -->
-    <section id="vorteile" class="py-20 bg-gray-950 text-white border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <!-- TEXTE ANGEPASST -->
-                <span class="text-blue-400 font-bold uppercase tracking-widest">Ihre Vorteile mit Wildwave</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Warum uns Kleinunternehmen wählen</h2>
-                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-                    Maximale Flexibilität, Transparenz und ein messbarer Fokus auf Ihren Umsatz.
-                </p>
+    <section id="vorteile" class="py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-3xl text-center">
+                <span class="text-sm font-bold uppercase tracking-[0.35em] text-cyan-300">Warum Wildwave</span>
+                <h2 class="mt-4 text-3xl font-bold sm:text-4xl">Klar, schnell und auf Resultate ausgerichtet</h2>
+                <p class="mt-4 text-lg text-slate-400">Sie erhalten keine komplizierte Agentur-Blackbox, sondern verständliche Prioritäten, direkte Kommunikation und saubere Umsetzung.</p>
             </div>
-            
-            <!-- Stats: 2 Spalten auf Mobile, 4 auf Desktop -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
-                <!-- STAT 1 -->
-                <div class="p-4 md:p-6">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 pulse text-cyan-400">100%</div>
-                    <p class="text-sm md:text-base text-gray-400">Monatlich kündbar</p>
+            <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                <div class="rounded-3xl border border-white/10 bg-slate-900/85 p-8 text-center">
+                    <p class="text-5xl font-bold text-cyan-300">100%</p>
+                    <p class="mt-3 text-slate-400">transparente Kommunikation & nachvollziehbare Leistungen</p>
                 </div>
-                <!-- STAT 2 -->
-                <div class="p-4 md:p-6">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 pulse text-blue-400">250+</div>
-                    <p class="text-sm md:text-base text-gray-400">Zufriedene KMU Kunden</p>
+                <div class="rounded-3xl border border-white/10 bg-slate-900/85 p-8 text-center">
+                    <p class="text-5xl font-bold text-blue-300">250+</p>
+                    <p class="mt-3 text-slate-400">Projekte für lokale Unternehmen und KMU</p>
                 </div>
-                <!-- STAT 3 -->
-                <div class="p-4 md:p-6">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 pulse text-indigo-400">14 Tage</div>
-                    <p class="text-sm md:text-base text-gray-400">Design-Entwurf-Garantie</p>
+                <div class="rounded-3xl border border-white/10 bg-slate-900/85 p-8 text-center">
+                    <p class="text-5xl font-bold text-violet-300">14</p>
+                    <p class="mt-3 text-slate-400">Tage bis zum ersten Design oder Optimierungsplan</p>
                 </div>
-                <!-- STAT 4 -->
-                <div class="p-4 md:p-6">
-                    <div class="text-4xl md:text-5xl font-bold mb-2 pulse text-cyan-400">0</div>
-                    <p class="text-sm md:text-base text-gray-400">Versteckte Kosten</p>
+                <div class="rounded-3xl border border-white/10 bg-slate-900/85 p-8 text-center">
+                    <p class="text-5xl font-bold text-cyan-300">0</p>
+                    <p class="mt-3 text-slate-400">unnötige Meetings, versteckte Gebühren oder Fachjargon</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section (Kontakt) -->
-    <section id="kontakt" class="py-20 bg-gradient-to-r from-blue-600 to-cyan-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Sind Sie bereit für mehr Kunden?</h2>
-            <p class="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Vereinbaren Sie jetzt ein kostenloses Strategiegespräch. Wir zeigen Ihnen, wo Ihr grösstes Wachstumspotenzial liegt.
-            </p>
-            <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
-                <!-- CTA BUTTON 1: Volle Breite auf Mobile -->
-                <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="w-full sm:w-auto text-center bg-white text-blue-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg flex items-center justify-center">
-                    <i class="fas fa-phone-alt mr-3"></i> Jetzt anrufen oder Termin buchen
-                </a>
-                <!-- KONTAKTINFOS: Volle Breite auf Mobile -->
-                <a href="mailto:wildwave@mail.ch" class="w-full sm:w-auto text-center border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all duration-300 transform hover:scale-105 text-lg flex items-center justify-center">
-                    <i class="fas fa-envelope mr-3"></i> Oder E-Mail senden
-                </a>
+    <section id="kontakt" class="py-24">
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div class="rounded-[2rem] border border-white/10 bg-gradient-to-r from-blue-600/90 via-cyan-500/90 to-violet-600/90 p-8 text-center shadow-2xl shadow-cyan-950/30 sm:p-12">
+                <span class="text-sm font-bold uppercase tracking-[0.35em] text-white/80">Nächster Schritt</span>
+                <h2 class="mt-4 text-3xl font-bold sm:text-4xl">Lassen Sie uns Ihr passendes Paket in 20 Minuten klären</h2>
+                <p class="mx-auto mt-4 max-w-2xl text-lg text-white/90">Im kostenlosen Strategiegespräch schauen wir auf Ihre aktuelle Situation, besprechen das Quiz-Ergebnis und definieren einen klaren Umsetzungsplan.</p>
+                <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+                    <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-bold text-blue-700 transition hover:scale-105 hover:bg-slate-100">
+                        <i class="fas fa-calendar-check mr-3"></i> Termin buchen
+                    </a>
+                    <a href="mailto:wildwave@mail.ch" class="inline-flex items-center justify-center rounded-full border-2 border-white px-8 py-4 font-bold text-white transition hover:scale-105 hover:bg-white/10">
+                        <i class="fas fa-envelope mr-3"></i> E-Mail senden
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 text-center text-gray-400 text-sm bg-gray-950 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <!-- Mobile friendly link layout for footer: Links wrappen, falls der Platz nicht reicht -->
-             <div class="mb-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
-                <!-- LINKS AUF DEINE GOOGLE DOCS ANGEPASST -->
-                <a href="https://docs.google.com/document/d/1ZmQFW7WUWsg6qc0pG_FmP47N71jSQp6kZ3LSJ7g5nV0/edit?usp=sharing" target="_blank" class="hover:text-cyan-400">Impressum</a>
-                <span class="text-gray-600 hidden sm:inline">|</span> <!-- Hidden on extra small screens -->
-                <a href="https://docs.google.com/document/d/1KK7-YsIks3-b9otznUcUv1Rd069j0WLgWUYvZSeKaQc/edit?usp=sharing" target="_blank" class="hover:text-cyan-400">Datenschutz</a>
-                <span class="text-gray-600 hidden sm:inline">|</span> <!-- Hidden on extra small screens -->
-                <a href="tel:+41782630406" class="hover:text-cyan-400">+41 78 263 04 06</a>
+    <footer class="border-t border-white/10 bg-slate-950 py-10 text-center text-sm text-slate-400">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mb-4 flex flex-wrap justify-center gap-x-4 gap-y-2">
+                <a href="https://docs.google.com/document/d/1ZmQFW7WUWsg6qc0pG_FmP47N71jSQp6kZ3LSJ7g5nV0/edit?usp=sharing" target="_blank" class="transition hover:text-cyan-300">Impressum</a>
+                <span class="hidden text-slate-600 sm:inline">|</span>
+                <a href="https://docs.google.com/document/d/1KK7-YsIks3-b9otznUcUv1Rd069j0WLgWUYvZSeKaQc/edit?usp=sharing" target="_blank" class="transition hover:text-cyan-300">Datenschutz</a>
+                <span class="hidden text-slate-600 sm:inline">|</span>
+                <a href="tel:+41782630406" class="transition hover:text-cyan-300">+41 78 263 04 06</a>
             </div>
-            <p>&copy; 2024 Wildwave. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 Wildwave. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
-
 
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
@@ -391,55 +513,131 @@
 
         const toggleMenu = () => {
             mobileMenu.classList.toggle('open');
-            // Verhindert Scrollen im Hintergrund
             document.body.classList.toggle('overflow-hidden', mobileMenu.classList.contains('open'));
         };
 
         mobileMenuButton.addEventListener('click', toggleMenu);
         closeMenuButton.addEventListener('click', toggleMenu);
+        mobileNavLinks.forEach((link) => link.addEventListener('click', toggleMenu));
 
-        // Schließt das Menü beim Klicken auf einen Link
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-
-
-        // Typing Animation Logic (Anpassung des Textes)
-        const texts = ["liefern messbare Resultate.", "bringen mehr Kunden.", "optimieren Ihr Google Profil.", "gestalten Ihre Website."];
+        const typingTexts = [
+            'verkauft statt nur gut aussieht.',
+            'lokal sichtbar wird.',
+            'Anfragen planbar macht.',
+            'zu Ihrem Angebot passt.'
+        ];
         let textIndex = 0;
         const typingElement = document.querySelector('.typing');
-        
-        const resetTypingAnimation = () => {
-            // Setzt Animation zurück
-            typingElement.style.animation = 'none';
-            void typingElement.offsetWidth; // Trigger reflow
-            typingElement.style.animation = `typing 4.5s steps(${texts[textIndex].length}, end), blink-caret 0.75s step-end infinite`;
-        }
 
-        const changeText = () => {
-            textIndex = (textIndex + 1) % texts.length;
-            typingElement.textContent = texts[textIndex];
+        const resetTypingAnimation = () => {
+            typingElement.style.animation = 'none';
+            void typingElement.offsetWidth;
+            typingElement.style.animation = `typing 4s steps(${typingTexts[textIndex].length}, end), blink 0.85s step-end infinite`;
+        };
+
+        const changeTypingText = () => {
+            textIndex = (textIndex + 1) % typingTexts.length;
+            typingElement.textContent = typingTexts[textIndex];
             resetTypingAnimation();
         };
 
-        // Start der Animation und Intervall für den Textwechsel
         resetTypingAnimation();
-        setInterval(changeText, 5000); // Wechselt alle 5 Sekunden (4.5s Tippen + 0.5s Pause)
+        setInterval(changeTypingText, 4800);
 
-        
-        // Smooth scrolling für Anker-Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                // Nur verhindern, wenn es sich nicht um einen externen Link handelt
-                if (this.getAttribute('href').length > 1) { 
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', function(event) {
+                const target = this.getAttribute('href');
+                if (target && target.length > 1) {
+                    event.preventDefault();
+                    document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
 
+        const quizRecommendations = {
+            starter: {
+                title: 'Empfehlung: Paket Präsenz',
+                subtitle: 'Ideal, wenn Sie zuerst professionell auftreten und eine starke digitale Basis schaffen möchten.',
+                focus: ['Moderne Website oder Onepager', 'Klare Angebotsstruktur und überzeugende Texte', 'SEO-Basis für einen sauberen Start'],
+                cta: 'Perfekt für junge Unternehmen, Selbstständige oder Betriebe mit veraltetem Auftritt.'
+            },
+            growth: {
+                title: 'Empfehlung: Paket Anfragen',
+                subtitle: 'Ideal, wenn bereits eine Basis vorhanden ist und jetzt mehr qualifizierte Kontakte entstehen sollen.',
+                focus: ['Conversion-starke Website-Struktur', 'Local SEO und Google-Unternehmensprofil', 'Tracking und Optimierung für mehr Anfragen'],
+                cta: 'Das beste Paket für lokale Dienstleister, Praxen und KMU mit Wachstumsfokus.'
+            },
+            scale: {
+                title: 'Empfehlung: Paket Dominanz',
+                subtitle: 'Ideal, wenn Website, SEO und Ads zusammenarbeiten sollen, um Nachfrage aktiv zu steigern.',
+                focus: ['Strategische Kombination aus Website, SEO und Google Ads', 'Landingpages für verschiedene Angebote oder Regionen', 'Regelmässige Optimierung auf Basis von Performance-Daten'],
+                cta: 'Empfohlen für Unternehmen, die ihren Markt aktiv ausbauen und Leads systematisch skalieren wollen.'
+            }
+        };
+
+        const quizResult = document.getElementById('quiz-result');
+        const quizSubmit = document.getElementById('quiz-submit');
+        const quizReset = document.getElementById('quiz-reset');
+
+        const getAnswers = () => {
+            const answers = {};
+            document.querySelectorAll('[data-question]').forEach((group) => {
+                const activeOption = group.querySelector('.quiz-option.active');
+                answers[group.dataset.question] = activeOption ? Number(activeOption.dataset.value) : null;
+            });
+            return answers;
+        };
+
+        document.querySelectorAll('.quiz-option').forEach((option) => {
+            option.addEventListener('click', () => {
+                const parent = option.closest('[data-question]');
+                parent.querySelectorAll('.quiz-option').forEach((btn) => btn.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+
+        const renderResult = (recommendation) => {
+            quizResult.className = 'mt-8 rounded-3xl border border-cyan-400/20 bg-cyan-400/10 p-6 quiz-result-enter';
+            quizResult.innerHTML = `
+                <p class="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">Ihre Auswertung</p>
+                <h3 class="mt-3 text-2xl font-bold text-white">${recommendation.title}</h3>
+                <p class="mt-3 text-slate-200">${recommendation.subtitle}</p>
+                <ul class="mt-5 space-y-3 text-slate-100">
+                    ${recommendation.focus.map((item) => `<li><i class="fas fa-check mr-2 text-cyan-300"></i>${item}</li>`).join('')}
+                </ul>
+                <p class="mt-5 text-sm text-slate-200">${recommendation.cta}</p>
+                <a href="https://koalendar.com/e/termin-fur-kostenloses-beratungsgesprach" target="_blank" class="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 font-bold text-blue-700 transition hover:scale-105">
+                    Ergebnis im Gespräch besprechen <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            `;
+            quizResult.classList.remove('hidden');
+        };
+
+        quizSubmit.addEventListener('click', () => {
+            const answers = getAnswers();
+            const values = Object.values(answers);
+            if (values.some((value) => value === null)) {
+                quizResult.className = 'mt-8 rounded-3xl border border-amber-400/30 bg-amber-500/10 p-6 quiz-result-enter';
+                quizResult.innerHTML = '<p class="font-semibold text-amber-200">Bitte beantworten Sie alle drei Fragen, damit wir das passende Paket empfehlen können.</p>';
+                quizResult.classList.remove('hidden');
+                return;
+            }
+
+            const score = values.reduce((sum, value) => sum + value, 0);
+            if (score <= 4) {
+                renderResult(quizRecommendations.starter);
+            } else if (score <= 9) {
+                renderResult(quizRecommendations.growth);
+            } else {
+                renderResult(quizRecommendations.scale);
+            }
+        });
+
+        quizReset.addEventListener('click', () => {
+            document.querySelectorAll('.quiz-option').forEach((option) => option.classList.remove('active'));
+            quizResult.className = 'mt-8 hidden rounded-3xl border border-cyan-400/20 bg-cyan-400/10 p-6';
+            quizResult.innerHTML = '';
+        });
     </script>
 </body>
 </html>
